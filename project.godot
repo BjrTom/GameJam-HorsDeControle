@@ -10,15 +10,12 @@ config_version=5
 
 [application]
 
-<<<<<<< Updated upstream
-config/name="Godot_Blackjack_AI"
-config/version="0.0.1"
-=======
 config/name="Blackout Blackjack"
->>>>>>> Stashed changes
+config/version="0.0.1"
 run/main_scene="res://Menu/scenes/opening/opening_with_logo.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="uid://mtorgc3i84n6"
+config/icon="res://icon.svg"
+<<<<<<<Updatedupstreamconfig/name="Godot_Blackjack_AI"
 
 [autoload]
 
