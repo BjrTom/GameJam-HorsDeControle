@@ -3,18 +3,12 @@ extends Control
 var card_names = []
 var card_values = []
 var card_images = {}
-
 var playerScore = 0
 var dealerScore = 0
 var playerCards = []
 var dealerCards = []
-
-
-
 var bet = 0;
-
 var cardsShuffled = {}
-
 var ace_found
 var dollars = 10
 
@@ -82,11 +76,11 @@ func _ready():
 	checkBet()
 	display_chips()
 	$DollarsInt.text = (str(dollars) + '$')
-	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$ProgressBar.value += 0.25
-	
+
 func _on_hit_pressed():
 	$PlayerHitMarker.visible = true
 	generate_card("player")
@@ -102,7 +96,6 @@ func _on_hit_pressed():
 			$AnimationPlayer.play("BustAnimation")
 			$PlayerHitMarker.visible = false
 			playerLose()
-
 
 func check_aces():
 	# If player is over 21 and has any 11-aces, convert them to 1 so they stay under 21
@@ -123,7 +116,6 @@ func recalculate_player_score():
 	playerScore = 0
 	for card in playerCards:
 		playerScore += card[0]
-
 
 func _on_stand_pressed():
 	# Flip dealer's first card, dealer keeps hitting until score is above 16 or player's score
@@ -172,15 +164,13 @@ func _on_stand_pressed():
 		playerLose()
 	else:  # Tie
 		playerDraw()
-	
-	
+
 func create_card_data():
 	# Generate card names for ranks 2 to 10
 	for rank in range(2, 11):
 		for suit in ["clubs", "diamonds", "hearts", "spades"]:
 			card_names.append(str(rank) + "_" + suit)
 			card_values.append(rank)
-
 	# Generate card names for face cards (jack, queen, king, ace)
 	for face_card in ["jack", "queen", "king", "ace"]:
 		for suit in ["clubs", "diamonds", "hearts", "spades"]:
@@ -189,8 +179,6 @@ func create_card_data():
 				card_values.append(10)
 			else:
 				card_values.append(11)	
-				
-	
 	# Load card values and image paths into the dictionary
 	for card in range(len(card_names)):
 		card_images[card_names[card]] = [card_values[card], 
@@ -202,7 +190,6 @@ func create_card_data():
 	cardsShuffled = card_names.duplicate()
 	cardsShuffled.shuffle()
 
-	
 func generate_card(hand, back=false):
 	# Assuming you have already loaded card images into the dictionary as shown in your code
 	var random_card
@@ -246,12 +233,10 @@ func generate_card(hand, back=false):
 	# Add the card as a child to the HBoxContainer
 	card_hand_container.add_child(card_texture_rect)
 
-
 func updateText():
 	# Update the labels displayed on screen for the dealer and player scores.
 	$DealerScore.text = str(dealerScore)
 	$PlayerScore.text = str(playerScore)
-
 
 func playerLose():
 	if (dollars == 0):
@@ -396,4 +381,3 @@ func display_chips():
 	betAmount = load_chipsize(betAmount, $Chips/Chips100stackBet, 100, chip_hundred)
 	betAmount = load_chipsize(betAmount, $Chips/Chips10stackBet, 10, chip_ten)
 	betAmount = load_chipsize(betAmount, $Chips/Chips1stackBet, 1, chip_one)
-	
