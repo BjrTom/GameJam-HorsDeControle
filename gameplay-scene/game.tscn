@@ -355,12 +355,12 @@ text = "PLAY
 AGAIN"
 alignment = 0
 
-[node name="Replay2" type="Button" parent="."]
+[node name="Bet" type="Button" parent="."]
 layout_mode = 0
-offset_left = 457.0
-offset_top = 493.0
-offset_right = 825.0
-offset_bottom = 581.0
+offset_left = 599.0
+offset_top = 534.0
+offset_right = 967.0
+offset_bottom = 622.0
 theme_override_constants/h_separation = 9
 theme_override_fonts/font = ExtResource("2_sviuc")
 theme_override_font_sizes/font_size = 40
@@ -379,7 +379,12 @@ theme_override_fonts/font = ExtResource("2_sviuc")
 theme_override_font_sizes/font_size = 25
 text = "EXIT"
 
-[node name="Chips1stack" type="VBoxContainer" parent="."]
+[node name="Chips" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Chips1stack" type="VBoxContainer" parent="Chips"]
 clip_children = 1
 layout_mode = 0
 offset_left = 1466.0
@@ -388,52 +393,52 @@ offset_right = 1578.0
 offset_bottom = 713.0
 theme_override_constants/separation = -121
 
-[node name="chips1" type="TextureRect" parent="Chips1stack"]
+[node name="chips1" type="TextureRect" parent="Chips/Chips1stack"]
 layout_mode = 2
 texture = ExtResource("4_e65rd")
 expand_mode = 4
 
-[node name="chips2" type="TextureRect" parent="Chips1stack"]
+[node name="chips2" type="TextureRect" parent="Chips/Chips1stack"]
 layout_mode = 2
 texture = ExtResource("4_e65rd")
 expand_mode = 4
 
-[node name="chips3" type="TextureRect" parent="Chips1stack"]
+[node name="chips3" type="TextureRect" parent="Chips/Chips1stack"]
 layout_mode = 2
 texture = ExtResource("4_e65rd")
 expand_mode = 4
 
-[node name="chips4" type="TextureRect" parent="Chips1stack"]
+[node name="chips4" type="TextureRect" parent="Chips/Chips1stack"]
 layout_mode = 2
 texture = ExtResource("4_e65rd")
 expand_mode = 4
 
-[node name="chips5" type="TextureRect" parent="Chips1stack"]
+[node name="chips5" type="TextureRect" parent="Chips/Chips1stack"]
 layout_mode = 2
 texture = ExtResource("4_e65rd")
 expand_mode = 4
 
-[node name="chips6" type="TextureRect" parent="Chips1stack"]
+[node name="chips6" type="TextureRect" parent="Chips/Chips1stack"]
 layout_mode = 2
 texture = ExtResource("4_e65rd")
 expand_mode = 4
 
-[node name="chips7" type="TextureRect" parent="Chips1stack"]
+[node name="chips7" type="TextureRect" parent="Chips/Chips1stack"]
 layout_mode = 2
 texture = ExtResource("4_e65rd")
 expand_mode = 4
 
-[node name="chips8" type="TextureRect" parent="Chips1stack"]
+[node name="chips8" type="TextureRect" parent="Chips/Chips1stack"]
 layout_mode = 2
 texture = ExtResource("4_e65rd")
 expand_mode = 4
 
-[node name="chips9" type="TextureRect" parent="Chips1stack"]
+[node name="chips9" type="TextureRect" parent="Chips/Chips1stack"]
 layout_mode = 2
 texture = ExtResource("4_e65rd")
 expand_mode = 4
 
-[node name="Chips10stack" type="VBoxContainer" parent="."]
+[node name="Chips10stack" type="VBoxContainer" parent="Chips"]
 clip_children = 1
 layout_mode = 0
 offset_left = 1347.0
@@ -442,52 +447,52 @@ offset_right = 1459.0
 offset_bottom = 636.0
 theme_override_constants/separation = -121
 
-[node name="chips1" type="TextureRect" parent="Chips10stack"]
+[node name="chips1" type="TextureRect" parent="Chips/Chips10stack"]
 layout_mode = 2
 texture = ExtResource("5_387hk")
 expand_mode = 4
 
-[node name="chips2" type="TextureRect" parent="Chips10stack"]
+[node name="chips2" type="TextureRect" parent="Chips/Chips10stack"]
 layout_mode = 2
 texture = ExtResource("5_387hk")
 expand_mode = 4
 
-[node name="chips3" type="TextureRect" parent="Chips10stack"]
+[node name="chips3" type="TextureRect" parent="Chips/Chips10stack"]
 layout_mode = 2
 texture = ExtResource("5_387hk")
 expand_mode = 4
 
-[node name="chips4" type="TextureRect" parent="Chips10stack"]
+[node name="chips4" type="TextureRect" parent="Chips/Chips10stack"]
 layout_mode = 2
 texture = ExtResource("5_387hk")
 expand_mode = 4
 
-[node name="chips5" type="TextureRect" parent="Chips10stack"]
+[node name="chips5" type="TextureRect" parent="Chips/Chips10stack"]
 layout_mode = 2
 texture = ExtResource("5_387hk")
 expand_mode = 4
 
-[node name="chips6" type="TextureRect" parent="Chips10stack"]
+[node name="chips6" type="TextureRect" parent="Chips/Chips10stack"]
 layout_mode = 2
 texture = ExtResource("5_387hk")
 expand_mode = 4
 
-[node name="chips7" type="TextureRect" parent="Chips10stack"]
+[node name="chips7" type="TextureRect" parent="Chips/Chips10stack"]
 layout_mode = 2
 texture = ExtResource("5_387hk")
 expand_mode = 4
 
-[node name="chips8" type="TextureRect" parent="Chips10stack"]
+[node name="chips8" type="TextureRect" parent="Chips/Chips10stack"]
 layout_mode = 2
 texture = ExtResource("5_387hk")
 expand_mode = 4
 
-[node name="chips9" type="TextureRect" parent="Chips10stack"]
+[node name="chips9" type="TextureRect" parent="Chips/Chips10stack"]
 layout_mode = 2
 texture = ExtResource("5_387hk")
 expand_mode = 4
 
-[node name="Chips100stack" type="VBoxContainer" parent="."]
+[node name="Chips100stack" type="VBoxContainer" parent="Chips"]
 clip_children = 1
 layout_mode = 0
 offset_left = 1227.0
@@ -496,47 +501,47 @@ offset_right = 1339.0
 offset_bottom = 707.0
 theme_override_constants/separation = -121
 
-[node name="chips1" type="TextureRect" parent="Chips100stack"]
+[node name="chips1" type="TextureRect" parent="Chips/Chips100stack"]
 layout_mode = 2
 texture = ExtResource("6_m3mv0")
 expand_mode = 4
 
-[node name="chips2" type="TextureRect" parent="Chips100stack"]
+[node name="chips2" type="TextureRect" parent="Chips/Chips100stack"]
 layout_mode = 2
 texture = ExtResource("6_m3mv0")
 expand_mode = 4
 
-[node name="chips3" type="TextureRect" parent="Chips100stack"]
+[node name="chips3" type="TextureRect" parent="Chips/Chips100stack"]
 layout_mode = 2
 texture = ExtResource("6_m3mv0")
 expand_mode = 4
 
-[node name="chips4" type="TextureRect" parent="Chips100stack"]
+[node name="chips4" type="TextureRect" parent="Chips/Chips100stack"]
 layout_mode = 2
 texture = ExtResource("6_m3mv0")
 expand_mode = 4
 
-[node name="chips5" type="TextureRect" parent="Chips100stack"]
+[node name="chips5" type="TextureRect" parent="Chips/Chips100stack"]
 layout_mode = 2
 texture = ExtResource("6_m3mv0")
 expand_mode = 4
 
-[node name="chips6" type="TextureRect" parent="Chips100stack"]
+[node name="chips6" type="TextureRect" parent="Chips/Chips100stack"]
 layout_mode = 2
 texture = ExtResource("6_m3mv0")
 expand_mode = 4
 
-[node name="chips7" type="TextureRect" parent="Chips100stack"]
+[node name="chips7" type="TextureRect" parent="Chips/Chips100stack"]
 layout_mode = 2
 texture = ExtResource("6_m3mv0")
 expand_mode = 4
 
-[node name="chips8" type="TextureRect" parent="Chips100stack"]
+[node name="chips8" type="TextureRect" parent="Chips/Chips100stack"]
 layout_mode = 2
 texture = ExtResource("6_m3mv0")
 expand_mode = 4
 
-[node name="chips9" type="TextureRect" parent="Chips100stack"]
+[node name="chips9" type="TextureRect" parent="Chips/Chips100stack"]
 layout_mode = 2
 texture = ExtResource("6_m3mv0")
 expand_mode = 4
@@ -545,5 +550,5 @@ expand_mode = 4
 [connection signal="pressed" from="Buttons/VBoxContainer/Stand" to="." method="_on_stand_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/OptimalMove" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Replay" to="." method="_on_replay_pressed"]
-[connection signal="pressed" from="Replay2" to="." method="_on_money_pressed"]
+[connection signal="pressed" from="Bet" to="." method="_on_money_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
