@@ -342,6 +342,11 @@ func checkBet():
 func _on_bet_dollars_pressed(new_bet: int) -> void:
 	if (dollars < bet):
 		return
+
+	
+
+	
+	#$Chips/Chips100stackBet.add_child(image)
 	bet += new_bet
 	checkBet()
 	$DollarsInt.text = (str(dollars) + '$' + " | Bet -> " + str(bet))
@@ -351,27 +356,34 @@ func _on_bet_button_pressed() -> void:
 	$DollarsInt.text = str(dollars) + '$'
 	display_chips()
 	newRound()
+	
+func add_chip(chip: String, stack: VBoxContainer):
+	var image = TextureRect.new()
+	image.texture = load(chip)
+	image.expand_mode = TextureRect.EXPAND_FIT_HEIGHT
+	stack.add_child(image)
 
-func load_chipsize(amount, chipstack, value):
-	var c = 0;
+func load_chipsize(amount: int, chipstack: VBoxContainer, value: int, sprite: String):
 	while (amount >= value):
 		amount -= value
-		chipstack.get_child(c).visible = true
-		c += 1
+		add_chip(sprite, chipstack)
 	return amount
 
 func clear_chips():
 	for a in $Chips/Chips1stack.get_children():
-		a.visible = false
+		a.queue_free()
 	for a in $Chips/Chips10stack.get_children():
-		a.visible = false
+		a.queue_free()
 	for a in $Chips/Chips100stack.get_children():
-		a.visible = false
+		a.queue_free()
 
 func display_chips():
 	var amount = dollars if dollars < 1000 else 999
+	var chip_one = "res://assets/images/chips1.png"
+	var chip_ten = "res://assets/images/chips10.png"
+	var chip_hundred = "res://assets/images/chips100.png"
 	clear_chips()
-	amount = load_chipsize(amount, $Chips/Chips100stack, 100)
-	amount = load_chipsize(amount, $Chips/Chips10stack, 10)
-	amount = load_chipsize(amount, $Chips/Chips1stack, 1)
+	amount = load_chipsize(amount, $Chips/Chips100stack, 100, chip_hundred)
+	amount = load_chipsize(amount, $Chips/Chips10stack, 10, chip_ten)
+	amount = load_chipsize(amount, $Chips/Chips1stack, 1, chip_one)
 	

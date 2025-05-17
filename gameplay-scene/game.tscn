@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d11lim1u2e24i"]
+[gd_scene load_steps=20 format=3 uid="uid://d11lim1u2e24i"]
 
 [ext_resource type="Script" uid="uid://djkeiiqn5hebi" path="res://gameplay-scene/game-logic.gd" id="1_n2enm"]
 [ext_resource type="FontFile" uid="uid://cpwm7d3lrhrkk" path="res://assets/PixelifySans-Regular.ttf" id="2_dl2ym"]
@@ -7,9 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dgkkv5vuo3qsu" path="res://assets/images/health1.png" id="5_lva1i"]
 [ext_resource type="Texture2D" uid="uid://lwg7qahcabhm" path="res://assets/images/health3.png" id="6_vflar"]
 [ext_resource type="Texture2D" uid="uid://cfprb7wikjy48" path="res://assets/images/player/BlackoutGuy.png" id="7_387hk"]
-[ext_resource type="Texture2D" uid="uid://dqfobtpiwljae" path="res://assets/images/chips/chips1.png" id="7_bwecg"]
-[ext_resource type="Texture2D" uid="uid://den7pyelou6fp" path="res://assets/images/chips/chips10.png" id="8_fqy1j"]
-[ext_resource type="Texture2D" uid="uid://dyhflpmn3q00c" path="res://assets/images/chips/chips100.png" id="9_lva1i"]
 
 [sub_resource type="Animation" id="Animation_qj5j0"]
 resource_name = "BustAnimation"
@@ -446,10 +443,10 @@ Turn"
 
 [node name="WinnerText" type="Label" parent="."]
 layout_mode = 0
-offset_left = 78.0
-offset_top = 440.0
-offset_right = 1312.0
-offset_bottom = 635.0
+offset_left = 25.0
+offset_top = 95.0
+offset_right = 466.0
+offset_bottom = 290.0
 theme_override_colors/font_color = Color(0.431373, 1, 0.403922, 1)
 theme_override_fonts/font = ExtResource("2_sviuc")
 theme_override_font_sizes/font_size = 60
@@ -459,27 +456,15 @@ vertical_alignment = 1
 
 [node name="Replay" type="Button" parent="."]
 layout_mode = 0
-offset_left = 78.0
-offset_top = 630.0
-offset_right = 240.0
-offset_bottom = 714.0
+offset_left = 24.0
+offset_top = 291.0
+offset_right = 232.0
+offset_bottom = 379.0
 theme_override_constants/h_separation = 9
 theme_override_fonts/font = ExtResource("2_sviuc")
 theme_override_font_sizes/font_size = 40
 text = "PLAY
 AGAIN"
-alignment = 0
-
-[node name="Bet" type="Button" parent="."]
-layout_mode = 0
-offset_left = 718.0
-offset_top = 479.0
-offset_right = 809.0
-offset_bottom = 567.0
-theme_override_constants/h_separation = 9
-theme_override_fonts/font = ExtResource("2_sviuc")
-theme_override_font_sizes/font_size = 40
-text = "+1"
 alignment = 0
 
 [node name="Exit" type="Button" parent="."]
@@ -578,164 +563,56 @@ offset_bottom = 40.0
 [node name="Chips1stack" type="VBoxContainer" parent="Chips"]
 clip_children = 1
 layout_mode = 0
-offset_left = 1466.0
-offset_top = 601.0
-offset_right = 1578.0
-offset_bottom = 713.0
+offset_left = 254.0
+offset_top = 720.0
+offset_right = 366.0
+offset_bottom = 832.0
 theme_override_constants/separation = -121
-
-[node name="chips1" type="TextureRect" parent="Chips/Chips1stack"]
-layout_mode = 2
-texture = ExtResource("7_bwecg")
-expand_mode = 4
-
-[node name="chips2" type="TextureRect" parent="Chips/Chips1stack"]
-layout_mode = 2
-texture = ExtResource("7_bwecg")
-expand_mode = 4
-
-[node name="chips3" type="TextureRect" parent="Chips/Chips1stack"]
-layout_mode = 2
-texture = ExtResource("7_bwecg")
-expand_mode = 4
-
-[node name="chips4" type="TextureRect" parent="Chips/Chips1stack"]
-layout_mode = 2
-texture = ExtResource("7_bwecg")
-expand_mode = 4
-
-[node name="chips5" type="TextureRect" parent="Chips/Chips1stack"]
-layout_mode = 2
-texture = ExtResource("7_bwecg")
-expand_mode = 4
-
-[node name="chips6" type="TextureRect" parent="Chips/Chips1stack"]
-layout_mode = 2
-texture = ExtResource("7_bwecg")
-expand_mode = 4
-
-[node name="chips7" type="TextureRect" parent="Chips/Chips1stack"]
-layout_mode = 2
-texture = ExtResource("7_bwecg")
-expand_mode = 4
-
-[node name="chips8" type="TextureRect" parent="Chips/Chips1stack"]
-layout_mode = 2
-texture = ExtResource("7_bwecg")
-expand_mode = 4
-
-[node name="chips9" type="TextureRect" parent="Chips/Chips1stack"]
-layout_mode = 2
-texture = ExtResource("7_bwecg")
-expand_mode = 4
 
 [node name="Chips10stack" type="VBoxContainer" parent="Chips"]
 clip_children = 1
 layout_mode = 0
-offset_left = 1347.0
-offset_top = 526.0
-offset_right = 1459.0
-offset_bottom = 636.0
+offset_left = 135.0
+offset_top = 645.0
+offset_right = 247.0
+offset_bottom = 755.0
 theme_override_constants/separation = -121
-
-[node name="chips1" type="TextureRect" parent="Chips/Chips10stack"]
-layout_mode = 2
-texture = ExtResource("8_fqy1j")
-expand_mode = 4
-
-[node name="chips2" type="TextureRect" parent="Chips/Chips10stack"]
-layout_mode = 2
-texture = ExtResource("8_fqy1j")
-expand_mode = 4
-
-[node name="chips3" type="TextureRect" parent="Chips/Chips10stack"]
-layout_mode = 2
-texture = ExtResource("8_fqy1j")
-expand_mode = 4
-
-[node name="chips4" type="TextureRect" parent="Chips/Chips10stack"]
-layout_mode = 2
-texture = ExtResource("8_fqy1j")
-expand_mode = 4
-
-[node name="chips5" type="TextureRect" parent="Chips/Chips10stack"]
-layout_mode = 2
-texture = ExtResource("8_fqy1j")
-expand_mode = 4
-
-[node name="chips6" type="TextureRect" parent="Chips/Chips10stack"]
-layout_mode = 2
-texture = ExtResource("8_fqy1j")
-expand_mode = 4
-
-[node name="chips7" type="TextureRect" parent="Chips/Chips10stack"]
-layout_mode = 2
-texture = ExtResource("8_fqy1j")
-expand_mode = 4
-
-[node name="chips8" type="TextureRect" parent="Chips/Chips10stack"]
-layout_mode = 2
-texture = ExtResource("8_fqy1j")
-expand_mode = 4
-
-[node name="chips9" type="TextureRect" parent="Chips/Chips10stack"]
-layout_mode = 2
-texture = ExtResource("8_fqy1j")
-expand_mode = 4
 
 [node name="Chips100stack" type="VBoxContainer" parent="Chips"]
 clip_children = 1
 layout_mode = 0
-offset_left = 1227.0
-offset_top = 594.0
-offset_right = 1339.0
-offset_bottom = 707.0
+offset_left = 15.0
+offset_top = 713.0
+offset_right = 127.0
+offset_bottom = 826.0
 theme_override_constants/separation = -121
 
-[node name="chips1" type="TextureRect" parent="Chips/Chips100stack"]
-layout_mode = 2
-texture = ExtResource("9_lva1i")
-expand_mode = 4
+[node name="Chips1stack2" type="VBoxContainer" parent="Chips"]
+clip_children = 1
+layout_mode = 0
+offset_left = 1472.0
+offset_top = 735.0
+offset_right = 1584.0
+offset_bottom = 847.0
+theme_override_constants/separation = -121
 
-[node name="chips2" type="TextureRect" parent="Chips/Chips100stack"]
-layout_mode = 2
-texture = ExtResource("9_lva1i")
-expand_mode = 4
+[node name="Chips10stack2" type="VBoxContainer" parent="Chips"]
+clip_children = 1
+layout_mode = 0
+offset_left = 1353.0
+offset_top = 660.0
+offset_right = 1465.0
+offset_bottom = 770.0
+theme_override_constants/separation = -121
 
-[node name="chips3" type="TextureRect" parent="Chips/Chips100stack"]
-layout_mode = 2
-texture = ExtResource("9_lva1i")
-expand_mode = 4
-
-[node name="chips4" type="TextureRect" parent="Chips/Chips100stack"]
-layout_mode = 2
-texture = ExtResource("9_lva1i")
-expand_mode = 4
-
-[node name="chips5" type="TextureRect" parent="Chips/Chips100stack"]
-layout_mode = 2
-texture = ExtResource("9_lva1i")
-expand_mode = 4
-
-[node name="chips6" type="TextureRect" parent="Chips/Chips100stack"]
-layout_mode = 2
-texture = ExtResource("9_lva1i")
-expand_mode = 4
-
-[node name="chips7" type="TextureRect" parent="Chips/Chips100stack"]
-layout_mode = 2
-texture = ExtResource("9_lva1i")
-expand_mode = 4
-
-[node name="chips8" type="TextureRect" parent="Chips/Chips100stack"]
-layout_mode = 2
-texture = ExtResource("9_lva1i")
-expand_mode = 4
-
-[node name="chips9" type="TextureRect" parent="Chips/Chips100stack"]
-layout_mode = 2
-texture = ExtResource("9_lva1i")
-expand_mode = 4
+[node name="Chips100stack2" type="VBoxContainer" parent="Chips"]
+clip_children = 1
+layout_mode = 0
+offset_left = 1233.0
+offset_top = 728.0
+offset_right = 1345.0
+offset_bottom = 841.0
+theme_override_constants/separation = -121
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(196, 945.075)
