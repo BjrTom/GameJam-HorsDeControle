@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d11lim1u2e24i"]
+[gd_scene load_steps=9 format=3 uid="uid://d11lim1u2e24i"]
 
 [ext_resource type="Script" uid="uid://djkeiiqn5hebi" path="res://gameplay-scene/game-logic.gd" id="1_n2enm"]
 [ext_resource type="FontFile" uid="uid://cpwm7d3lrhrkk" path="res://assets/PixelifySans-Regular.ttf" id="2_dl2ym"]
@@ -58,10 +58,66 @@ tracks/1/keys = {
 "values": [Color(0.490196, 1, 0.454902, 1), Color(0.490196, 1, 0.454902, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_qj5j0"]
+resource_name = "BustAnimation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerBustMarker:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.566667, 0.733333),
+"transitions": PackedFloat32Array(2.63902, 0.353553, 1.8025, 3.73213),
+"update": 0,
+"values": [Vector2(92, 830), Vector2(92, 900), Vector2(92, 880), Vector2(92, 900)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerBustMarker:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 0.233333, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 0.965936),
+"update": 0,
+"values": [Color(0.891291, 4.17233e-06, 8.64267e-07, 0), Color(1, 0.174173, 0.127215, 1), Color(1, 0.174173, 0.127215, 1), Color(0.891291, 4.18738e-06, 8.66354e-07, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1jfn3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerBustMarker:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(92, 901)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerBustMarker:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.490196, 1, 0.454902, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6250x"]
 _data = {
+&"BustAnimation": SubResource("Animation_qj5j0"),
 &"HitAnimationD": SubResource("Animation_1h22c"),
-&"HitAnimationP": SubResource("Animation_4r27c")
+&"HitAnimationP": SubResource("Animation_4r27c"),
+&"RESET": SubResource("Animation_1jfn3")
 }
 
 [node name="Gameplay" type="Control"]
@@ -212,10 +268,10 @@ anchors_preset = -1
 anchor_right = 0.083
 anchor_bottom = 0.151
 offset_left = 91.0
-offset_top = 900.0
+offset_top = 800.0
 offset_right = 69.64
-offset_bottom = 816.92
-theme_override_colors/font_color = Color(0.490196, 1, 0.454902, 1)
+offset_bottom = 716.92
+theme_override_colors/font_color = Color(0.490196, 1, 0.454902, 0)
 theme_override_fonts/font = ExtResource("2_dl2ym")
 theme_override_font_sizes/font_size = 80
 text = "hit!"
@@ -226,19 +282,32 @@ anchors_preset = -1
 anchor_right = 0.083
 anchor_bottom = 0.151
 offset_left = 91.0
-offset_top = 100.0
+offset_top = 200.0
 offset_right = 69.64
-offset_bottom = 16.9205
-theme_override_colors/font_color = Color(0.490196, 1, 0.454902, 1)
+offset_bottom = 116.921
+theme_override_colors/font_color = Color(0.490196, 1, 0.454902, 0)
 theme_override_fonts/font = ExtResource("2_dl2ym")
 theme_override_font_sizes/font_size = 80
 text = "hit!"
+
+[node name="PlayerBustMarker" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.083
+anchor_bottom = 0.151
+offset_left = 92.0
+offset_top = 901.0
+offset_right = 144.64
+offset_bottom = 817.92
+theme_override_colors/font_color = Color(0.490196, 1, 0.454902, 1)
+theme_override_fonts/font = ExtResource("2_dl2ym")
+theme_override_font_sizes/font_size = 80
+text = "Bust!"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_6250x")
 }
-autoplay = "HitAnimationD"
 
 [node name="WhoseTurn" type="Label" parent="."]
 layout_mode = 1

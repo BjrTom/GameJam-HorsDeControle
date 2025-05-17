@@ -19,13 +19,19 @@ func _ready():
 	$WinnerText.visible = false
 	$PlayerHitMarker.visible = false
 	$DealerHitMarker.visible = false
+	$PlayerBustMarker.visible = false
+	
+	
+	$Buttons/VBoxContainer/Hit.disabled = true
+	$Buttons/VBoxContainer/Stand.disabled = true
+
 	get_tree().root.content_scale_factor
 	# Create cards
 	updateText()
 	create_card_data()
 	
 	# Generate initial 2 player cards	
-	await get_tree().create_timer(0.7).timeout
+	await get_tree().create_timer(0.5).timeout
 	generate_card("player")
 	updateText()
 	await get_tree().create_timer(0.5).timeout
@@ -39,8 +45,10 @@ func _ready():
 	await get_tree().create_timer(0.5).timeout
 	generate_card("dealer")
 	updateText()
-	await get_tree().create_timer(1).timeout
 	
+	$Buttons/VBoxContainer/Hit.disabled = false
+	$Buttons/VBoxContainer/Stand.disabled = false
+
 	if playerScore == 21:
 		playerWin(true)
 	
@@ -61,8 +69,11 @@ func _on_hit_pressed():
 	elif playerScore > 21:
 		check_aces()  # Check to see if any 11-aces can convert to 1-aces
 		if playerScore > 21:  # Score still surpasses 21
+			$PlayerBustMarker.visible = true
+			$AnimationPlayer.play("BustAnimation")
+			$PlayerHitMarker.visible = false
 			playerLose()
-			
+
 
 func check_aces():
 	# If player is over 21 and has any 11-aces, convert them to 1 so they stay under 21
@@ -83,7 +94,6 @@ func recalculate_player_score():
 	playerScore = 0
 	for card in playerCards:
 		playerScore += card[0]
-
 
 
 func _on_stand_pressed():
