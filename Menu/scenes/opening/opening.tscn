@@ -6,6 +6,3 @@
 [node name="Opening" instance=ExtResource("1_qyw0o")]
 script = ExtResource("2_xy6dj")
 next_scene = "res://Menu/scenes/menus/main_menu/main_menu_with_animations.tscn"
-
-[node name="BackgroundMusicPlayer" parent="." index="0"]
-bus = &"Master"

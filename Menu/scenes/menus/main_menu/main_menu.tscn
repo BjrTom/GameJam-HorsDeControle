@@ -18,7 +18,7 @@ bus = &"Master"
 text = "v0.0.1"
 
 [node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" index="0"]
-text = "Godot_Blackjack_AI"
+text = "Blackout Blackjack"
 
 [node name="SubTitleLabel" parent="MenuContainer/SubTitleMargin/SubTitleContainer" index="0"]
 text = "Yepee"

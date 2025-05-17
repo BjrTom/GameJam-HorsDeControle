@@ -12,32 +12,41 @@ var dealerCards = []
 var cardsShuffled = {}
 
 var ace_found
+var dollars = 10
+var bet = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	$Replay.visible = false
-	$WinnerText.visible = false
-	$PlayerHitMarker.visible = false
-	$DealerHitMarker.visible = false
-	$PlayerBustMarker.visible = false
-	
-	
+func endRound():
+	$DollarsInt.text = (str(dollars) + '$')
 	$Buttons/VBoxContainer/Hit.disabled = true
 	$Buttons/VBoxContainer/Stand.disabled = true
+	$Buttons/VBoxContainer/OptimalMove.disabled = true
+	for i in range(0, $Cards/Hands/PlayerHand.get_child_count()):
+		$Cards/Hands/PlayerHand.get_child(i).queue_free()
+	playerCards.clear()
+	playerScore = 0
+	for i in range(0, $Cards/Hands/DealerHand.get_child_count()):
+		$Cards/Hands/DealerHand.get_child(i).queue_free()
+	dealerCards.clear()
+	dealerScore = 0
+	$AllBet.visible = true
+	$BetButton.disabled = false
+	bet = 0
+	checkBet()
 
-	get_tree().root.content_scale_factor
-	# Create cards
+func newRound():
+	
+	$AllBet.visible = false
+	$BetButton.disabled = false
+	
 	updateText()
 	create_card_data()
-	
-	# Generate initial 2 player cards	
+
 	await get_tree().create_timer(0.5).timeout
 	generate_card("player")
 	updateText()
 	await get_tree().create_timer(0.5).timeout
 	generate_card("player")
 	updateText()
-	
 	# Generate dealers cards; note how first one is true as we want to show the back
 	await get_tree().create_timer(0.5).timeout
 	generate_card("dealer", true)
@@ -48,15 +57,30 @@ func _ready():
 	
 	$Buttons/VBoxContainer/Hit.disabled = false
 	$Buttons/VBoxContainer/Stand.disabled = false
+	$Buttons/VBoxContainer/OptimalMove.disabled = false
 
 	if playerScore == 21:
 		playerWin(true)
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$Replay.visible = false
+	$WinnerText.visible = false
+	$PlayerHitMarker.visible = false
+	$DealerHitMarker.visible = false
+	$PlayerBustMarker.visible = false
 	
+	$Buttons/VBoxContainer/Hit.disabled = true
+	$Buttons/VBoxContainer/Stand.disabled = true
+	$Buttons/VBoxContainer/OptimalMove.disabled = true
+
+	get_tree().root.content_scale_factor
+	checkBet()
+	$DollarsInt.text = (str(dollars) + '$')
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
-	
+	$ProgressBar.value += 0.25
 	
 func _on_hit_pressed():
 	$PlayerHitMarker.visible = true
@@ -225,44 +249,27 @@ func updateText():
 
 
 func playerLose():
-	# Player has lost: display red text, disable buttons, ask to play again
-	$WinnerText.text = "DEALER\nWINS"
-	$WinnerText.set("theme_override_colors/font_color", "ff5342")
-	$Buttons/VBoxContainer/Hit.disabled = true
-	$Buttons/VBoxContainer/Stand.disabled = true
-	$Buttons/VBoxContainer/OptimalMove.disabled = true
-	await get_tree().create_timer(1).timeout
-	$WinnerText.visible = true
-	await get_tree().create_timer(0.5).timeout
-	$Replay.visible = true
+	if (dollars == 0):
+		get_tree().change_scene_to_file("res://Menu/scenes/menus/main_menu/main_menu.tscn")
+	endRound()
+	# newRound()
 	
 	
 func playerWin(blackjack=false):
+	dollars += (bet * 2)
 	# Player has won: display text (already set if not blackjack),
 	# display buttons and ask to play again
 	if blackjack:
-		$WinnerText.text = "PLAYER WINS\nBY BLACKJACK"
-	$Buttons/VBoxContainer/Hit.disabled = true
-	$Buttons/VBoxContainer/Stand.disabled = true
-	$Buttons/VBoxContainer/OptimalMove.disabled = true
-	
-	await get_tree().create_timer(1).timeout
-	$WinnerText.visible = true
-	await get_tree().create_timer(0.5).timeout
-	$Replay.visible = true
+		$WinnerText.text = "BLACKJACK"
+	endRound()
+	# newRound()
 	
 	
 func playerDraw():
+	dollars += bet
 	# Nobody wins: display white text, disable buttons and ask to play again
-	$WinnerText.text = "DRAW"
-	$WinnerText.set("theme_override_colors/font_color", "white")
-	$Buttons/VBoxContainer/Hit.disabled = true
-	$Buttons/VBoxContainer/Stand.disabled = true
-	$Buttons/VBoxContainer/OptimalMove.disabled = true
-	await get_tree().create_timer(1).timeout
-	$WinnerText.visible = true
-	await get_tree().create_timer(0.5).timeout
-	$Replay.visible = true
+	endRound()
+
 
 
 func _on_exit_pressed():
@@ -315,3 +322,33 @@ func playerHasAce(cards):
 		if card[0] == 11:
 			return true
 	return false
+
+func checkBet():
+	
+	#$AllBet/one_dollars.disabled = true if ((dollars - bet) < 1) else false
+	#$AllBet/ten_dollars.disabled = true if ((dollars - bet) < 10) else false
+	#$AllBet/fifty_dollars_dollars.disabled = true if ((dollars - bet) < 50) else false
+	if ((dollars - bet) < 1):
+		$AllBet/one_dollars.disabled = true
+	else:
+		$AllBet/one_dollars.disabled = false
+	if ((dollars - bet) < 10):
+		$AllBet/ten_dollars.disabled = true
+	else:
+		$AllBet/ten_dollars.disabled = false
+	if ((dollars - bet) < 50):
+		$AllBet/fifty_dollars.disabled = true
+	else:
+		$AllBet/fifty_dollars.disabled = false
+
+func _on_bet_dollars_pressed(new_bet: int) -> void:
+	if (dollars < bet):
+		return
+	bet += new_bet
+	checkBet()
+	$DollarsInt.text = (str(dollars) + '$' + " | Bet -> " + str(bet))
+
+func _on_bet_button_pressed() -> void:
+	dollars -= bet
+	$DollarsInt.text = str(dollars) + '$'
+	newRound()
