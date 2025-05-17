@@ -1,8 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://d11lim1u2e24i"]
+[gd_scene load_steps=12 format=3 uid="uid://d11lim1u2e24i"]
 
 [ext_resource type="Script" uid="uid://djkeiiqn5hebi" path="res://gameplay-scene/game-logic.gd" id="1_n2enm"]
 [ext_resource type="FontFile" uid="uid://cpwm7d3lrhrkk" path="res://assets/PixelifySans-Regular.ttf" id="2_dl2ym"]
 [ext_resource type="FontFile" uid="uid://ddmd7pp0hamna" path="res://assets/PublicPixel.ttf" id="2_sviuc"]
+[ext_resource type="Texture2D" uid="uid://dqfobtpiwljae" path="res://assets/images/chips/chips1.png" id="4_e65rd"]
+[ext_resource type="Texture2D" uid="uid://den7pyelou6fp" path="res://assets/images/chips/chips10.png" id="5_387hk"]
+[ext_resource type="Texture2D" uid="uid://dyhflpmn3q00c" path="res://assets/images/chips/chips100.png" id="6_m3mv0"]
 
 [sub_resource type="Animation" id="Animation_qj5j0"]
 resource_name = "BustAnimation"
@@ -291,6 +294,7 @@ theme_override_font_sizes/font_size = 80
 text = "hit!"
 
 [node name="PlayerBustMarker" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.083
@@ -351,6 +355,18 @@ text = "PLAY
 AGAIN"
 alignment = 0
 
+[node name="Replay2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 457.0
+offset_top = 493.0
+offset_right = 825.0
+offset_bottom = 581.0
+theme_override_constants/h_separation = 9
+theme_override_fonts/font = ExtResource("2_sviuc")
+theme_override_font_sizes/font_size = 40
+text = "ADD MONEY"
+alignment = 0
+
 [node name="Exit" type="Button" parent="."]
 layout_mode = 2
 offset_left = 1656.0
@@ -363,8 +379,171 @@ theme_override_fonts/font = ExtResource("2_sviuc")
 theme_override_font_sizes/font_size = 25
 text = "EXIT"
 
+[node name="Chips1stack" type="VBoxContainer" parent="."]
+clip_children = 1
+layout_mode = 0
+offset_left = 1466.0
+offset_top = 601.0
+offset_right = 1578.0
+offset_bottom = 713.0
+theme_override_constants/separation = -121
+
+[node name="chips1" type="TextureRect" parent="Chips1stack"]
+layout_mode = 2
+texture = ExtResource("4_e65rd")
+expand_mode = 4
+
+[node name="chips2" type="TextureRect" parent="Chips1stack"]
+layout_mode = 2
+texture = ExtResource("4_e65rd")
+expand_mode = 4
+
+[node name="chips3" type="TextureRect" parent="Chips1stack"]
+layout_mode = 2
+texture = ExtResource("4_e65rd")
+expand_mode = 4
+
+[node name="chips4" type="TextureRect" parent="Chips1stack"]
+layout_mode = 2
+texture = ExtResource("4_e65rd")
+expand_mode = 4
+
+[node name="chips5" type="TextureRect" parent="Chips1stack"]
+layout_mode = 2
+texture = ExtResource("4_e65rd")
+expand_mode = 4
+
+[node name="chips6" type="TextureRect" parent="Chips1stack"]
+layout_mode = 2
+texture = ExtResource("4_e65rd")
+expand_mode = 4
+
+[node name="chips7" type="TextureRect" parent="Chips1stack"]
+layout_mode = 2
+texture = ExtResource("4_e65rd")
+expand_mode = 4
+
+[node name="chips8" type="TextureRect" parent="Chips1stack"]
+layout_mode = 2
+texture = ExtResource("4_e65rd")
+expand_mode = 4
+
+[node name="chips9" type="TextureRect" parent="Chips1stack"]
+layout_mode = 2
+texture = ExtResource("4_e65rd")
+expand_mode = 4
+
+[node name="Chips10stack" type="VBoxContainer" parent="."]
+clip_children = 1
+layout_mode = 0
+offset_left = 1347.0
+offset_top = 526.0
+offset_right = 1459.0
+offset_bottom = 636.0
+theme_override_constants/separation = -121
+
+[node name="chips1" type="TextureRect" parent="Chips10stack"]
+layout_mode = 2
+texture = ExtResource("5_387hk")
+expand_mode = 4
+
+[node name="chips2" type="TextureRect" parent="Chips10stack"]
+layout_mode = 2
+texture = ExtResource("5_387hk")
+expand_mode = 4
+
+[node name="chips3" type="TextureRect" parent="Chips10stack"]
+layout_mode = 2
+texture = ExtResource("5_387hk")
+expand_mode = 4
+
+[node name="chips4" type="TextureRect" parent="Chips10stack"]
+layout_mode = 2
+texture = ExtResource("5_387hk")
+expand_mode = 4
+
+[node name="chips5" type="TextureRect" parent="Chips10stack"]
+layout_mode = 2
+texture = ExtResource("5_387hk")
+expand_mode = 4
+
+[node name="chips6" type="TextureRect" parent="Chips10stack"]
+layout_mode = 2
+texture = ExtResource("5_387hk")
+expand_mode = 4
+
+[node name="chips7" type="TextureRect" parent="Chips10stack"]
+layout_mode = 2
+texture = ExtResource("5_387hk")
+expand_mode = 4
+
+[node name="chips8" type="TextureRect" parent="Chips10stack"]
+layout_mode = 2
+texture = ExtResource("5_387hk")
+expand_mode = 4
+
+[node name="chips9" type="TextureRect" parent="Chips10stack"]
+layout_mode = 2
+texture = ExtResource("5_387hk")
+expand_mode = 4
+
+[node name="Chips100stack" type="VBoxContainer" parent="."]
+clip_children = 1
+layout_mode = 0
+offset_left = 1227.0
+offset_top = 594.0
+offset_right = 1339.0
+offset_bottom = 707.0
+theme_override_constants/separation = -121
+
+[node name="chips1" type="TextureRect" parent="Chips100stack"]
+layout_mode = 2
+texture = ExtResource("6_m3mv0")
+expand_mode = 4
+
+[node name="chips2" type="TextureRect" parent="Chips100stack"]
+layout_mode = 2
+texture = ExtResource("6_m3mv0")
+expand_mode = 4
+
+[node name="chips3" type="TextureRect" parent="Chips100stack"]
+layout_mode = 2
+texture = ExtResource("6_m3mv0")
+expand_mode = 4
+
+[node name="chips4" type="TextureRect" parent="Chips100stack"]
+layout_mode = 2
+texture = ExtResource("6_m3mv0")
+expand_mode = 4
+
+[node name="chips5" type="TextureRect" parent="Chips100stack"]
+layout_mode = 2
+texture = ExtResource("6_m3mv0")
+expand_mode = 4
+
+[node name="chips6" type="TextureRect" parent="Chips100stack"]
+layout_mode = 2
+texture = ExtResource("6_m3mv0")
+expand_mode = 4
+
+[node name="chips7" type="TextureRect" parent="Chips100stack"]
+layout_mode = 2
+texture = ExtResource("6_m3mv0")
+expand_mode = 4
+
+[node name="chips8" type="TextureRect" parent="Chips100stack"]
+layout_mode = 2
+texture = ExtResource("6_m3mv0")
+expand_mode = 4
+
+[node name="chips9" type="TextureRect" parent="Chips100stack"]
+layout_mode = 2
+texture = ExtResource("6_m3mv0")
+expand_mode = 4
+
 [connection signal="pressed" from="Buttons/VBoxContainer/Hit" to="." method="_on_hit_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/Stand" to="." method="_on_stand_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/OptimalMove" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Replay" to="." method="_on_replay_pressed"]
+[connection signal="pressed" from="Replay2" to="." method="_on_money_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

@@ -9,6 +9,8 @@ var dealerScore = 0
 var playerCards = []
 var dealerCards = []
 
+var money = 0;
+
 var cardsShuffled = {}
 
 var ace_found
@@ -20,7 +22,6 @@ func _ready():
 	$PlayerHitMarker.visible = false
 	$DealerHitMarker.visible = false
 	$PlayerBustMarker.visible = false
-	
 	
 	$Buttons/VBoxContainer/Hit.disabled = true
 	$Buttons/VBoxContainer/Stand.disabled = true
@@ -315,3 +316,30 @@ func playerHasAce(cards):
 		if card[0] == 11:
 			return true
 	return false
+
+func load_chipsize(amount, chipstack, value):
+	var c = 0;
+	while (amount >= value):
+		amount -= value
+		chipstack.get_child(c).visible = true
+		c += 1
+	return amount
+
+func clear_chips():
+	for a in $Chips1stack.get_children():
+		a.visible = false
+	for a in $Chips10stack.get_children():
+		a.visible = false
+	for a in $Chips100stack.get_children():
+		a.visible = false
+
+func display_chips():
+	var amount = money if money < 1000 else 999
+	amount = load_chipsize(amount, $Chips100stack, 100)
+	amount = load_chipsize(amount, $Chips10stack, 10)
+	amount = load_chipsize(amount, $Chips1stack, 1)
+
+func _on_money_pressed() -> void:
+	money += 34
+	clear_chips()
+	display_chips()
