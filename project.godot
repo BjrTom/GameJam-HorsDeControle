@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="Godot_Blackjack_AI"
+config/version="0.0.1"
 run/main_scene="res://Menu/scenes/opening/opening_with_logo.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://mtorgc3i84n6"
 
 [autoload]
 

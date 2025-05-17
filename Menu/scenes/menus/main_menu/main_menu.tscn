@@ -14,5 +14,11 @@ credits_packed_scene = ExtResource("4_tg1yk")
 [node name="BackgroundMusicPlayer" parent="." index="1"]
 bus = &"Master"
 
+[node name="VersionLabel" parent="VersionMargin/VersionContainer" index="0"]
+text = "v0.0.1"
+
 [node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" index="0"]
 text = "Godot_Blackjack_AI"
+
+[node name="SubTitleLabel" parent="MenuContainer/SubTitleMargin/SubTitleContainer" index="0"]
+text = "Yepee"
