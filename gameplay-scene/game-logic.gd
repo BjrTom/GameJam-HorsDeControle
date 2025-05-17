@@ -9,6 +9,8 @@ var dealerScore = 0
 var playerCards = []
 var dealerCards = []
 
+
+
 var bet = 0;
 
 var cardsShuffled = {}
@@ -18,7 +20,6 @@ var dollars = 10
 
 func endRound():
 	$DollarsInt.text = (str(dollars) + '$')
-	display_chips()
 	$Buttons/VBoxContainer/Hit.disabled = true
 	$Buttons/VBoxContainer/Stand.disabled = true
 	$Buttons/VBoxContainer/OptimalMove.disabled = true
@@ -33,6 +34,7 @@ func endRound():
 	$AllBet.visible = true
 	$BetButton.disabled = false
 	bet = 0
+	display_chips()
 	checkBet()
 
 func newRound():
@@ -326,33 +328,29 @@ func playerHasAce(cards):
 	return false
 
 func checkBet():
-	if ((dollars - bet) < 1):
+	if (dollars < 1):
 		$AllBet/one_dollars.disabled = true
 	else:
 		$AllBet/one_dollars.disabled = false
-	if ((dollars - bet) < 10):
+	if (dollars < 10):
 		$AllBet/ten_dollars.disabled = true
 	else:
 		$AllBet/ten_dollars.disabled = false
-	if ((dollars - bet) < 50):
+	if (dollars < 50):
 		$AllBet/fifty_dollars.disabled = true
 	else:
 		$AllBet/fifty_dollars.disabled = false
 
 func _on_bet_dollars_pressed(new_bet: int) -> void:
-	if (dollars < bet):
+	if (dollars <= 0):
 		return
-
-	
-
-	
-	#$Chips/Chips100stackBet.add_child(image)
 	bet += new_bet
+	dollars -= new_bet
 	checkBet()
-	$DollarsInt.text = (str(dollars) + '$' + " | Bet -> " + str(bet))
+	display_chips()
+	$DollarsInt.text = (str(dollars) + '$')
 
 func _on_bet_button_pressed() -> void:
-	dollars -= bet
 	$DollarsInt.text = str(dollars) + '$'
 	display_chips()
 	newRound()
@@ -369,6 +367,7 @@ func load_chipsize(amount: int, chipstack: VBoxContainer, value: int, sprite: St
 		add_chip(sprite, chipstack)
 	return amount
 
+
 func clear_chips():
 	for a in $Chips/Chips1stack.get_children():
 		a.queue_free()
@@ -376,9 +375,16 @@ func clear_chips():
 		a.queue_free()
 	for a in $Chips/Chips100stack.get_children():
 		a.queue_free()
+	for a in $Chips/Chips1stackBet.get_children():
+		a.queue_free()
+	for a in $Chips/Chips10stackBet.get_children():
+		a.queue_free()
+	for a in $Chips/Chips100stackBet.get_children():
+		a.queue_free()
 
 func display_chips():
 	var amount = dollars if dollars < 1000 else 999
+	var betAmount = bet if bet < 1000 else 999
 	var chip_one = "res://assets/images/chips1.png"
 	var chip_ten = "res://assets/images/chips10.png"
 	var chip_hundred = "res://assets/images/chips100.png"
@@ -386,4 +392,8 @@ func display_chips():
 	amount = load_chipsize(amount, $Chips/Chips100stack, 100, chip_hundred)
 	amount = load_chipsize(amount, $Chips/Chips10stack, 10, chip_ten)
 	amount = load_chipsize(amount, $Chips/Chips1stack, 1, chip_one)
+
+	betAmount = load_chipsize(betAmount, $Chips/Chips100stackBet, 100, chip_hundred)
+	betAmount = load_chipsize(betAmount, $Chips/Chips10stackBet, 10, chip_ten)
+	betAmount = load_chipsize(betAmount, $Chips/Chips1stackBet, 1, chip_one)
 	

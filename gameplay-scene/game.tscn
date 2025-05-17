@@ -587,7 +587,7 @@ offset_right = 127.0
 offset_bottom = 826.0
 theme_override_constants/separation = -121
 
-[node name="Chips1stack2" type="VBoxContainer" parent="Chips"]
+[node name="Chips1stackBet" type="VBoxContainer" parent="Chips"]
 clip_children = 1
 layout_mode = 0
 offset_left = 1472.0
@@ -596,7 +596,7 @@ offset_right = 1584.0
 offset_bottom = 847.0
 theme_override_constants/separation = -121
 
-[node name="Chips10stack2" type="VBoxContainer" parent="Chips"]
+[node name="Chips10stackBet" type="VBoxContainer" parent="Chips"]
 clip_children = 1
 layout_mode = 0
 offset_left = 1353.0
@@ -605,7 +605,7 @@ offset_right = 1465.0
 offset_bottom = 770.0
 theme_override_constants/separation = -121
 
-[node name="Chips100stack2" type="VBoxContainer" parent="Chips"]
+[node name="Chips100stackBet" type="VBoxContainer" parent="Chips"]
 clip_children = 1
 layout_mode = 0
 offset_left = 1233.0
