@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxput8vvsb1sp"]
+
+[ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_menus_template/base/scenes/menus/main_menu/main_menu.tscn" id="1_d0671"]
+[ext_resource type="Script" uid="uid://c6tuu0bh6fa1y" path="res://Menu/scenes/menus/main_menu/main_menu.gd" id="2_igqbr"]
+[ext_resource type="PackedScene" uid="uid://ccpv25y5owj2v" path="res://Menu/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="3_itxjw"]
+[ext_resource type="PackedScene" uid="uid://brvktqwuyn14j" path="res://Menu/scenes/credits/credits.tscn" id="4_tg1yk"]
+
+[node name="MainMenu" instance=ExtResource("1_d0671")]
+script = ExtResource("2_igqbr")
+game_scene_path = "uid://d11lim1u2e24i"
+options_packed_scene = ExtResource("3_itxjw")
+credits_packed_scene = ExtResource("4_tg1yk")
+
+[node name="BackgroundMusicPlayer" parent="." index="1"]
+bus = &"Master"
+
+[node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" index="0"]
+text = "Godot_Blackjack_AI"
