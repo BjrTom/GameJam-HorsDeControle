@@ -9,6 +9,9 @@ var dealerScore = 0
 var playerCards = []
 var dealerCards = []
 
+var money = 0;
+var bet = 0;
+
 var cardsShuffled = {}
 
 var ace_found
@@ -17,6 +20,14 @@ var bet = 0
 
 func endRound():
 	$DollarsInt.text = (str(dollars) + '$')
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$Replay.visible = false
+	$WinnerText.visible = false
+	$PlayerHitMarker.visible = false
+	$DealerHitMarker.visible = false
+	$PlayerBustMarker.visible = false
+	
 	$Buttons/VBoxContainer/Hit.disabled = true
 	$Buttons/VBoxContainer/Stand.disabled = true
 	$Buttons/VBoxContainer/OptimalMove.disabled = true
@@ -321,6 +332,7 @@ func playerHasAce(cards):
 	for card in cards:
 		if card[0] == 11:
 			return true
+
 	return false
 
 func checkBet():
@@ -348,3 +360,29 @@ func _on_bet_button_pressed() -> void:
 	dollars -= bet
 	$DollarsInt.text = str(dollars) + '$'
 	newRound()
+func load_chipsize(amount, chipstack, value):
+	var c = 0;
+	while (amount >= value):
+		amount -= value
+		chipstack.get_child(c).visible = true
+		c += 1
+	return amount
+
+func clear_chips():
+	for a in $Chips/Chips1stack.get_children():
+		a.visible = false
+	for a in $Chips/Chips10stack.get_children():
+		a.visible = false
+	for a in $Chips/Chips100stack.get_children():
+		a.visible = false
+
+func display_chips():
+	var amount = money if money < 1000 else 999
+	amount = load_chipsize(amount, $Chips/Chips100stack, 100)
+	amount = load_chipsize(amount, $Chips/Chips10stack, 10)
+	amount = load_chipsize(amount, $Chips/Chips1stack, 1)
+
+func _on_money_pressed() -> void:
+	money += 34
+	clear_chips()
+	display_chips()

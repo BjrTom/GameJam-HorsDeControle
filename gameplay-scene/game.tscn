@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bqs4nqlic75wl" path="res://assets/images/health2.png" id="4_e65rd"]
 [ext_resource type="Texture2D" uid="uid://dgkkv5vuo3qsu" path="res://assets/images/health1.png" id="5_387hk"]
 [ext_resource type="Texture2D" uid="uid://lwg7qahcabhm" path="res://assets/images/health3.png" id="6_m3mv0"]
+[ext_resource type="Texture2D" uid="uid://dqfobtpiwljae" path="res://assets/images/chips/chips1.png" id="4_e65rd"]
+[ext_resource type="Texture2D" uid="uid://den7pyelou6fp" path="res://assets/images/chips/chips10.png" id="5_387hk"]
+[ext_resource type="Texture2D" uid="uid://dyhflpmn3q00c" path="res://assets/images/chips/chips100.png" id="6_m3mv0"]
 
 [sub_resource type="Animation" id="Animation_qj5j0"]
 resource_name = "BustAnimation"
@@ -295,6 +298,7 @@ theme_override_font_sizes/font_size = 80
 text = "hit!"
 
 [node name="PlayerBustMarker" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.083
@@ -353,6 +357,18 @@ theme_override_fonts/font = ExtResource("2_sviuc")
 theme_override_font_sizes/font_size = 40
 text = "PLAY
 AGAIN"
+alignment = 0
+
+[node name="Bet" type="Button" parent="."]
+layout_mode = 0
+offset_left = 599.0
+offset_top = 534.0
+offset_right = 967.0
+offset_bottom = 622.0
+theme_override_constants/h_separation = 9
+theme_override_fonts/font = ExtResource("2_sviuc")
+theme_override_font_sizes/font_size = 40
+text = "ADD MONEY"
 alignment = 0
 
 [node name="Exit" type="Button" parent="."]
@@ -440,11 +456,178 @@ theme_override_constants/h_separation = 9
 theme_override_fonts/font = ExtResource("2_sviuc")
 theme_override_font_sizes/font_size = 45
 text = "Bet"
+[node name="Chips" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Chips1stack" type="VBoxContainer" parent="Chips"]
+clip_children = 1
+layout_mode = 0
+offset_left = 1466.0
+offset_top = 601.0
+offset_right = 1578.0
+offset_bottom = 713.0
+theme_override_constants/separation = -121
+
+[node name="chips1" type="TextureRect" parent="Chips/Chips1stack"]
+layout_mode = 2
+texture = ExtResource("4_e65rd")
+expand_mode = 4
+
+[node name="chips2" type="TextureRect" parent="Chips/Chips1stack"]
+layout_mode = 2
+texture = ExtResource("4_e65rd")
+expand_mode = 4
+
+[node name="chips3" type="TextureRect" parent="Chips/Chips1stack"]
+layout_mode = 2
+texture = ExtResource("4_e65rd")
+expand_mode = 4
+
+[node name="chips4" type="TextureRect" parent="Chips/Chips1stack"]
+layout_mode = 2
+texture = ExtResource("4_e65rd")
+expand_mode = 4
+
+[node name="chips5" type="TextureRect" parent="Chips/Chips1stack"]
+layout_mode = 2
+texture = ExtResource("4_e65rd")
+expand_mode = 4
+
+[node name="chips6" type="TextureRect" parent="Chips/Chips1stack"]
+layout_mode = 2
+texture = ExtResource("4_e65rd")
+expand_mode = 4
+
+[node name="chips7" type="TextureRect" parent="Chips/Chips1stack"]
+layout_mode = 2
+texture = ExtResource("4_e65rd")
+expand_mode = 4
+
+[node name="chips8" type="TextureRect" parent="Chips/Chips1stack"]
+layout_mode = 2
+texture = ExtResource("4_e65rd")
+expand_mode = 4
+
+[node name="chips9" type="TextureRect" parent="Chips/Chips1stack"]
+layout_mode = 2
+texture = ExtResource("4_e65rd")
+expand_mode = 4
+
+[node name="Chips10stack" type="VBoxContainer" parent="Chips"]
+clip_children = 1
+layout_mode = 0
+offset_left = 1347.0
+offset_top = 526.0
+offset_right = 1459.0
+offset_bottom = 636.0
+theme_override_constants/separation = -121
+
+[node name="chips1" type="TextureRect" parent="Chips/Chips10stack"]
+layout_mode = 2
+texture = ExtResource("5_387hk")
+expand_mode = 4
+
+[node name="chips2" type="TextureRect" parent="Chips/Chips10stack"]
+layout_mode = 2
+texture = ExtResource("5_387hk")
+expand_mode = 4
+
+[node name="chips3" type="TextureRect" parent="Chips/Chips10stack"]
+layout_mode = 2
+texture = ExtResource("5_387hk")
+expand_mode = 4
+
+[node name="chips4" type="TextureRect" parent="Chips/Chips10stack"]
+layout_mode = 2
+texture = ExtResource("5_387hk")
+expand_mode = 4
+
+[node name="chips5" type="TextureRect" parent="Chips/Chips10stack"]
+layout_mode = 2
+texture = ExtResource("5_387hk")
+expand_mode = 4
+
+[node name="chips6" type="TextureRect" parent="Chips/Chips10stack"]
+layout_mode = 2
+texture = ExtResource("5_387hk")
+expand_mode = 4
+
+[node name="chips7" type="TextureRect" parent="Chips/Chips10stack"]
+layout_mode = 2
+texture = ExtResource("5_387hk")
+expand_mode = 4
+
+[node name="chips8" type="TextureRect" parent="Chips/Chips10stack"]
+layout_mode = 2
+texture = ExtResource("5_387hk")
+expand_mode = 4
+
+[node name="chips9" type="TextureRect" parent="Chips/Chips10stack"]
+layout_mode = 2
+texture = ExtResource("5_387hk")
+expand_mode = 4
+
+[node name="Chips100stack" type="VBoxContainer" parent="Chips"]
+clip_children = 1
+layout_mode = 0
+offset_left = 1227.0
+offset_top = 594.0
+offset_right = 1339.0
+offset_bottom = 707.0
+theme_override_constants/separation = -121
+
+[node name="chips1" type="TextureRect" parent="Chips/Chips100stack"]
+layout_mode = 2
+texture = ExtResource("6_m3mv0")
+expand_mode = 4
+
+[node name="chips2" type="TextureRect" parent="Chips/Chips100stack"]
+layout_mode = 2
+texture = ExtResource("6_m3mv0")
+expand_mode = 4
+
+[node name="chips3" type="TextureRect" parent="Chips/Chips100stack"]
+layout_mode = 2
+texture = ExtResource("6_m3mv0")
+expand_mode = 4
+
+[node name="chips4" type="TextureRect" parent="Chips/Chips100stack"]
+layout_mode = 2
+texture = ExtResource("6_m3mv0")
+expand_mode = 4
+
+[node name="chips5" type="TextureRect" parent="Chips/Chips100stack"]
+layout_mode = 2
+texture = ExtResource("6_m3mv0")
+expand_mode = 4
+
+[node name="chips6" type="TextureRect" parent="Chips/Chips100stack"]
+layout_mode = 2
+texture = ExtResource("6_m3mv0")
+expand_mode = 4
+
+[node name="chips7" type="TextureRect" parent="Chips/Chips100stack"]
+layout_mode = 2
+texture = ExtResource("6_m3mv0")
+expand_mode = 4
+
+[node name="chips8" type="TextureRect" parent="Chips/Chips100stack"]
+layout_mode = 2
+texture = ExtResource("6_m3mv0")
+expand_mode = 4
+
+[node name="chips9" type="TextureRect" parent="Chips/Chips100stack"]
+layout_mode = 2
+texture = ExtResource("6_m3mv0")
+expand_mode = 4
 
 [connection signal="pressed" from="Buttons/VBoxContainer/Hit" to="." method="_on_hit_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/Stand" to="." method="_on_stand_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/OptimalMove" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Replay" to="." method="_on_replay_pressed"]
+[connection signal="pressed" from="Bet" to="." method="_on_money_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="AllBet/one_dollars" to="." method="_on_bet_dollars_pressed" binds= [1]]
 [connection signal="pressed" from="AllBet/ten_dollars" to="." method="_on_bet_dollars_pressed" binds= [10]]
