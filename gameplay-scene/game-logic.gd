@@ -324,10 +324,6 @@ func playerHasAce(cards):
 	return false
 
 func checkBet():
-	
-	#$AllBet/one_dollars.disabled = true if ((dollars - bet) < 1) else false
-	#$AllBet/ten_dollars.disabled = true if ((dollars - bet) < 10) else false
-	#$AllBet/fifty_dollars_dollars.disabled = true if ((dollars - bet) < 50) else false
 	if ((dollars - bet) < 1):
 		$AllBet/one_dollars.disabled = true
 	else:
