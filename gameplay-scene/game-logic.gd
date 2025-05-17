@@ -9,25 +9,16 @@ var dealerScore = 0
 var playerCards = []
 var dealerCards = []
 
-var money = 0;
 var bet = 0;
 
 var cardsShuffled = {}
 
 var ace_found
 var dollars = 10
-var bet = 0
 
 func endRound():
 	$DollarsInt.text = (str(dollars) + '$')
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	$Replay.visible = false
-	$WinnerText.visible = false
-	$PlayerHitMarker.visible = false
-	$DealerHitMarker.visible = false
-	$PlayerBustMarker.visible = false
-	
+	display_chips()
 	$Buttons/VBoxContainer/Hit.disabled = true
 	$Buttons/VBoxContainer/Stand.disabled = true
 	$Buttons/VBoxContainer/OptimalMove.disabled = true
@@ -47,7 +38,7 @@ func _ready():
 func newRound():
 	
 	$AllBet.visible = false
-	$BetButton.disabled = false
+	$BetButton.disabled = true
 	
 	updateText()
 	create_card_data()
@@ -87,6 +78,7 @@ func _ready():
 
 	get_tree().root.content_scale_factor
 	checkBet()
+	display_chips()
 	$DollarsInt.text = (str(dollars) + '$')
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -263,7 +255,6 @@ func playerLose():
 	if (dollars == 0):
 		get_tree().change_scene_to_file("res://Menu/scenes/menus/main_menu/main_menu.tscn")
 	endRound()
-	# newRound()
 	
 	
 func playerWin(blackjack=false):
@@ -273,7 +264,6 @@ func playerWin(blackjack=false):
 	if blackjack:
 		$WinnerText.text = "BLACKJACK"
 	endRound()
-	# newRound()
 	
 	
 func playerDraw():
@@ -359,7 +349,9 @@ func _on_bet_dollars_pressed(new_bet: int) -> void:
 func _on_bet_button_pressed() -> void:
 	dollars -= bet
 	$DollarsInt.text = str(dollars) + '$'
+	display_chips()
 	newRound()
+
 func load_chipsize(amount, chipstack, value):
 	var c = 0;
 	while (amount >= value):
@@ -377,12 +369,9 @@ func clear_chips():
 		a.visible = false
 
 func display_chips():
-	var amount = money if money < 1000 else 999
+	var amount = dollars if dollars < 1000 else 999
+	clear_chips()
 	amount = load_chipsize(amount, $Chips/Chips100stack, 100)
 	amount = load_chipsize(amount, $Chips/Chips10stack, 10)
 	amount = load_chipsize(amount, $Chips/Chips1stack, 1)
-
-func _on_money_pressed() -> void:
-	money += 34
-	clear_chips()
-	display_chips()
+	

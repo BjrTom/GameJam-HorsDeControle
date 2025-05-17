@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d11lim1u2e24i"]
+[gd_scene load_steps=15 format=3 uid="uid://d11lim1u2e24i"]
 
 [ext_resource type="Script" uid="uid://djkeiiqn5hebi" path="res://gameplay-scene/game-logic.gd" id="1_n2enm"]
 [ext_resource type="FontFile" uid="uid://cpwm7d3lrhrkk" path="res://assets/PixelifySans-Regular.ttf" id="2_dl2ym"]
@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bqs4nqlic75wl" path="res://assets/images/health2.png" id="4_e65rd"]
 [ext_resource type="Texture2D" uid="uid://dgkkv5vuo3qsu" path="res://assets/images/health1.png" id="5_387hk"]
 [ext_resource type="Texture2D" uid="uid://lwg7qahcabhm" path="res://assets/images/health3.png" id="6_m3mv0"]
-[ext_resource type="Texture2D" uid="uid://dqfobtpiwljae" path="res://assets/images/chips/chips1.png" id="4_e65rd"]
-[ext_resource type="Texture2D" uid="uid://den7pyelou6fp" path="res://assets/images/chips/chips10.png" id="5_387hk"]
-[ext_resource type="Texture2D" uid="uid://dyhflpmn3q00c" path="res://assets/images/chips/chips100.png" id="6_m3mv0"]
+[ext_resource type="Texture2D" uid="uid://dqfobtpiwljae" path="res://assets/images/chips/chips1.png" id="7_bwecg"]
+[ext_resource type="Texture2D" uid="uid://den7pyelou6fp" path="res://assets/images/chips/chips10.png" id="8_fqy1j"]
+[ext_resource type="Texture2D" uid="uid://dyhflpmn3q00c" path="res://assets/images/chips/chips100.png" id="9_lva1i"]
 
 [sub_resource type="Animation" id="Animation_qj5j0"]
 resource_name = "BustAnimation"
@@ -359,18 +359,6 @@ text = "PLAY
 AGAIN"
 alignment = 0
 
-[node name="Bet" type="Button" parent="."]
-layout_mode = 0
-offset_left = 599.0
-offset_top = 534.0
-offset_right = 967.0
-offset_bottom = 622.0
-theme_override_constants/h_separation = 9
-theme_override_fonts/font = ExtResource("2_sviuc")
-theme_override_font_sizes/font_size = 40
-text = "ADD MONEY"
-alignment = 0
-
 [node name="Exit" type="Button" parent="."]
 layout_mode = 2
 offset_left = 1656.0
@@ -402,14 +390,15 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.083
 anchor_bottom = 0.151
-offset_left = 38.0
-offset_top = 72.0
-offset_right = -62.36
-offset_bottom = -11.08
+offset_left = 1063.0
+offset_top = 732.0
+offset_right = 1016.64
+offset_bottom = 648.92
 theme_override_colors/font_color = Color(0.490196, 1, 0.454902, 1)
 theme_override_fonts/font = ExtResource("2_dl2ym")
 theme_override_font_sizes/font_size = 80
 text = "0"
+horizontal_alignment = 1
 
 [node name="AllBet" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -448,6 +437,7 @@ theme_override_font_sizes/font_size = 40
 text = "50$"
 
 [node name="BetButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 1669.0
 offset_top = 838.0
 offset_right = 1861.0
@@ -456,6 +446,7 @@ theme_override_constants/h_separation = 9
 theme_override_fonts/font = ExtResource("2_sviuc")
 theme_override_font_sizes/font_size = 45
 text = "Bet"
+
 [node name="Chips" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
@@ -472,47 +463,47 @@ theme_override_constants/separation = -121
 
 [node name="chips1" type="TextureRect" parent="Chips/Chips1stack"]
 layout_mode = 2
-texture = ExtResource("4_e65rd")
+texture = ExtResource("7_bwecg")
 expand_mode = 4
 
 [node name="chips2" type="TextureRect" parent="Chips/Chips1stack"]
 layout_mode = 2
-texture = ExtResource("4_e65rd")
+texture = ExtResource("7_bwecg")
 expand_mode = 4
 
 [node name="chips3" type="TextureRect" parent="Chips/Chips1stack"]
 layout_mode = 2
-texture = ExtResource("4_e65rd")
+texture = ExtResource("7_bwecg")
 expand_mode = 4
 
 [node name="chips4" type="TextureRect" parent="Chips/Chips1stack"]
 layout_mode = 2
-texture = ExtResource("4_e65rd")
+texture = ExtResource("7_bwecg")
 expand_mode = 4
 
 [node name="chips5" type="TextureRect" parent="Chips/Chips1stack"]
 layout_mode = 2
-texture = ExtResource("4_e65rd")
+texture = ExtResource("7_bwecg")
 expand_mode = 4
 
 [node name="chips6" type="TextureRect" parent="Chips/Chips1stack"]
 layout_mode = 2
-texture = ExtResource("4_e65rd")
+texture = ExtResource("7_bwecg")
 expand_mode = 4
 
 [node name="chips7" type="TextureRect" parent="Chips/Chips1stack"]
 layout_mode = 2
-texture = ExtResource("4_e65rd")
+texture = ExtResource("7_bwecg")
 expand_mode = 4
 
 [node name="chips8" type="TextureRect" parent="Chips/Chips1stack"]
 layout_mode = 2
-texture = ExtResource("4_e65rd")
+texture = ExtResource("7_bwecg")
 expand_mode = 4
 
 [node name="chips9" type="TextureRect" parent="Chips/Chips1stack"]
 layout_mode = 2
-texture = ExtResource("4_e65rd")
+texture = ExtResource("7_bwecg")
 expand_mode = 4
 
 [node name="Chips10stack" type="VBoxContainer" parent="Chips"]
@@ -526,47 +517,47 @@ theme_override_constants/separation = -121
 
 [node name="chips1" type="TextureRect" parent="Chips/Chips10stack"]
 layout_mode = 2
-texture = ExtResource("5_387hk")
+texture = ExtResource("8_fqy1j")
 expand_mode = 4
 
 [node name="chips2" type="TextureRect" parent="Chips/Chips10stack"]
 layout_mode = 2
-texture = ExtResource("5_387hk")
+texture = ExtResource("8_fqy1j")
 expand_mode = 4
 
 [node name="chips3" type="TextureRect" parent="Chips/Chips10stack"]
 layout_mode = 2
-texture = ExtResource("5_387hk")
+texture = ExtResource("8_fqy1j")
 expand_mode = 4
 
 [node name="chips4" type="TextureRect" parent="Chips/Chips10stack"]
 layout_mode = 2
-texture = ExtResource("5_387hk")
+texture = ExtResource("8_fqy1j")
 expand_mode = 4
 
 [node name="chips5" type="TextureRect" parent="Chips/Chips10stack"]
 layout_mode = 2
-texture = ExtResource("5_387hk")
+texture = ExtResource("8_fqy1j")
 expand_mode = 4
 
 [node name="chips6" type="TextureRect" parent="Chips/Chips10stack"]
 layout_mode = 2
-texture = ExtResource("5_387hk")
+texture = ExtResource("8_fqy1j")
 expand_mode = 4
 
 [node name="chips7" type="TextureRect" parent="Chips/Chips10stack"]
 layout_mode = 2
-texture = ExtResource("5_387hk")
+texture = ExtResource("8_fqy1j")
 expand_mode = 4
 
 [node name="chips8" type="TextureRect" parent="Chips/Chips10stack"]
 layout_mode = 2
-texture = ExtResource("5_387hk")
+texture = ExtResource("8_fqy1j")
 expand_mode = 4
 
 [node name="chips9" type="TextureRect" parent="Chips/Chips10stack"]
 layout_mode = 2
-texture = ExtResource("5_387hk")
+texture = ExtResource("8_fqy1j")
 expand_mode = 4
 
 [node name="Chips100stack" type="VBoxContainer" parent="Chips"]
@@ -580,54 +571,53 @@ theme_override_constants/separation = -121
 
 [node name="chips1" type="TextureRect" parent="Chips/Chips100stack"]
 layout_mode = 2
-texture = ExtResource("6_m3mv0")
+texture = ExtResource("9_lva1i")
 expand_mode = 4
 
 [node name="chips2" type="TextureRect" parent="Chips/Chips100stack"]
 layout_mode = 2
-texture = ExtResource("6_m3mv0")
+texture = ExtResource("9_lva1i")
 expand_mode = 4
 
 [node name="chips3" type="TextureRect" parent="Chips/Chips100stack"]
 layout_mode = 2
-texture = ExtResource("6_m3mv0")
+texture = ExtResource("9_lva1i")
 expand_mode = 4
 
 [node name="chips4" type="TextureRect" parent="Chips/Chips100stack"]
 layout_mode = 2
-texture = ExtResource("6_m3mv0")
+texture = ExtResource("9_lva1i")
 expand_mode = 4
 
 [node name="chips5" type="TextureRect" parent="Chips/Chips100stack"]
 layout_mode = 2
-texture = ExtResource("6_m3mv0")
+texture = ExtResource("9_lva1i")
 expand_mode = 4
 
 [node name="chips6" type="TextureRect" parent="Chips/Chips100stack"]
 layout_mode = 2
-texture = ExtResource("6_m3mv0")
+texture = ExtResource("9_lva1i")
 expand_mode = 4
 
 [node name="chips7" type="TextureRect" parent="Chips/Chips100stack"]
 layout_mode = 2
-texture = ExtResource("6_m3mv0")
+texture = ExtResource("9_lva1i")
 expand_mode = 4
 
 [node name="chips8" type="TextureRect" parent="Chips/Chips100stack"]
 layout_mode = 2
-texture = ExtResource("6_m3mv0")
+texture = ExtResource("9_lva1i")
 expand_mode = 4
 
 [node name="chips9" type="TextureRect" parent="Chips/Chips100stack"]
 layout_mode = 2
-texture = ExtResource("6_m3mv0")
+texture = ExtResource("9_lva1i")
 expand_mode = 4
 
 [connection signal="pressed" from="Buttons/VBoxContainer/Hit" to="." method="_on_hit_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/Stand" to="." method="_on_stand_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/OptimalMove" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Replay" to="." method="_on_replay_pressed"]
-[connection signal="pressed" from="Bet" to="." method="_on_money_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="AllBet/one_dollars" to="." method="_on_bet_dollars_pressed" binds= [1]]
 [connection signal="pressed" from="AllBet/ten_dollars" to="." method="_on_bet_dollars_pressed" binds= [10]]
