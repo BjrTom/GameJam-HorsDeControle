@@ -1,5 +1,9 @@
 extends Control
 
+#/* -------------------------------------------------------------------------- */
+#/*                                 Variables                                  */
+#/* -------------------------------------------------------------------------- */
+
 var card_names = []
 var card_values = []
 var card_images = {}
@@ -11,67 +15,40 @@ var bet = 0;
 var cardsShuffled = {}
 var ace_found
 var dollars = 10
+var doAction = false
+var action = ""
+var nb = [2, 3, 4, 2, 2, 3, 3, 5]
+var level = [
+	[0, 1], # 0 - 2
+	[0, 1], # 0 - 3
+	[1, 1, 1, 10], # 4 - 40
+	[1, 10], # 2 - 20
+	[1, 10, 10], # 2 - 10
+	[10, 10, 50], # 30 - 150
+	[1, 10, 10, 50, 50], # 3 - 150
+	[0, 1, 1, 10, 10, 50, 50, 50, 50] # 0 - 250
+]
+var actionTab = [
+		["chooseBet", "optimalMove"], # level 1
+		["chooseBet", "randomMove"], # level 2
+		["chooseBet", "NotoptimalMove"], # level 3
+		["chooseBet", "randomMove"] # level 4
+	]
 
-func endRound():
-	$DollarsInt.text = (str(dollars) + '$')
-	$Buttons/VBoxContainer/Hit.disabled = true
-	$Buttons/VBoxContainer/Stand.disabled = true
-	$Buttons/VBoxContainer/OptimalMove.disabled = true
-	for i in range(0, $Cards/Hands/PlayerHand.get_child_count()):
-		$Cards/Hands/PlayerHand.get_child(i).queue_free()
-	playerCards.clear()
-	playerScore = 0
-	for i in range(0, $Cards/Hands/DealerHand.get_child_count()):
-		$Cards/Hands/DealerHand.get_child(i).queue_free()
-	dealerCards.clear()
-	dealerScore = 0
-	$AllBet.visible = true
-	$BetButton.disabled = false
-	bet = 0
-	display_chips()
-	checkBet()
-
-func newRound():
-	
-	$AllBet.visible = false
-	$BetButton.disabled = true
-	
-	updateText()
-	create_card_data()
-
-	await get_tree().create_timer(0.5).timeout
-	generate_card("player")
-	updateText()
-	await get_tree().create_timer(0.5).timeout
-	generate_card("player")
-	updateText()
-	# Generate dealers cards; note how first one is true as we want to show the back
-	await get_tree().create_timer(0.5).timeout
-	generate_card("dealer", true)
-	updateText()
-	await get_tree().create_timer(0.5).timeout
-	generate_card("dealer")
-	updateText()
-	
-	$Buttons/VBoxContainer/Hit.disabled = false
-	$Buttons/VBoxContainer/Stand.disabled = false
-	$Buttons/VBoxContainer/OptimalMove.disabled = false
-
-	if playerScore == 21:
-		playerWin(true)
+#/* -------------------------------------------------------------------------- */
+#/*                              RunTime Function                              */
+#/* -------------------------------------------------------------------------- */
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Replay.visible = false
-	$WinnerText.visible = false
 	$PlayerHitMarker.visible = false
 	$DealerHitMarker.visible = false
 	$PlayerBustMarker.visible = false
 	
 	$Buttons/VBoxContainer/Hit.disabled = true
 	$Buttons/VBoxContainer/Stand.disabled = true
-	$Buttons/VBoxContainer/OptimalMove.disabled = true
-
+	
+	fillArray()
 	get_tree().root.content_scale_factor
 	checkBet()
 	display_chips()
@@ -79,8 +56,21 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$ProgressBar.value += 0.25
+	if ($DrunkLevel.value >= 0 and $DrunkLevel.value < 250):
+		handleAnimation("sober")
+	if ($DrunkLevel.value >= 250 and $DrunkLevel.value < 500):
+		handleAnimation("tipsy")
+	if ($DrunkLevel.value >= 500 and $DrunkLevel.value < 750):
+		handleAnimation("hiccup")
+	if ($DrunkLevel.value >= 750):
+		handleAnimation("drunk")
+	#$DrunkLevel.value += 0.25
 
+#/* -------------------------------------------------------------------------- */
+#/*                              Buttons Function                              */
+#/* -------------------------------------------------------------------------- */
+
+# Called when hit button is pressed
 func _on_hit_pressed():
 	$PlayerHitMarker.visible = true
 	generate_card("player")
@@ -94,29 +84,13 @@ func _on_hit_pressed():
 		if playerScore > 21:  # Score still surpasses 21
 			$PlayerBustMarker.visible = true
 			$AnimationPlayer.play("BustAnimation")
-			$PlayerHitMarker.visible = false
+			#$PlayerHitMarker.visible = false
 			playerLose()
+			return
+	$Buttons/VBoxContainer/Hit.disabled = false
+	$Buttons/VBoxContainer/Stand.disabled = false
 
-func check_aces():
-	# If player is over 21 and has any 11-aces, convert them to 1 so they stay under 21
-	while playerScore > 21:
-		ace_found = false
-		for card_index in range(len(playerCards)):
-			if playerCards[card_index][0] == 11:  # Ace with value 11
-				playerCards[card_index][0] = 1  # Convert ace to 1
-				ace_found = true
-				break
-		if not ace_found:
-			break  # No more aces to convert, exit loop
-		recalculate_player_score()
-		updateText()
-	
-	
-func recalculate_player_score():
-	playerScore = 0
-	for card in playerCards:
-		playerScore += card[0]
-
+# Called when stand button is pressed
 func _on_stand_pressed():
 	# Flip dealer's first card, dealer keeps hitting until score is above 16 or player's score
 	$Buttons/VBoxContainer/Hit.disabled = true
@@ -161,9 +135,130 @@ func _on_stand_pressed():
 	if dealerScore > 21 or dealerScore < playerScore:  # Dealer bust or dealer less than player
 		playerWin()
 	elif playerScore < dealerScore and dealerScore <= 21:  # Dealer is between player score and 22
-		playerLose()
+		if (dealerScore == 21): 
+			playerLose(true)
+		else:
+			playerLose()
 	else:  # Tie
 		playerDraw()
+
+# Called when exit button is pressed
+func _on_exit_pressed():
+	get_tree().change_scene_to_file("res://Menu/scenes/menus/main_menu/main_menu.tscn")
+
+# Called when dollars button is pressed
+func _on_bet_dollars_pressed(new_bet: int) -> void:
+	if (new_bet == 0 or dollars <= 0 or dollars < new_bet):
+		return
+	bet += new_bet
+	dollars -= new_bet
+	checkBet()
+	display_chips()
+	$DollarsInt.text = (str(dollars) + '$')
+
+# Called when bet button is pressed
+func _on_bet_button_pressed() -> void:
+	$DollarsInt.text = str(dollars) + '$'
+	display_chips()
+	newRound()
+
+#/* -------------------------------------------------------------------------- */
+#/*                               Round Function                               */
+#/* -------------------------------------------------------------------------- */
+
+func endRound():
+	$DollarsInt.text = (str(dollars) + '$')
+	$Buttons/VBoxContainer/Hit.disabled = true
+	$Buttons/VBoxContainer/Stand.disabled = true
+	for i in range(0, $Cards/Hands/PlayerHand.get_child_count()):
+		$Cards/Hands/PlayerHand.get_child(i).queue_free()
+	playerCards.clear()
+	playerScore = 0
+	for i in range(0, $Cards/Hands/DealerHand.get_child_count()):
+		$Cards/Hands/DealerHand.get_child(i).queue_free()
+	dealerCards.clear()
+	dealerScore = 0
+	$AllBet.visible = true
+	$BetButton.disabled = false
+	bet = 0
+	display_chips()
+	checkBet()
+	if $PatienceLevel.value == 6:
+		chooseAction()
+		$PatienceLevel.value = 0
+
+func newRound():
+	
+	$AllBet.visible = false
+	$BetButton.disabled = true
+	
+	updateText()
+	create_card_data()
+
+	await get_tree().create_timer(0.5).timeout
+	generate_card("player")
+	updateText()
+	await get_tree().create_timer(0.5).timeout
+	generate_card("player")
+	updateText()
+	# Generate dealers cards; note how first one is true as we want to show the back
+	await get_tree().create_timer(0.5).timeout
+	generate_card("dealer", true)
+	updateText()
+	await get_tree().create_timer(0.5).timeout
+	generate_card("dealer")
+	updateText()
+	
+	if (doAction):
+		await get_tree().create_timer(0.5).timeout
+		call(action)
+		doAction = false
+		await get_tree().create_timer(0.5).timeout
+	else:
+		$Buttons/VBoxContainer/Hit.disabled = false
+		$Buttons/VBoxContainer/Stand.disabled = false
+
+	if playerScore == 21:
+		playerWin(true)
+
+func chooseBet():
+	var value: int = $DrunkLevel.value - 1
+	$Debug.text = str(value)
+	var dollar_value = [1, 10, 100]
+	var values = []
+	
+	for i in nb[value]:
+		level[value].shuffle()
+		print(level)
+		values.push_back(level[value][0])
+	for temp in values:
+		await get_tree().create_timer(0.5).timeout
+		_on_bet_dollars_pressed(temp)
+	bet += 1 if bet == 0 else 0
+	_on_bet_button_pressed()
+
+#/* -------------------------------------------------------------------------- */
+#/*                             BlackJack Functions                            */
+#/* -------------------------------------------------------------------------- */
+
+func check_aces():
+	# If player is over 21 and has any 11-aces, convert them to 1 so they stay under 21
+	while playerScore > 21:
+		ace_found = false
+		for card_index in range(len(playerCards)):
+			if playerCards[card_index][0] == 11:  # Ace with value 11
+				playerCards[card_index][0] = 1  # Convert ace to 1
+				ace_found = true
+				break
+		if not ace_found:
+			break  # No more aces to convert, exit loop
+		recalculate_player_score()
+		updateText()
+
+func recalculate_player_score():
+	playerScore = 0
+	for card in playerCards:
+		playerScore += card[0]
 
 func create_card_data():
 	# Generate card names for ranks 2 to 10
@@ -233,42 +328,65 @@ func generate_card(hand, back=false):
 	# Add the card as a child to the HBoxContainer
 	card_hand_container.add_child(card_texture_rect)
 
-func updateText():
-	# Update the labels displayed on screen for the dealer and player scores.
-	$DealerScore.text = str(dealerScore)
-	$PlayerScore.text = str(playerScore)
-
-func playerLose():
+func playerLose(blackjack=false):
+	if blackjack:
+		$DealerBlackJack.visible = true
+		$AnimationPlayer.play("BlackJackAnimationD")
+		$PatienceLevel.value += 1
+	$PatienceLevel.value += 1
 	if (dollars == 0):
 		get_tree().change_scene_to_file("res://Menu/scenes/menus/main_menu/main_menu.tscn")
 	endRound()
-	
-	
+
 func playerWin(blackjack=false):
 	dollars += (bet * 2)
 	# Player has won: display text (already set if not blackjack),
 	# display buttons and ask to play again
 	if blackjack:
-		$WinnerText.text = "BLACKJACK"
+		$PlayerBlackJack.visible = true
+		$AnimationPlayer.play("BlackJackAnimationP")
+		$DrunkLevel.value += 1
+	$DrunkLevel.value += 1
 	endRound()
-	
-	
+
 func playerDraw():
 	dollars += bet
 	# Nobody wins: display white text, disable buttons and ask to play again
 	endRound()
 
+func playerHasAce(cards):
+	for card in cards:
+		if card[0] == 11:
+			return true
+	return false
 
+#/* -------------------------------------------------------------------------- */
+#/*                               Player Actions                               */
+#/* -------------------------------------------------------------------------- */
 
-func _on_exit_pressed():
-	get_tree().change_scene_to_file("res://Menu/scenes/menus/main_menu/main_menu.tscn")
+func chooseAction():
+	$AllBet/one_dollars.disabled = true
+	$AllBet/ten_dollars.disabled = true
+	$AllBet/fifty_dollars.disabled = true
+	$Buttons/VBoxContainer/Hit.disabled = true
+	$Buttons/VBoxContainer/Stand.disabled = true
+	# choose action with drunk level
+	var level: int = ceil($DrunkLevel.value / 2) - 1
+	doAction = true
+	$Debug.text = actionTab[level][1]
+	action = actionTab[level][1]
+	await call(actionTab[level][0])
+	$PatienceLevel.value = 0
 
+func randomMove():
+	var rng = RandomNumberGenerator.new()
+	var my_random_number = (rng.randi_range(0, 1))
+	if my_random_number == 0:
+		_on_hit_pressed()
+	if my_random_number == 1:
+		_on_stand_pressed()
 
-func _on_replay_pressed():
-	get_tree().change_scene_to_file("res://gameplay-scene/game.tscn")
-
-
-func _on_button_pressed():
+func optimalMove():
 	# AI logic to determine optimal move
 	
 	if len(dealerCards) < 2:  # Player clicked button before dealer cards loaded
@@ -305,53 +423,46 @@ func _on_button_pressed():
 		else:
 			_on_stand_pressed()
 
-func playerHasAce(cards):
-	for card in cards:
-		if card[0] == 11:
-			return true
-
-	return false
-
-func checkBet():
-	if (dollars < 1):
-		$AllBet/one_dollars.disabled = true
-	else:
-		$AllBet/one_dollars.disabled = false
-	if (dollars < 10):
-		$AllBet/ten_dollars.disabled = true
-	else:
-		$AllBet/ten_dollars.disabled = false
-	if (dollars < 50):
-		$AllBet/fifty_dollars.disabled = true
-	else:
-		$AllBet/fifty_dollars.disabled = false
-
-func _on_bet_dollars_pressed(new_bet: int) -> void:
-	if (dollars <= 0):
-		return
-	bet += new_bet
-	dollars -= new_bet
-	checkBet()
-	display_chips()
-	$DollarsInt.text = (str(dollars) + '$')
-
-func _on_bet_button_pressed() -> void:
-	$DollarsInt.text = str(dollars) + '$'
-	display_chips()
-	newRound()
+func NotoptimalMove():
+	# AI logic to determine optimal move
 	
-func add_chip(chip: String, stack: VBoxContainer):
-	var image = TextureRect.new()
-	image.texture = load(chip)
-	image.expand_mode = TextureRect.EXPAND_FIT_HEIGHT
-	stack.add_child(image)
+	if len(dealerCards) < 2:  # Player clicked button before dealer cards loaded
+		return
+	var dealerUpCard = dealerCards[2][0]
+	var hasAce = playerHasAce(playerCards)
+	
+	if hasAce:
+		# Handle cases when player has an ace
+		if playerScore >= 19:
+			_on_hit_pressed()
+		elif playerScore == 18 and dealerUpCard <= 8:
+			_on_hit_pressed()
+		elif playerScore == 18 and dealerUpCard >= 9:
+			_on_stand_pressed()
+		else:
+			_on_stand_pressed()
+	else:
+		# Handle cases when player does not have an ace
+		if playerScore >= 17 and playerScore <= 20:
+			_on_hit_pressed()
+		elif playerScore >= 13 and playerScore <= 16:
+			if dealerUpCard >= 2 and dealerUpCard <= 6:
+				_on_hit_pressed()
+			else:
+				_on_stand_pressed()
+		elif playerScore == 12:
+			if dealerUpCard >= 4 and dealerUpCard <= 6:
+				_on_hit_pressed()
+			else:
+				_on_stand_pressed()
+		elif playerScore >= 4 and playerScore <= 11:
+			_on_stand_pressed()
+		else:
+			_on_hit_pressed()
 
-func load_chipsize(amount: int, chipstack: VBoxContainer, value: int, sprite: String):
-	while (amount >= value):
-		amount -= value
-		add_chip(sprite, chipstack)
-	return amount
-
+#/* -------------------------------------------------------------------------- */
+#/*                               Chips Function                               */
+#/* -------------------------------------------------------------------------- */
 
 func clear_chips():
 	for a in $Chips/Chips1stack.get_children():
@@ -381,3 +492,42 @@ func display_chips():
 	betAmount = load_chipsize(betAmount, $Chips/Chips100stackBet, 100, chip_hundred)
 	betAmount = load_chipsize(betAmount, $Chips/Chips10stackBet, 10, chip_ten)
 	betAmount = load_chipsize(betAmount, $Chips/Chips1stackBet, 1, chip_one)
+
+func add_chip(chip: String, stack: VBoxContainer):
+	var image = TextureRect.new()
+	image.texture = load(chip)
+	image.expand_mode = TextureRect.EXPAND_FIT_HEIGHT
+	stack.add_child(image)
+
+func load_chipsize(amount: int, chipstack: VBoxContainer, value: int, sprite: String):
+	while (amount >= value):
+		amount -= value
+		add_chip(sprite, chipstack)
+	return amount
+
+#/* -------------------------------------------------------------------------- */
+#/*                               Misc Functions                               */
+#/* -------------------------------------------------------------------------- */
+
+func checkBet():
+	if (dollars < 1):
+		$AllBet/one_dollars.disabled = true
+	else:
+		$AllBet/one_dollars.disabled = false
+	if (dollars < 10):
+		$AllBet/ten_dollars.disabled = true
+	else:
+		$AllBet/ten_dollars.disabled = false
+	if (dollars < 50):
+		$AllBet/fifty_dollars.disabled = true
+	else:
+		$AllBet/fifty_dollars.disabled = false
+
+func handleAnimation(anim: String):
+	if ($Sprite2D/AnimationPlayer2.current_animation != anim):
+		$Sprite2D/AnimationPlayer2.play(anim)
+
+func updateText():
+	# Update the labels displayed on screen for the dealer and player scores.
+	$DealerScore.text = str(dealerScore)
+	$PlayerScore.text = str(playerScore)

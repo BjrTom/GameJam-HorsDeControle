@@ -1,11 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://d11lim1u2e24i"]
+[gd_scene load_steps=21 format=3 uid="uid://d11lim1u2e24i"]
 
 [ext_resource type="Script" uid="uid://djkeiiqn5hebi" path="res://gameplay-scene/game-logic.gd" id="1_n2enm"]
 [ext_resource type="FontFile" uid="uid://cpwm7d3lrhrkk" path="res://assets/PixelifySans-Regular.ttf" id="2_dl2ym"]
 [ext_resource type="FontFile" uid="uid://ddmd7pp0hamna" path="res://assets/PublicPixel.ttf" id="2_sviuc"]
 [ext_resource type="Texture2D" uid="uid://bqs4nqlic75wl" path="res://assets/images/health2.png" id="4_fqy1j"]
 [ext_resource type="Texture2D" uid="uid://dgkkv5vuo3qsu" path="res://assets/images/health1.png" id="5_lva1i"]
-[ext_resource type="Texture2D" uid="uid://lwg7qahcabhm" path="res://assets/images/health3.png" id="6_vflar"]
 [ext_resource type="Texture2D" uid="uid://cfprb7wikjy48" path="res://assets/images/player/BlackoutGuy.png" id="7_387hk"]
 
 [sub_resource type="Animation" id="Animation_qj5j0"]
@@ -29,7 +28,7 @@ tracks/1/path = NodePath("PlayerBustMarker:theme_override_colors/font_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.0333333, 0.233333, 0.8, 1),
+"times": PackedFloat32Array(0.0333333, 0.2, 0.8, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 0.965936),
 "update": 0,
 "values": [Color(0.891291, 4.17233e-06, 8.64267e-07, 0), Color(1, 0.174173, 0.127215, 1), Color(1, 0.174173, 0.127215, 1), Color(0.891291, 4.18738e-06, 8.66354e-07, 0)]
@@ -115,9 +114,77 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(0.490196, 1, 0.454902, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerBlackJack:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(648, 532)]
+}
+
+[sub_resource type="Animation" id="Animation_387hk"]
+resource_name = "BlackJackAnimationD"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DealerBlackJack:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(648, 432), Vector2(648, 532)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DealerBlackJack:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.172549, 0.12549, 1), Color(1, 0.172549, 0.12549, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mnx84"]
+resource_name = "BlackJackAnimationP"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerBlackJack:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(648, 532), Vector2(648, 432)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerBlackJack:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.490196, 1, 0.454902, 1), Color(0.490196, 1, 0.454902, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6250x"]
 _data = {
+&"BlackJackAnimationD": SubResource("Animation_387hk"),
+&"BlackJackAnimationP": SubResource("Animation_mnx84"),
 &"BustAnimation": SubResource("Animation_qj5j0"),
 &"HitAnimationD": SubResource("Animation_1h22c"),
 &"HitAnimationP": SubResource("Animation_4r27c"),
@@ -242,6 +309,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n2enm")
+
+[node name="Debug" type="Label" parent="."]
+layout_mode = 2
+offset_left = 1191.0
+offset_top = 557.0
+offset_right = 1393.0
+offset_bottom = 640.0
+theme_override_colors/font_color = Color(0.490196, 1, 0.454902, 1)
+theme_override_fonts/font = ExtResource("2_dl2ym")
+theme_override_font_sizes/font_size = 82
+text = "Bet :"
 
 [node name="Buttons" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -383,13 +461,41 @@ anchors_preset = -1
 anchor_right = 0.083
 anchor_bottom = 0.151
 offset_left = 91.0
-offset_top = 800.0
+offset_top = 900.0
 offset_right = 69.64
-offset_bottom = 716.92
-theme_override_colors/font_color = Color(0.490196, 1, 0.454902, 0)
+offset_bottom = 816.92
+theme_override_colors/font_color = Color(0.490196, 1, 0.454902, 1)
 theme_override_fonts/font = ExtResource("2_dl2ym")
 theme_override_font_sizes/font_size = 80
 text = "hit!"
+
+[node name="PlayerBlackJack" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.083
+anchor_bottom = 0.151
+offset_left = 648.0
+offset_top = 532.0
+offset_right = 1115.64
+offset_bottom = 430.92
+theme_override_colors/font_color = Color(0.490196, 1, 0.454902, 0)
+theme_override_fonts/font = ExtResource("2_sviuc")
+theme_override_font_sizes/font_size = 57
+text = "BlackJack !"
+
+[node name="DealerBlackJack" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.083
+anchor_bottom = 0.151
+offset_left = 648.0
+offset_top = 532.0
+offset_right = 1229.64
+offset_bottom = 430.92
+theme_override_colors/font_color = Color(1, 0.172549, 0.12549, 0)
+theme_override_fonts/font = ExtResource("2_sviuc")
+theme_override_font_sizes/font_size = 57
+text = "BlackJack..."
 
 [node name="DealerHitMarker" type="Label" parent="."]
 layout_mode = 1
@@ -397,16 +503,15 @@ anchors_preset = -1
 anchor_right = 0.083
 anchor_bottom = 0.151
 offset_left = 91.0
-offset_top = 200.0
+offset_top = 100.0
 offset_right = 69.64
-offset_bottom = 116.921
-theme_override_colors/font_color = Color(0.490196, 1, 0.454902, 0)
+offset_bottom = 16.921
+theme_override_colors/font_color = Color(0.490196, 1, 0.454902, 1)
 theme_override_fonts/font = ExtResource("2_dl2ym")
 theme_override_font_sizes/font_size = 80
 text = "hit!"
 
 [node name="PlayerBustMarker" type="Label" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.083
@@ -441,32 +546,6 @@ theme_override_font_sizes/font_size = 41
 text = "Player's
 Turn"
 
-[node name="WinnerText" type="Label" parent="."]
-layout_mode = 0
-offset_left = 25.0
-offset_top = 95.0
-offset_right = 466.0
-offset_bottom = 290.0
-theme_override_colors/font_color = Color(0.431373, 1, 0.403922, 1)
-theme_override_fonts/font = ExtResource("2_sviuc")
-theme_override_font_sizes/font_size = 60
-text = "PLAYER
-WINS"
-vertical_alignment = 1
-
-[node name="Replay" type="Button" parent="."]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 291.0
-offset_right = 232.0
-offset_bottom = 379.0
-theme_override_constants/h_separation = 9
-theme_override_fonts/font = ExtResource("2_sviuc")
-theme_override_font_sizes/font_size = 40
-text = "PLAY
-AGAIN"
-alignment = 0
-
 [node name="Exit" type="Button" parent="."]
 layout_mode = 2
 offset_left = 1656.0
@@ -479,19 +558,31 @@ theme_override_fonts/font = ExtResource("2_sviuc")
 theme_override_font_sizes/font_size = 25
 text = "EXIT"
 
-[node name="ProgressBar" type="TextureProgressBar" parent="."]
+[node name="DrunkLevel" type="TextureProgressBar" parent="."]
 layout_mode = 0
 offset_left = 15.0
 offset_top = 7.0
 offset_right = 96.0
 offset_bottom = 23.0
 scale = Vector2(10, 4)
-max_value = 100000.0
-step = 0.025
-value = 50.0
+max_value = 8.0
 texture_under = ExtResource("4_fqy1j")
 texture_over = ExtResource("5_lva1i")
-texture_progress = ExtResource("6_vflar")
+texture_progress = ExtResource("4_fqy1j")
+tint_progress = Color(0, 0.141187, 0.999999, 1)
+
+[node name="PatienceLevel" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 54.0
+offset_right = 96.0
+offset_bottom = 70.0
+scale = Vector2(10, 4)
+max_value = 6.0
+texture_under = ExtResource("4_fqy1j")
+texture_over = ExtResource("5_lva1i")
+texture_progress = ExtResource("4_fqy1j")
+tint_progress = Color(0.877346, 3.87453e-06, 1.2514e-06, 1)
 
 [node name="DollarsInt" type="Label" parent="."]
 layout_mode = 1
@@ -615,7 +706,7 @@ offset_bottom = 841.0
 theme_override_constants/separation = -121
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(196, 945.075)
+position = Vector2(132, 943)
 scale = Vector2(8.00469, 8.00469)
 texture = ExtResource("7_387hk")
 flip_h = true
@@ -631,7 +722,6 @@ libraries = {
 [connection signal="pressed" from="Buttons/VBoxContainer/Hit" to="." method="_on_hit_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/Stand" to="." method="_on_stand_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/OptimalMove" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Replay" to="." method="_on_replay_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="AllBet/one_dollars" to="." method="_on_bet_dollars_pressed" binds= [1]]
 [connection signal="pressed" from="AllBet/ten_dollars" to="." method="_on_bet_dollars_pressed" binds= [10]]
