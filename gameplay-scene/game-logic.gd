@@ -48,6 +48,7 @@ func _ready():
 	$Popup/DealerBlackJack.visible = false
 	$Popup/PlayerBustMarker.visible = false
 	
+	$BetButton.disabled = true
 	$Buttons/VBoxContainer/Hit.disabled = true
 	$Buttons/VBoxContainer/Stand.disabled = true
 	$SFX/RegularMusic.play()
@@ -161,6 +162,7 @@ func _on_bet_dollars_pressed(new_bet: int) -> void:
 	bet += new_bet
 	dollars -= new_bet
 	$SFX/Chips.play()
+	$BetButton.disabled = false
 	# use action bool
 	if (!action):
 		checkBet()
@@ -188,7 +190,7 @@ func endRound():
 	dealerCards.clear()
 	dealerScore = 0
 	$AllBet.visible = true
-	$BetButton.disabled = false
+	$BetButton.disabled = true
 	bet = 0
 	display_chips()
 	checkBet()
@@ -197,7 +199,6 @@ func endRound():
 		$PatienceLevel.value = 0
 
 func newRound():
-	
 	$AllBet.visible = false
 	$BetButton.disabled = true
 	
