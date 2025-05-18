@@ -48,6 +48,10 @@ func _ready():
 	$Buttons/VBoxContainer/Hit.disabled = true
 	$Buttons/VBoxContainer/Stand.disabled = true
 	
+	$DrunkLevel.value = 8
+	$PatienceLevel.value = 5
+	dollars = 500
+	
 	get_tree().root.content_scale_factor
 	checkBet()
 	display_chips()
@@ -55,13 +59,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if ($DrunkLevel.value >= 0 and $DrunkLevel.value < 250):
+	if ($DrunkLevel.value >= 0 and $DrunkLevel.value < 2):
 		handleAnimation("sober")
-	if ($DrunkLevel.value >= 250 and $DrunkLevel.value < 500):
+	if ($DrunkLevel.value >= 2 and $DrunkLevel.value < 4):
 		handleAnimation("tipsy")
-	if ($DrunkLevel.value >= 500 and $DrunkLevel.value < 750):
+	if ($DrunkLevel.value >= 4 and $DrunkLevel.value < 6):
 		handleAnimation("hiccup")
-	if ($DrunkLevel.value >= 750):
+	if ($DrunkLevel.value >= 8):
 		handleAnimation("drunk")
 	#$DrunkLevel.value += 0.25
 
@@ -216,6 +220,8 @@ func newRound():
 		call(action)
 		doAction = false
 		await get_tree().create_timer(0.5).timeout
+		$DrunkLevel.value /= 2
+
 	else:
 		$Buttons/VBoxContainer/Hit.disabled = false
 		$Buttons/VBoxContainer/Stand.disabled = false
