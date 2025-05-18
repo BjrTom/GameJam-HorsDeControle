@@ -4,6 +4,8 @@ extends Control
 #/*                                 Variables                                  */
 #/* -------------------------------------------------------------------------- */
 
+var goal = 200
+var goalList = [200, 500, 1000, 99999999]
 var card_names = []
 var card_values = []
 var card_images = {}
@@ -52,6 +54,8 @@ func _ready():
 	$Buttons/VBoxContainer/Hit.disabled = true
 	$Buttons/VBoxContainer/Stand.disabled = true
 	$SFX/RegularMusic.play()
+	goal = goalList[Global.diff]
+	dollars = Global.startCash
 	
 	get_tree().root.content_scale_factor
 	checkBet()
@@ -67,7 +71,7 @@ func _process(_delta):
 		handleAnimation("tipsy")
 	if ($DrunkLevel.value >= 4 and $DrunkLevel.value < 6):
 		handleAnimation("hiccup")
-	if ($DrunkLevel.value >= 8):
+	if ($DrunkLevel.value >= 6):
 		handleAnimation("drunk")
 	#$DrunkLevel.value += 0.25
 
@@ -197,8 +201,10 @@ func endRound():
 	if $PatienceLevel.value == 6:
 		chooseAction()
 		$PatienceLevel.value = 0
+	$Goal.visible = true
 
 func newRound():
+	$Goal.visible = false
 	$AllBet.visible = false
 	$BetButton.disabled = true
 	
@@ -517,6 +523,11 @@ func display_chips():
 	betAmount = load_chipsize(betAmount, $Chips/Chips100stackBet, 100, chip_hundred)
 	betAmount = load_chipsize(betAmount, $Chips/Chips10stackBet, 10, chip_ten)
 	betAmount = load_chipsize(betAmount, $Chips/Chips1stackBet, 1, chip_one)
+	if (Global.diff == Global.DIFFICULTY.ENDLESS):
+		$Goal.text = "I\nCAN'T\nSTOP !!!"
+	else:
+		$Goal.text = "I still need\n" + str(goal - dollars) + "$\nto buy it !"
+		
 
 func add_chip(chip: String, stack: VBoxContainer):
 	var image = TextureRect.new()

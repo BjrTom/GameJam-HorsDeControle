@@ -2,22 +2,18 @@
 ## Collaborators
 
 ### Role
-Person 1  
-Person 2  
-[Person w/ Link]()  
-
+Tom Colas
+Jules Meignal 
 
 ## Sourced / Unaffiliated
 ### Asset Type
 #### Use Case
-Author: [Name]()  
-Source: [Domain : webpage.html]()  
-License: [License]()
+Author: [Tom Colas](https://github.com/BjrTom), [Jules Meignal](https://github.com/JulesMEI)  
+Source: [Domain : Blackout Blackjack](https://github.com/BjrTom/GameJam-HorsDeControle)  
 
-#### Godot Engine Logo
-Author: Andrea Calabró  
-Source: [godotengine.org : press](https://godotengine.org/press/)  
-License: [CC BY 4.0 International](https://github.com/godotengine/godot/blob/master/LOGO_LICENSE.txt) 
+#### Game Logo
+Author: Jules Meignal
+Source: [paint.net](https://www.getpaint.net)  
 
 ## Tools
 #### Godot
@@ -33,4 +29,21 @@ License: [GNU General Public License version 2](https://opensource.org/licenses/
 #### Godot Menus Template
 Author: [Marek Belski](https://github.com/Maaack/Godot-Menus-Template/graphs/contributors)  
 Source: [github: Godot-Menus-Template](https://github.com/Maaack/Godot-Menus-Template)  
-License: [MIT License](LICENSE.txt)  
+License: [MIT License](LICENSE.txt)
+
+#### Black Jack IA Game
+Author: [BraedonM, AndrewWMeier](https://github.com/COMP359/Godot-Blackjack-AI/graphs/contributors)
+Source: [github: Godot-Blackjack-AI](https://github.com/COMP359/Godot-Blackjack-AI)
+License: [MIT License](https://github.com/COMP359/Godot-Blackjack-AI/blob/main/LICENSE)
+
+### Music
+#### Sound Effects - Balatro by LocalThunk
+Author: [LocalThunk](https://localthunk.com)
+Source: [Sound Effects - Balatro](https://www.sounds-resource.com)
+
+#### PANIC! At The Casino - thenyancatcookie
+Author: [thenyancatcookie](https://thenyancatcookie.carrd.co/)
+Source: [PANIC! At The Casino](https://www.youtube.com/watch?v=FEnNaHN3qBA)
+
+#### Golden Palace - Vegas Stakes
+Source: [Golden Palace - Vegas Stakes](https://www.youtube.com/watch?v=59ZAs0Nh6_I)
