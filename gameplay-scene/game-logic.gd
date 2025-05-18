@@ -72,6 +72,7 @@ func _ready():
 	$Buttons/VBoxContainer/Stand.disabled = true
 	$Buttons/VBoxContainer/OptimalMove.disabled = true
 
+
 	get_tree().root.content_scale_factor
 	checkBet()
 	display_chips()
@@ -81,7 +82,9 @@ func _ready():
 func _process(delta):
 	$ProgressBar.value += 0.25
 
+
 func _on_hit_pressed():
+	$SFX/Bouton.play()
 	$PlayerHitMarker.visible = true
 	generate_card("player")
 	# Play "hit!" animation
@@ -118,6 +121,7 @@ func recalculate_player_score():
 		playerScore += card[0]
 
 func _on_stand_pressed():
+	$SFX/Bouton.play()
 	# Flip dealer's first card, dealer keeps hitting until score is above 16 or player's score
 	$Buttons/VBoxContainer/Hit.disabled = true
 	$Buttons/VBoxContainer/Stand.disabled = true
@@ -194,6 +198,7 @@ func generate_card(hand, back=false):
 	# Assuming you have already loaded card images into the dictionary as shown in your code
 	var random_card
 
+	$SFX/Card.play()
 	# If back is true assign card image to back
 	if back:
 		# We display the back of the card, but a real card needs to be pulled
@@ -239,12 +244,16 @@ func updateText():
 	$PlayerScore.text = str(playerScore)
 
 func playerLose():
+	$SFX/Lose.play()
+	#$Sprite2D/AnimationPlayer2.play("angry")
+	#await get_tree().create_timer(1.6).timeout
+	#$Sprite2D/AnimationPlayer2.play("sober") # Jouer la meilleure animation
 	if (dollars == 0):
 		get_tree().change_scene_to_file("res://Menu/scenes/menus/main_menu/main_menu.tscn")
 	endRound()
-	
-	
+
 func playerWin(blackjack=false):
+	$SFX/Win.play()
 	dollars += (bet * 2)
 	# Player has won: display text (already set if not blackjack),
 	# display buttons and ask to play again
@@ -261,6 +270,7 @@ func playerDraw():
 
 
 func _on_exit_pressed():
+	$SFX/Bouton.play()
 	get_tree().change_scene_to_file("res://Menu/scenes/menus/main_menu/main_menu.tscn")
 
 
@@ -268,7 +278,7 @@ func _on_replay_pressed():
 	get_tree().change_scene_to_file("res://gameplay-scene/game.tscn")
 
 
-func _on_button_pressed():
+func optimalMove():
 	# AI logic to determine optimal move
 	
 	if len(dealerCards) < 2:  # Player clicked button before dealer cards loaded
@@ -327,6 +337,7 @@ func checkBet():
 		$AllBet/fifty_dollars.disabled = false
 
 func _on_bet_dollars_pressed(new_bet: int) -> void:
+	$SFX/Chips.play()
 	if (dollars <= 0):
 		return
 	bet += new_bet
@@ -336,6 +347,7 @@ func _on_bet_dollars_pressed(new_bet: int) -> void:
 	$DollarsInt.text = (str(dollars) + '$')
 
 func _on_bet_button_pressed() -> void:
+	$SFX/Bouton.play()
 	$DollarsInt.text = str(dollars) + '$'
 	display_chips()
 	newRound()

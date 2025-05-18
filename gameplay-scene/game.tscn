@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://d11lim1u2e24i"]
+[gd_scene load_steps=30 format=3 uid="uid://d11lim1u2e24i"]
 
 [ext_resource type="Script" uid="uid://djkeiiqn5hebi" path="res://gameplay-scene/game-logic.gd" id="1_n2enm"]
 [ext_resource type="FontFile" uid="uid://cpwm7d3lrhrkk" path="res://assets/PixelifySans-Regular.ttf" id="2_dl2ym"]
@@ -7,6 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://dgkkv5vuo3qsu" path="res://assets/images/health1.png" id="5_lva1i"]
 [ext_resource type="Texture2D" uid="uid://lwg7qahcabhm" path="res://assets/images/health3.png" id="6_vflar"]
 [ext_resource type="Texture2D" uid="uid://cfprb7wikjy48" path="res://assets/images/player/BlackoutGuy.png" id="7_387hk"]
+[ext_resource type="AudioStream" uid="uid://ynf10b40e557" path="res://assets/sounds/button.ogg" id="8_m3mv0"]
+[ext_resource type="AudioStream" uid="uid://blgblgl1uw2ev" path="res://assets/sounds/chips1.ogg" id="9_bwecg"]
+[ext_resource type="AudioStream" uid="uid://cqonduscxpg0i" path="res://assets/sounds/card.ogg" id="10_lva1i"]
+[ext_resource type="AudioStream" uid="uid://c8jdga4ilhd4g" path="res://assets/sounds/holo1.ogg" id="11_vflar"]
+[ext_resource type="AudioStream" uid="uid://dybxsjkwjgf2j" path="res://assets/sounds/negative.ogg" id="12_vflar"]
+[ext_resource type="AudioStream" uid="uid://c6pfwv03lb5jm" path="res://assets/sounds/voice1.ogg" id="13_21bi7"]
+[ext_resource type="AudioStream" uid="uid://8n2dn7wrboa5" path="res://assets/sounds/voice2.ogg" id="14_0om1j"]
+[ext_resource type="AudioStream" uid="uid://cpcfhyppfuevx" path="res://assets/sounds/voice3.ogg" id="15_fymoh"]
 
 [sub_resource type="Animation" id="Animation_qj5j0"]
 resource_name = "BustAnimation"
@@ -20,7 +28,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.366667, 0.566667, 0.733333),
 "transitions": PackedFloat32Array(2.63902, 0.353553, 1.8025, 3.73213),
 "update": 0,
-"values": [Vector2(92, 830), Vector2(92, 900), Vector2(92, 880), Vector2(92, 900)]
+"values": [Vector2(92, 680), Vector2(92, 750), Vector2(92, 730), Vector2(92, 750)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -74,7 +82,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(91, 900), Vector2(91, 800)]
+"values": [Vector2(110, 750), Vector2(110, 650)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -224,9 +232,26 @@ tracks/0/keys = {
 "values": [8, 9, 10, 11, 12, 13, 14, 15]
 }
 
+[sub_resource type="Animation" id="Animation_mnx84"]
+resource_name = "angry"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [32, 33, 34, 35, 36, 37, 38, 39]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mnx84"]
 _data = {
 &"RESET": SubResource("Animation_bwecg"),
+&"angry": SubResource("Animation_mnx84"),
 &"blackout": SubResource("Animation_k58ic"),
 &"drunk": SubResource("Animation_vflar"),
 &"hiccup": SubResource("Animation_lva1i"),
@@ -234,7 +259,14 @@ _data = {
 &"tipsy": SubResource("Animation_fqy1j")
 }
 
-[node name="Gameplay" type="Control"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_21bi7"]
+random_pitch = 1.3
+streams_count = 3
+stream_0/stream = ExtResource("13_21bi7")
+stream_1/stream = ExtResource("14_0om1j")
+stream_2/stream = ExtResource("15_fymoh")
+
+[node name="Gameplay" type="Control" groups=["Bouttons"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -259,21 +291,21 @@ layout_mode = 2
 theme_override_constants/separation = 13
 alignment = 2
 
-[node name="Hit" type="Button" parent="Buttons/VBoxContainer"]
+[node name="Hit" type="Button" parent="Buttons/VBoxContainer" groups=["Bouttons"]]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_sviuc")
 theme_override_font_sizes/font_size = 25
 text = "HIT"
 
-[node name="Stand" type="Button" parent="Buttons/VBoxContainer"]
+[node name="Stand" type="Button" parent="Buttons/VBoxContainer" groups=["Bouttons"]]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_sviuc")
 theme_override_font_sizes/font_size = 25
 text = "STAND"
 
-[node name="OptimalMove" type="Button" parent="Buttons/VBoxContainer"]
+[node name="OptimalMove" type="Button" parent="Buttons/VBoxContainer" groups=["Bouttons"]]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
@@ -382,10 +414,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.083
 anchor_bottom = 0.151
-offset_left = 91.0
-offset_top = 800.0
-offset_right = 69.64
-offset_bottom = 716.92
+offset_left = 110.0
+offset_top = 650.0
+offset_right = 88.64
+offset_bottom = 566.92
 theme_override_colors/font_color = Color(0.490196, 1, 0.454902, 0)
 theme_override_fonts/font = ExtResource("2_dl2ym")
 theme_override_font_sizes/font_size = 80
@@ -397,16 +429,15 @@ anchors_preset = -1
 anchor_right = 0.083
 anchor_bottom = 0.151
 offset_left = 91.0
-offset_top = 200.0
+offset_top = 100.0
 offset_right = 69.64
-offset_bottom = 116.921
-theme_override_colors/font_color = Color(0.490196, 1, 0.454902, 0)
+offset_bottom = 16.921
+theme_override_colors/font_color = Color(0.490196, 1, 0.454902, 1)
 theme_override_fonts/font = ExtResource("2_dl2ym")
 theme_override_font_sizes/font_size = 80
 text = "hit!"
 
 [node name="PlayerBustMarker" type="Label" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.083
@@ -523,28 +554,28 @@ theme_override_fonts/font = ExtResource("2_dl2ym")
 theme_override_font_sizes/font_size = 82
 text = "Bet :"
 
-[node name="one_dollars" type="Button" parent="AllBet"]
+[node name="one_dollars" type="Button" parent="AllBet" groups=["Bouttons"]]
 layout_mode = 2
 theme_override_constants/h_separation = 9
 theme_override_fonts/font = ExtResource("2_sviuc")
 theme_override_font_sizes/font_size = 40
 text = "1$"
 
-[node name="ten_dollars" type="Button" parent="AllBet"]
+[node name="ten_dollars" type="Button" parent="AllBet" groups=["Bouttons"]]
 layout_mode = 2
 theme_override_constants/h_separation = 9
 theme_override_fonts/font = ExtResource("2_sviuc")
 theme_override_font_sizes/font_size = 40
 text = "10$"
 
-[node name="fifty_dollars" type="Button" parent="AllBet"]
+[node name="fifty_dollars" type="Button" parent="AllBet" groups=["Bouttons"]]
 layout_mode = 2
 theme_override_constants/h_separation = 9
 theme_override_fonts/font = ExtResource("2_sviuc")
 theme_override_font_sizes/font_size = 40
 text = "50$"
 
-[node name="BetButton" type="Button" parent="."]
+[node name="BetButton" type="Button" parent="." groups=["Bouttons"]]
 layout_mode = 0
 offset_left = 1669.0
 offset_top = 838.0
@@ -627,6 +658,51 @@ root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_mnx84")
 }
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="Bouton" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("8_m3mv0")
+bus = &"Sfx"
+
+[node name="Chips" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("9_bwecg")
+bus = &"Sfx"
+
+[node name="Card" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("10_lva1i")
+bus = &"Sfx"
+
+[node name="Win" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("11_vflar")
+volume_db = -5.0
+bus = &"Sfx"
+
+[node name="Lose" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("12_vflar")
+volume_db = -5.0
+bus = &"Sfx"
+
+[node name="Voice" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("13_21bi7")
+volume_db = -5.0
+bus = &"Sfx"
+parameters/looping = true
+
+[node name="Voice2" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("14_0om1j")
+volume_db = -5.0
+bus = &"Sfx"
+parameters/looping = true
+
+[node name="Voice3" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("15_fymoh")
+volume_db = -5.0
+bus = &"Sfx"
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_21bi7")
 
 [connection signal="pressed" from="Buttons/VBoxContainer/Hit" to="." method="_on_hit_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/Stand" to="." method="_on_stand_pressed"]
