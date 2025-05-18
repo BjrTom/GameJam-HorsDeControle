@@ -153,6 +153,7 @@ func _on_bet_dollars_pressed(new_bet: int) -> void:
 		return
 	bet += new_bet
 	dollars -= new_bet
+	$SFX/Chips.play()
 	checkBet()
 	display_chips()
 	$DollarsInt.text = (str(dollars) + '$')
@@ -377,11 +378,11 @@ func chooseAction():
 	$Buttons/VBoxContainer/Hit.disabled = true
 	$Buttons/VBoxContainer/Stand.disabled = true
 	# choose action with drunk level
-	var level: int = ceil($DrunkLevel.value / 2) - 1
+	var curlevel: int = ceil($DrunkLevel.value / 2) - 1
 	doAction = true
-	$Debug.text = actionTab[level][1]
-	action = actionTab[level][1]
-	await call(actionTab[level][0])
+	$Debug.text = actionTab[curlevel][1]
+	action = actionTab[curlevel][1]
+	await call(actionTab[curlevel][0])
 	$PatienceLevel.value = 0
 
 func randomMove():
