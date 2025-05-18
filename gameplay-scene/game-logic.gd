@@ -237,7 +237,6 @@ func chooseBet():
 	
 	for i in nb[value]:
 		level[value].shuffle()
-		print(level)
 		values.push_back(level[value][0])
 	for temp in values:
 		await get_tree().create_timer(0.5).timeout
