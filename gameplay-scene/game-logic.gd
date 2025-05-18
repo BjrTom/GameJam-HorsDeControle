@@ -41,21 +41,18 @@ var actionTab = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$PlayerHitMarker.visible = false
-	$DealerHitMarker.visible = false
-	$PlayerBustMarker.visible = false
+	$Popup/PlayerHitMarker.visible = false
+	$Popup/DealerHitMarker.visible = false
+	$Popup/PlayerBlackJack.visible = false
+	$Popup/DealerBlackJack.visible = false
+	$Popup/PlayerBustMarker.visible = false
 	
 	$Buttons/VBoxContainer/Hit.disabled = true
 	$Buttons/VBoxContainer/Stand.disabled = true
 	
-	$DrunkLevel.value = 8
-	$PatienceLevel.value = 5
-	dollars = 500
-	
 	get_tree().root.content_scale_factor
 	checkBet()
 	display_chips()
-	$DollarsInt.text = (str(dollars) + '$')
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -76,9 +73,9 @@ func _process(delta):
 # Called when hit button is pressed
 func _on_hit_pressed():
 	$SFX/Bouton.play()
-	$PlayerHitMarker.visible = true
 	generate_card("player")
 	# Play "hit!" animation
+	$Popup/PlayerHitMarker.visible = true
 	$AnimationPlayer.play("HitAnimationP")
 	updateText()
 	if playerScore == 21:
@@ -86,7 +83,8 @@ func _on_hit_pressed():
 	elif playerScore > 21:
 		check_aces()  # Check to see if any 11-aces can convert to 1-aces
 		if playerScore > 21:  # Score still surpasses 21
-			$PlayerBustMarker.visible = true
+			$Popup/PlayerHitMarker.visible = false
+			$Popup/PlayerBustMarker.visible = true
 			$AnimationPlayer.play("BustAnimation")
 			#$PlayerHitMarker.visible = false
 			playerLose()
@@ -101,7 +99,6 @@ func _on_stand_pressed():
 	$Buttons/VBoxContainer/Hit.disabled = true
 	$Buttons/VBoxContainer/Stand.disabled = true
 	$Buttons/VBoxContainer/OptimalMove.disabled = true
-	$DealerHitMarker.visible = true
 	$WhoseTurn.text = "Dealer's\nTurn"
 	
 	await get_tree().create_timer(0.5).timeout
@@ -132,6 +129,7 @@ func _on_stand_pressed():
 	while dealerScore < playerScore and dealerScore < 17:
 		await get_tree().create_timer(1.5).timeout
 		# Play "hit!" animation for dealer
+		$Popup/DealerHitMarker.visible = true
 		$AnimationPlayer.play("HitAnimationD")
 		generate_card("dealer")
 		updateText()
@@ -158,13 +156,13 @@ func _on_bet_dollars_pressed(new_bet: int) -> void:
 	bet += new_bet
 	dollars -= new_bet
 	$SFX/Chips.play()
-	checkBet()
+	# use action bool
+	if (!action):
+		checkBet()
 	display_chips()
-	$DollarsInt.text = (str(dollars) + '$')
 
 # Called when bet button is pressed
 func _on_bet_button_pressed() -> void:
-	$DollarsInt.text = str(dollars) + '$'
 	display_chips()
 	newRound()
 
@@ -173,7 +171,6 @@ func _on_bet_button_pressed() -> void:
 #/* -------------------------------------------------------------------------- */
 
 func endRound():
-	$DollarsInt.text = (str(dollars) + '$')
 	$Buttons/VBoxContainer/Hit.disabled = true
 	$Buttons/VBoxContainer/Stand.disabled = true
 	for i in range(0, $Cards/Hands/PlayerHand.get_child_count()):
@@ -231,7 +228,6 @@ func newRound():
 
 func chooseBet():
 	var value: int = $DrunkLevel.value - 1
-	$Debug.text = str(value)
 	var dollar_value = [1, 10, 100]
 	var values = []
 	
@@ -338,7 +334,7 @@ func generate_card(hand, back=false):
 
 func playerLose(blackjack=false):
 	if blackjack:
-		$DealerBlackJack.visible = true
+		$Popup/DealerBlackJack.visible = true
 		$AnimationPlayer.play("BlackJackAnimationD")
 		$PatienceLevel.value += 1
 	$PatienceLevel.value += 1
@@ -355,7 +351,7 @@ func playerWin(blackjack=false):
 	# Player has won: display text (already set if not blackjack),
 	# display buttons and ask to play again
 	if blackjack:
-		$PlayerBlackJack.visible = true
+		$Popup/PlayerBlackJack.visible = true
 		$AnimationPlayer.play("BlackJackAnimationP")
 		$DrunkLevel.value += 1
 	$DrunkLevel.value += 1
@@ -385,7 +381,6 @@ func chooseAction():
 	# choose action with drunk level
 	var curlevel: int = ceil($DrunkLevel.value / 2) - 1
 	doAction = true
-	$Debug.text = actionTab[curlevel][1]
 	action = actionTab[curlevel][1]
 	await call(actionTab[curlevel][0])
 	$PatienceLevel.value = 0

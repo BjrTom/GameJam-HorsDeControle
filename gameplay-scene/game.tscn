@@ -20,7 +20,7 @@ resource_name = "BlackJackAnimationD"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DealerBlackJack:position")
+tracks/0/path = NodePath("Popup/DealerBlackJack:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -32,7 +32,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("DealerBlackJack:theme_override_colors/font_color")
+tracks/1/path = NodePath("Popup/DealerBlackJack:theme_override_colors/font_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -44,18 +44,29 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_mnx84"]
 resource_name = "angry"
-length = 1.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Popup/PlayerBlackJack:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [32, 33, 34, 35, 36, 37, 38, 39]
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(648, 519), Vector2(648, 419)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Popup/PlayerBlackJack:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.490196, 1, 0.454902, 1), Color(0.490196, 1, 0.454902, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_qj5j0"]
@@ -63,19 +74,19 @@ resource_name = "BustAnimation"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerBustMarker:position")
+tracks/0/path = NodePath("Popup/PlayerBustMarker:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.366667, 0.566667, 0.733333),
 "transitions": PackedFloat32Array(2.63902, 0.353553, 1.8025, 3.73213),
 "update": 0,
-"values": [Vector2(92, 680), Vector2(92, 750), Vector2(92, 730), Vector2(92, 750)]
+"values": [Vector2(92, 580), Vector2(92, 650), Vector2(92, 630), Vector2(92, 650)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerBustMarker:theme_override_colors/font_color")
+tracks/1/path = NodePath("Popup/PlayerBustMarker:theme_override_colors/font_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -90,7 +101,7 @@ resource_name = "HitAnimationD"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DealerHitMarker:position")
+tracks/0/path = NodePath("Popup/DealerHitMarker:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -102,7 +113,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("DealerHitMarker:theme_override_colors/font_color")
+tracks/1/path = NodePath("Popup/DealerHitMarker:theme_override_colors/font_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -117,23 +128,23 @@ resource_name = "HitAnimation"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerHitMarker:position")
+tracks/0/path = NodePath("Popup/PlayerHitMarker:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(110, 750), Vector2(110, 650)]
+"values": [Vector2(124, 655), Vector2(124, 563)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerHitMarker:theme_override_colors/font_color")
+tracks/1/path = NodePath("Popup/PlayerHitMarker:theme_override_colors/font_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(0, 0.933333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.490196, 1, 0.454902, 1), Color(0.490196, 1, 0.454902, 0)]
@@ -144,7 +155,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerBustMarker:position")
+tracks/0/path = NodePath("Popup/PlayerBustMarker:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -156,7 +167,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerBustMarker:theme_override_colors/font_color")
+tracks/1/path = NodePath("Popup/PlayerBustMarker:theme_override_colors/font_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -168,14 +179,26 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerBlackJack:position")
+tracks/2/path = NodePath("Popup/PlayerBlackJack:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(648, 532)]
+"values": [Vector2(648, 519)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Popup/PlayerBlackJack:theme_override_colors/font_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.490196, 1, 0.454902, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6250x"]
@@ -315,17 +338,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n2enm")
 
-[node name="Debug" type="Label" parent="."]
-layout_mode = 2
-offset_left = 1191.0
-offset_top = 557.0
-offset_right = 1393.0
-offset_bottom = 640.0
-theme_override_colors/font_color = Color(0.490196, 1, 0.454902, 1)
-theme_override_fonts/font = ExtResource("2_dl2ym")
-theme_override_font_sizes/font_size = 82
-text = "Bet :"
-
 [node name="Buttons" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -460,71 +472,76 @@ offset_bottom = 1106.0
 mouse_filter = 2
 color = Color(0.168627, 0.168627, 0.168627, 1)
 
-[node name="PlayerHitMarker" type="Label" parent="."]
+[node name="Popup" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayerHitMarker" type="Label" parent="Popup"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.083
 anchor_bottom = 0.151
-offset_left = 110.0
-offset_top = 650.0
-offset_right = 88.64
-offset_bottom = 566.92
+offset_left = 124.0
+offset_top = 563.0
+offset_right = 254.68
+offset_bottom = 636.96
 theme_override_colors/font_color = Color(0.490196, 1, 0.454902, 0)
 theme_override_fonts/font = ExtResource("2_dl2ym")
 theme_override_font_sizes/font_size = 80
 text = "hit!"
 
-[node name="PlayerBlackJack" type="Label" parent="."]
+[node name="DealerBlackJack" type="Label" parent="Popup"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.083
 anchor_bottom = 0.151
 offset_left = 648.0
 offset_top = 532.0
-offset_right = 1115.64
-offset_bottom = 430.92
-theme_override_colors/font_color = Color(0.490196, 1, 0.454902, 0)
-theme_override_fonts/font = ExtResource("2_sviuc")
-theme_override_font_sizes/font_size = 57
-text = "BlackJack !"
-
-[node name="DealerBlackJack" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.083
-anchor_bottom = 0.151
-offset_left = 648.0
-offset_top = 532.0
-offset_right = 1229.64
-offset_bottom = 430.92
+offset_right = 1328.68
+offset_bottom = 582.96
 theme_override_colors/font_color = Color(1, 0.172549, 0.12549, 0)
 theme_override_fonts/font = ExtResource("2_sviuc")
 theme_override_font_sizes/font_size = 57
 text = "BlackJack..."
 
-[node name="DealerHitMarker" type="Label" parent="."]
+[node name="PlayerBlackJack" type="Label" parent="Popup"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.083
+anchor_bottom = 0.151
+offset_left = 648.0
+offset_top = 519.0
+offset_right = 1328.68
+offset_bottom = 569.96
+theme_override_colors/font_color = Color(0.490196, 1, 0.454902, 1)
+theme_override_fonts/font = ExtResource("2_sviuc")
+theme_override_font_sizes/font_size = 57
+text = "BlackJack !"
+
+[node name="DealerHitMarker" type="Label" parent="Popup"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.083
 anchor_bottom = 0.151
 offset_left = 91.0
 offset_top = 100.0
-offset_right = 69.64
-offset_bottom = 16.921
+offset_right = 221.68
+offset_bottom = 173.96
 theme_override_colors/font_color = Color(0.490196, 1, 0.454902, 1)
 theme_override_fonts/font = ExtResource("2_dl2ym")
 theme_override_font_sizes/font_size = 80
 text = "hit!"
 
-[node name="PlayerBustMarker" type="Label" parent="."]
+[node name="PlayerBustMarker" type="Label" parent="Popup"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.083
 anchor_bottom = 0.151
 offset_left = 92.0
 offset_top = 901.0
-offset_right = 144.64
-offset_bottom = 817.92
+offset_right = 300.68
+offset_bottom = 974.96
 theme_override_colors/font_color = Color(0.490196, 1, 0.454902, 1)
 theme_override_fonts/font = ExtResource("2_dl2ym")
 theme_override_font_sizes/font_size = 80
@@ -565,44 +582,51 @@ text = "EXIT"
 
 [node name="DrunkLevel" type="TextureProgressBar" parent="."]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 7.0
-offset_right = 96.0
-offset_bottom = 23.0
-scale = Vector2(10, 4)
+offset_left = -3.0
+offset_top = 979.0
+offset_right = 78.0
+offset_bottom = 995.0
+scale = Vector2(5, 4)
 max_value = 8.0
 texture_under = ExtResource("4_fqy1j")
 texture_over = ExtResource("5_lva1i")
 texture_progress = ExtResource("4_fqy1j")
 tint_progress = Color(0, 0.141187, 0.999999, 1)
 
+[node name="Anger" type="Label" parent="."]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 1000.0
+offset_right = 251.0
+offset_bottom = 1022.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_sviuc")
+theme_override_font_sizes/font_size = 22
+text = "Anger"
+
 [node name="PatienceLevel" type="TextureProgressBar" parent="."]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 54.0
-offset_right = 96.0
-offset_bottom = 70.0
-scale = Vector2(10, 4)
+offset_left = -3.0
+offset_top = 1025.0
+offset_right = 78.0
+offset_bottom = 1041.0
+scale = Vector2(5, 4)
 max_value = 6.0
 texture_under = ExtResource("4_fqy1j")
 texture_over = ExtResource("5_lva1i")
 texture_progress = ExtResource("4_fqy1j")
 tint_progress = Color(0.877346, 3.87453e-06, 1.2514e-06, 1)
 
-[node name="DollarsInt" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.083
-anchor_bottom = 0.151
-offset_left = 1063.0
-offset_top = 732.0
-offset_right = 1016.64
-offset_bottom = 648.92
-theme_override_colors/font_color = Color(0.490196, 1, 0.454902, 1)
-theme_override_fonts/font = ExtResource("2_dl2ym")
-theme_override_font_sizes/font_size = 80
-text = "0"
-horizontal_alignment = 1
+[node name="Patience" type="Label" parent="."]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 1046.0
+offset_right = 285.0
+offset_bottom = 1068.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_sviuc")
+theme_override_font_sizes/font_size = 22
+text = "Patience"
 
 [node name="AllBet" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -659,28 +683,28 @@ offset_bottom = 40.0
 [node name="Chips1stack" type="VBoxContainer" parent="Chips"]
 clip_children = 1
 layout_mode = 0
-offset_left = 254.0
-offset_top = 720.0
-offset_right = 366.0
-offset_bottom = 832.0
+offset_left = 260.0
+offset_top = 437.0
+offset_right = 372.0
+offset_bottom = 549.0
 theme_override_constants/separation = -121
 
 [node name="Chips10stack" type="VBoxContainer" parent="Chips"]
 clip_children = 1
 layout_mode = 0
-offset_left = 135.0
-offset_top = 645.0
-offset_right = 247.0
-offset_bottom = 755.0
+offset_left = 141.0
+offset_top = 362.0
+offset_right = 253.0
+offset_bottom = 472.0
 theme_override_constants/separation = -121
 
 [node name="Chips100stack" type="VBoxContainer" parent="Chips"]
 clip_children = 1
 layout_mode = 0
-offset_left = 15.0
-offset_top = 713.0
-offset_right = 127.0
-offset_bottom = 826.0
+offset_left = 21.0
+offset_top = 430.0
+offset_right = 133.0
+offset_bottom = 543.0
 theme_override_constants/separation = -121
 
 [node name="Chips1stackBet" type="VBoxContainer" parent="Chips"]
@@ -711,7 +735,7 @@ offset_bottom = 841.0
 theme_override_constants/separation = -121
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(132, 943)
+position = Vector2(217, 858)
 scale = Vector2(8.00469, 8.00469)
 texture = ExtResource("7_387hk")
 flip_h = true
