@@ -71,6 +71,7 @@ func _process(delta):
 
 # Called when hit button is pressed
 func _on_hit_pressed():
+	$SFX/Bouton.play()
 	$PlayerHitMarker.visible = true
 	generate_card("player")
 	# Play "hit!" animation
@@ -91,6 +92,7 @@ func _on_hit_pressed():
 
 # Called when stand button is pressed
 func _on_stand_pressed():
+	$SFX/Bouton.play()
 	# Flip dealer's first card, dealer keeps hitting until score is above 16 or player's score
 	$Buttons/VBoxContainer/Hit.disabled = true
 	$Buttons/VBoxContainer/Stand.disabled = true
@@ -288,6 +290,7 @@ func generate_card(hand, back=false):
 	# Assuming you have already loaded card images into the dictionary as shown in your code
 	var random_card
 
+	$SFX/Card.play()
 	# If back is true assign card image to back
 	if back:
 		# We display the back of the card, but a real card needs to be pulled
@@ -333,11 +336,15 @@ func playerLose(blackjack=false):
 		$AnimationPlayer.play("BlackJackAnimationD")
 		$PatienceLevel.value += 1
 	$PatienceLevel.value += 1
+	#$Sprite2D/AnimationPlayer2.play("angry")
+	#await get_tree().create_timer(1.6).timeout
+	#$Sprite2D/AnimationPlayer2.play("sober") # Jouer la meilleure animation
 	if (dollars == 0):
 		get_tree().change_scene_to_file("res://Menu/scenes/menus/main_menu/main_menu.tscn")
 	endRound()
 
 func playerWin(blackjack=false):
+	$SFX/Win.play()
 	dollars += (bet * 2)
 	# Player has won: display text (already set if not blackjack),
 	# display buttons and ask to play again
@@ -480,9 +487,9 @@ func clear_chips():
 func display_chips():
 	var amount = dollars if dollars < 1000 else 999
 	var betAmount = bet if bet < 1000 else 999
-	var chip_one = "res://assets/images/chips1.png"
-	var chip_ten = "res://assets/images/chips10.png"
-	var chip_hundred = "res://assets/images/chips100.png"
+	var chip_one = "res://assets/images/chips/chips1.png"
+	var chip_ten = "res://assets/images/chips/chips10.png"
+	var chip_hundred = "res://assets/images/chips/chips100.png"
 	clear_chips()
 	amount = load_chipsize(amount, $Chips/Chips100stack, 100, chip_hundred)
 	amount = load_chipsize(amount, $Chips/Chips10stack, 10, chip_ten)

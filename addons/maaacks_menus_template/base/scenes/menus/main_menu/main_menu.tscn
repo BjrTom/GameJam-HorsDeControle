@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c6k5nnpbypshi"]
+[gd_scene load_steps=11 format=3 uid="uid://c6k5nnpbypshi"]
 
 [ext_resource type="Script" uid="uid://bhgs1upaahk3y" path="res://addons/maaacks_menus_template/base/scenes/menus/main_menu/main_menu.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://hmx6o472ropw" path="res://addons/maaacks_menus_template/base/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="2_qvrrd"]
@@ -7,7 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_menus_template/base/scenes/music_players/background_music_player.tscn" id="4_w8sbm"]
 [ext_resource type="Script" uid="uid://b5oej1q4h7jvh" path="res://addons/maaacks_menus_template/base/scripts/ui_sound_controller.gd" id="6_bs342"]
 [ext_resource type="Script" uid="uid://dmkubt2nsnsbn" path="res://addons/maaacks_menus_template/base/scenes/menus/main_menu/config_version_label.gd" id="6_pdiij"]
+[ext_resource type="FontFile" uid="uid://ddmd7pp0hamna" path="res://assets/PublicPixel.ttf" id="7_fhopt"]
 [ext_resource type="Script" uid="uid://bkwlopi4qn32o" path="res://addons/maaacks_menus_template/base/scenes/menus/main_menu/config_name_label.gd" id="7_j7612"]
+[ext_resource type="Texture2D" uid="uid://c3g7e08m40g4c" path="res://assets/images/logos/logo.png" id="9_h0dp7"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -62,7 +64,7 @@ offset_left = -88.0
 offset_top = -26.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "v0.0.0"
+text = "v0.0.1"
 horizontal_alignment = 2
 script = ExtResource("6_pdiij")
 
@@ -83,36 +85,28 @@ theme_override_constants/margin_top = 24
 layout_mode = 2
 mouse_filter = 2
 
+[node name="TextureRect" type="TextureRect" parent="MenuContainer/TitleMargin/TitleContainer"]
+layout_mode = 2
+offset_left = 811.0
+offset_top = 11.0
+offset_right = 1062.0
+offset_bottom = 262.0
+texture = ExtResource("9_h0dp7")
+expand_mode = 1
+
 [node name="TitleLabel" type="Label" parent="MenuContainer/TitleMargin/TitleContainer"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 67.0
+offset_top = 269.0
+offset_bottom = 336.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 48
-text = "Title"
+theme_override_fonts/font = ExtResource("7_fhopt")
+theme_override_font_sizes/font_size = 46
+text = "Blackout Blackjack"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("7_j7612")
-
-[node name="SubTitleMargin" type="MarginContainer" parent="MenuContainer"]
-layout_mode = 2
-theme_override_constants/margin_top = 92
-
-[node name="SubTitleContainer" type="Control" parent="MenuContainer/SubTitleMargin"]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="SubTitleLabel" type="Label" parent="MenuContainer/SubTitleMargin/SubTitleContainer"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 34.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 24
-text = "Subtitle"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="MenuButtonsMargin" type="MarginContainer" parent="MenuContainer"]
 layout_mode = 2
