@@ -182,6 +182,7 @@ color = Color(0, 0, 0, 1)
 [node name="IntroMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_usq7x")
 volume_db = -1.005
+bus = &"Music"
 
 [node name="Image" type="Sprite2D" parent="."]
 position = Vector2(960, 379)

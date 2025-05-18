@@ -146,6 +146,7 @@ color = Color(0, 0, 0, 1)
 [node name="LostMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_l0p4n")
 volume_db = -1.005
+bus = &"Music"
 
 [node name="Image" type="Sprite2D" parent="."]
 position = Vector2(960, 379)
