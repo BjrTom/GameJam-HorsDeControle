@@ -178,7 +178,7 @@ offset_bottom = 1163.0
 theme_override_colors/font_color = Color(1, 1, 1, 0)
 theme_override_fonts/font = ExtResource("4_r7i0h")
 theme_override_font_sizes/font_size = 50
-text = "Votre infinie richesse et grande longévité fait désormais de vous la terreur de tous les casinos du monde !"
+text = "Votre infinie richesse et grande longévité font désormais de vous la terreur de tous les casinos du monde !"
 horizontal_alignment = 1
 autowrap_mode = 3
 
