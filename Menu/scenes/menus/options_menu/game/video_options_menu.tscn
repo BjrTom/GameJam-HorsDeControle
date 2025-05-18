@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdutitf6jhkkf"]
+
+[ext_resource type="Script" uid="uid://q6sj5ongdx5i" path="res://Menu/scenes/menus/options_menu/game/video_options_menu.gd" id="1_frjwr"]
+[ext_resource type="PackedScene" uid="uid://b6bl3n5mp3m1e" path="res://addons/maaacks_menus_template/base/scenes/menus/options_menu/option_control/list_option_control.tscn" id="1_mnv8p"]
+[ext_resource type="PackedScene" uid="uid://bsxh6v7j0257h" path="res://addons/maaacks_menus_template/base/scenes/menus/options_menu/option_control/toggle_option_control.tscn" id="2_frjwr"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_frjwr")
+
+[node name="GameOption" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 837.0
+offset_top = 337.0
+offset_right = 1092.0
+offset_bottom = 465.0
+
+[node name="CensorToggle" parent="GameOption" instance=ExtResource("2_frjwr")]
+layout_mode = 2
+option_name = "Censor"
+key = "Censor"
+
+[node name="DifficultyControl" parent="GameOption" instance=ExtResource("1_mnv8p")]
+layout_mode = 2
+alignment = 1
+option_values = ["Easy", "Normal", "Hard", "Endless"]
+option_titles = ["Easy", "Normal", "Hard", "Endless"]
+option_name = "Difficulty"
+option_section = 4
+key = "Difficulty"
+section = "GameSettings"
+property_type = 4
+
+[node name="StartingCashControl" parent="GameOption" instance=ExtResource("1_mnv8p")]
+layout_mode = 2
+option_values = ["1$", "5$", "10$"]
+option_titles = ["1$", "5$", "10$"]
+lock_config_names = true
+option_name = "Starting Cash"
+option_section = 4
+key = "StartingCash"
+section = "GameSettings"
+property_type = 4
+
+[connection signal="setting_changed" from="GameOption/CensorToggle" to="." method="_on_censor_toggle_setting_changed"]
+[connection signal="setting_changed" from="GameOption/DifficultyControl" to="." method="_on_difficulty_control_setting_changed"]
+[connection signal="setting_changed" from="GameOption/StartingCashControl" to="." method="_on_starting_cash_control_setting_changed"]

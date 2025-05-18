@@ -57,7 +57,7 @@ func _ready():
 	display_chips()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if (!autoChangeAnimation):
 		return
 	if ($DrunkLevel.value >= 0 and $DrunkLevel.value < 2):
@@ -237,7 +237,6 @@ func newRound():
 
 func chooseBet():
 	var value: int = $DrunkLevel.value - 1
-	var dollar_value = [1, 10, 100]
 	var values = []
 	
 	for i in nb[value]:

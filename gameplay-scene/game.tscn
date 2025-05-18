@@ -225,6 +225,40 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_k58ic"]
+resource_name = "angry"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [32, 33, 34, 35, 36, 37, 38, 39]
+}
+
+[sub_resource type="Animation" id="Animation_21bi7"]
+resource_name = "blackout"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [41, 42, 43, 44, 45, 46, 47, 40]
+}
+
 [sub_resource type="Animation" id="Animation_vflar"]
 resource_name = "drunk"
 length = 1.6
@@ -291,40 +325,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [8, 9, 10, 11, 12, 13, 14, 15]
-}
-
-[sub_resource type="Animation" id="Animation_k58ic"]
-resource_name = "angry"
-length = 1.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [32, 33, 34, 35, 36, 37, 38, 39]
-}
-
-[sub_resource type="Animation" id="Animation_21bi7"]
-resource_name = "blackout"
-length = 1.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [41, 42, 43, 44, 45, 46, 47, 40]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mnx84"]
@@ -602,7 +602,7 @@ texture_over = ExtResource("5_lva1i")
 texture_progress = ExtResource("4_fqy1j")
 tint_progress = Color(0, 0.141187, 0.999999, 1)
 
-[node name="Anger" type="Label" parent="."]
+[node name="Drunk" type="Label" parent="."]
 layout_mode = 0
 offset_left = 141.0
 offset_top = 1000.0
@@ -611,7 +611,7 @@ offset_bottom = 1022.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_sviuc")
 theme_override_font_sizes/font_size = 22
-text = "Anger"
+text = "Drunk"
 
 [node name="PatienceLevel" type="TextureProgressBar" parent="."]
 layout_mode = 0
@@ -626,16 +626,16 @@ texture_over = ExtResource("5_lva1i")
 texture_progress = ExtResource("4_fqy1j")
 tint_progress = Color(0.877346, 3.87453e-06, 1.2514e-06, 1)
 
-[node name="Patience" type="Label" parent="."]
+[node name="Anger" type="Label" parent="."]
 layout_mode = 0
-offset_left = 109.0
-offset_top = 1046.0
-offset_right = 285.0
-offset_bottom = 1068.0
+offset_left = 140.0
+offset_top = 1045.0
+offset_right = 250.0
+offset_bottom = 1067.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_sviuc")
 theme_override_font_sizes/font_size = 22
-text = "Patience"
+text = "Anger"
 
 [node name="AllBet" type="VBoxContainer" parent="."]
 layout_mode = 0
