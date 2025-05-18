@@ -365,26 +365,21 @@ tree_root = SubResource("AnimationNodeStateMachine_vikuh")
 anim_player = NodePath("../MenuAnimationPlayer")
 parameters/conditions/intro_done = false
 
-[node name="BackgroundMusicPlayer" parent="." index="3"]
-bus = &"Master"
-
 [node name="VersionContainer" parent="VersionMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
-
-[node name="VersionLabel" parent="VersionMargin/VersionContainer" index="0"]
-text = "v0.0.1"
 
 [node name="TitleContainer" parent="MenuContainer/TitleMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
 
-[node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" index="0"]
-text = "Blackout Blackjack"
+[node name="TextureRect" parent="MenuContainer/TitleMargin/TitleContainer" index="0"]
+layout_mode = 0
+offset_left = 830.0
+offset_top = 0.0
+offset_right = 1084.0
+offset_bottom = 254.0
 
-[node name="SubTitleContainer" parent="MenuContainer/SubTitleMargin" index="0"]
-modulate = Color(1, 1, 1, 0)
-
-[node name="SubTitleLabel" parent="MenuContainer/SubTitleMargin/SubTitleContainer" index="0"]
-text = "Yepee"
+[node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" index="1"]
+vertical_alignment = 2
 
 [node name="MenuButtonsContainer" parent="MenuContainer/MenuButtonsMargin" index="0"]
 modulate = Color(1, 1, 1, 0)

@@ -370,9 +370,9 @@ func clear_chips():
 func display_chips():
 	var amount = dollars if dollars < 1000 else 999
 	var betAmount = bet if bet < 1000 else 999
-	var chip_one = "res://assets/images/chips1.png"
-	var chip_ten = "res://assets/images/chips10.png"
-	var chip_hundred = "res://assets/images/chips100.png"
+	var chip_one = "res://assets/images/chips/chips1.png"
+	var chip_ten = "res://assets/images/chips/chips10.png"
+	var chip_hundred = "res://assets/images/chips/chips100.png"
 	clear_chips()
 	amount = load_chipsize(amount, $Chips/Chips100stack, 100, chip_hundred)
 	amount = load_chipsize(amount, $Chips/Chips10stack, 10, chip_ten)
