@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dipp1hsk04koc"
+path="res://.godot/imported/04 Casino Select.mp3-5536b02a75f7207827ac0dc8353c70f0.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/04 Casino Select.mp3"
+dest_files=["res://.godot/imported/04 Casino Select.mp3-5536b02a75f7207827ac0dc8353c70f0.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=122.0
+beat_count=50
+bar_beats=4

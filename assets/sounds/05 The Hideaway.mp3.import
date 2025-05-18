@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://y6xucw8v4mi5"
+path="res://.godot/imported/05 The Hideaway.mp3-6c412ad6c73a188e586340d2e53a8f08.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/05 The Hideaway.mp3"
+dest_files=["res://.godot/imported/05 The Hideaway.mp3-6c412ad6c73a188e586340d2e53a8f08.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=109.0
+beat_count=35
+bar_beats=4

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ckgnjj63t4gsj"]
+[gd_scene load_steps=12 format=3 uid="uid://ckgnjj63t4gsj"]
 
 [ext_resource type="Script" uid="uid://dl4jnin5ka3r3" path="res://gameplay-scene/Introduction/intro.gd" id="1_jk87c"]
 [ext_resource type="AudioStream" uid="uid://dipp1hsk04koc" path="res://assets/sounds/04 Casino Select.mp3" id="2_usq7x"]
@@ -46,18 +46,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0.490196, 1, 0.454902, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("IntroMusic:attenuation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
 }
 
 [sub_resource type="Animation" id="Animation_usq7x"]
@@ -140,41 +128,18 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.741176), Color(1, 1, 1, 0.494118), Color(1, 1, 1, 0.247059), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_g0d3l"]
-resource_name = "fade_audio"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("IntroMusic:attenuation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1e-05, 6.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_304ha"]
 _data = {
 &"RESET": SubResource("Animation_0fnvg"),
 &"appear": SubResource("Animation_qyb4b"),
-&"fade_audio": SubResource("Animation_g0d3l"),
 &"leave": SubResource("Animation_afxn7"),
 &"text_fade": SubResource("Animation_usq7x")
 }
 
 [sub_resource type="Theme" id="Theme_usq7x"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g0d3l"]
-bg_color = Color(0.321728, 0.321728, 0.321728, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_usq7x"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afxn7"]
-bg_color = Color(0, 0, 0, 0)
+bg_color = Color(0, 0, 0, 1)
 
 [node name="Intro" type="Control"]
 layout_mode = 3
@@ -193,7 +158,6 @@ color = Color(0, 0, 0, 1)
 
 [node name="IntroMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_usq7x")
-volume_db = -1.005
 
 [node name="Image" type="Sprite2D" parent="."]
 position = Vector2(960, 379)
@@ -240,7 +204,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 0)
 theme_override_fonts/font = ExtResource("4_g0d3l")
 theme_override_font_sizes/font_size = 50
 text = "
-Mais attention, la politique du casino dicte que tout gagnant se voit offrir un verre de leur meilleur bourbon ! Et un verre comme ça, ça ne se refuse pas..."
+Mais attention, la politique du casino dicte que tout gagnant se voient offrir un verre de leur meilleur bourbon ! Et un verre comme ça, ça ne se refuse pas..."
 horizontal_alignment = 3
 autowrap_mode = 3
 
@@ -279,11 +243,8 @@ offset_top = 694.0
 offset_right = 1094.0
 offset_bottom = 762.0
 theme = SubResource("Theme_usq7x")
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_g0d3l")
 theme_override_font_sizes/font_size = 60
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_g0d3l")
-theme_override_styles/hover = SubResource("StyleBoxFlat_usq7x")
 theme_override_styles/normal = SubResource("StyleBoxFlat_afxn7")
 disabled = true
 text = "Continue"
