@@ -607,54 +607,6 @@ theme_override_fonts/font = ExtResource("2_sviuc")
 theme_override_font_sizes/font_size = 25
 text = "EXIT"
 
-[node name="DrunkLevel" type="TextureProgressBar" parent="."]
-layout_mode = 0
-offset_left = -3.0
-offset_top = 979.0
-offset_right = 78.0
-offset_bottom = 995.0
-scale = Vector2(5, 4)
-max_value = 8.0
-texture_under = ExtResource("4_fqy1j")
-texture_over = ExtResource("5_lva1i")
-texture_progress = ExtResource("4_fqy1j")
-tint_progress = Color(0, 0.141187, 0.999999, 1)
-
-[node name="Drunk" type="Label" parent="."]
-layout_mode = 0
-offset_left = 141.0
-offset_top = 1000.0
-offset_right = 251.0
-offset_bottom = 1022.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_sviuc")
-theme_override_font_sizes/font_size = 22
-text = "Drunk"
-
-[node name="PatienceLevel" type="TextureProgressBar" parent="."]
-layout_mode = 0
-offset_left = -3.0
-offset_top = 1025.0
-offset_right = 78.0
-offset_bottom = 1041.0
-scale = Vector2(5, 4)
-max_value = 6.0
-texture_under = ExtResource("4_fqy1j")
-texture_over = ExtResource("5_lva1i")
-texture_progress = ExtResource("4_fqy1j")
-tint_progress = Color(0.877346, 3.87453e-06, 1.2514e-06, 1)
-
-[node name="Anger" type="Label" parent="."]
-layout_mode = 0
-offset_left = 140.0
-offset_top = 1045.0
-offset_right = 250.0
-offset_bottom = 1067.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_sviuc")
-theme_override_font_sizes/font_size = 22
-text = "Anger"
-
 [node name="AllBet" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 1663.0
@@ -807,6 +759,184 @@ stream = ExtResource("13_mnx84")
 volume_db = -5.0
 bus = &"Music"
 parameters/looping = true
+
+[node name="DrunkControl" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DrunkLevel" type="TextureProgressBar" parent="DrunkControl"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 979.0
+offset_right = 78.0
+offset_bottom = 995.0
+scale = Vector2(5, 4)
+max_value = 8.0
+texture_under = ExtResource("4_fqy1j")
+texture_over = ExtResource("5_lva1i")
+texture_progress = ExtResource("4_fqy1j")
+tint_progress = Color(0, 0.141187, 0.999999, 1)
+
+[node name="DrunkBar1" type="ColorRect" parent="DrunkControl"]
+light_mask = 512
+visibility_layer = 512
+offset_left = 46.0
+offset_top = 995.0
+offset_right = 49.0
+offset_bottom = 1027.0
+mouse_filter = 2
+color = Color(0.133333, 0.12549, 0.203922, 1)
+
+[node name="DrunkBar2" type="ColorRect" parent="DrunkControl"]
+light_mask = 512
+visibility_layer = 512
+offset_left = 95.0
+offset_top = 995.0
+offset_right = 98.0
+offset_bottom = 1027.0
+mouse_filter = 2
+color = Color(0.133333, 0.12549, 0.203922, 1)
+
+[node name="DrunkBar3" type="ColorRect" parent="DrunkControl"]
+light_mask = 512
+visibility_layer = 512
+offset_left = 145.0
+offset_top = 995.0
+offset_right = 148.0
+offset_bottom = 1027.0
+mouse_filter = 2
+color = Color(0.133333, 0.12549, 0.203922, 1)
+
+[node name="DrunkBar4" type="ColorRect" parent="DrunkControl"]
+light_mask = 512
+visibility_layer = 512
+offset_left = 195.0
+offset_top = 995.0
+offset_right = 198.0
+offset_bottom = 1027.0
+mouse_filter = 2
+color = Color(0.133333, 0.12549, 0.203922, 1)
+
+[node name="DrunkBar5" type="ColorRect" parent="DrunkControl"]
+light_mask = 512
+visibility_layer = 512
+offset_left = 245.0
+offset_top = 995.0
+offset_right = 248.0
+offset_bottom = 1027.0
+mouse_filter = 2
+color = Color(0.133333, 0.12549, 0.203922, 1)
+
+[node name="DrunkBar6" type="ColorRect" parent="DrunkControl"]
+light_mask = 512
+visibility_layer = 512
+offset_left = 295.0
+offset_top = 995.0
+offset_right = 298.0
+offset_bottom = 1027.0
+mouse_filter = 2
+color = Color(0.133333, 0.12549, 0.203922, 1)
+
+[node name="DrunkBar7" type="ColorRect" parent="DrunkControl"]
+light_mask = 512
+visibility_layer = 512
+offset_left = 345.0
+offset_top = 995.0
+offset_right = 348.0
+offset_bottom = 1027.0
+mouse_filter = 2
+color = Color(0.133333, 0.12549, 0.203922, 1)
+
+[node name="Drunk" type="Label" parent="DrunkControl"]
+layout_mode = 0
+offset_left = 143.0
+offset_top = 999.0
+offset_right = 253.0
+offset_bottom = 1021.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_sviuc")
+theme_override_font_sizes/font_size = 22
+text = "Drunk"
+
+[node name="AngerControl" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PatienceLevel" type="TextureProgressBar" parent="AngerControl"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 1025.0
+offset_right = 78.0
+offset_bottom = 1041.0
+scale = Vector2(5, 4)
+max_value = 6.0
+texture_under = ExtResource("4_fqy1j")
+texture_over = ExtResource("5_lva1i")
+texture_progress = ExtResource("4_fqy1j")
+tint_progress = Color(0.877346, 3.87453e-06, 1.2514e-06, 1)
+
+[node name="AngerBar1" type="ColorRect" parent="AngerControl"]
+light_mask = 512
+visibility_layer = 512
+offset_left = 62.0
+offset_top = 1041.0
+offset_right = 65.0
+offset_bottom = 1073.0
+mouse_filter = 2
+color = Color(0.133333, 0.12549, 0.203922, 1)
+
+[node name="AngerBar2" type="ColorRect" parent="AngerControl"]
+light_mask = 512
+visibility_layer = 512
+offset_left = 128.0
+offset_top = 1041.0
+offset_right = 131.0
+offset_bottom = 1073.0
+mouse_filter = 2
+color = Color(0.133333, 0.12549, 0.203922, 1)
+
+[node name="AngerBar3" type="ColorRect" parent="AngerControl"]
+light_mask = 512
+visibility_layer = 512
+offset_left = 195.0
+offset_top = 1041.0
+offset_right = 198.0
+offset_bottom = 1073.0
+mouse_filter = 2
+color = Color(0.133333, 0.12549, 0.203922, 1)
+
+[node name="AngerBar4" type="ColorRect" parent="AngerControl"]
+light_mask = 512
+visibility_layer = 512
+offset_left = 262.0
+offset_top = 1041.0
+offset_right = 265.0
+offset_bottom = 1073.0
+mouse_filter = 2
+color = Color(0.133333, 0.12549, 0.203922, 1)
+
+[node name="AngerBar5" type="ColorRect" parent="AngerControl"]
+light_mask = 512
+visibility_layer = 512
+offset_left = 329.0
+offset_top = 1041.0
+offset_right = 332.0
+offset_bottom = 1073.0
+mouse_filter = 2
+color = Color(0.133333, 0.12549, 0.203922, 1)
+
+[node name="Anger" type="Label" parent="AngerControl"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 1045.0
+offset_right = 252.0
+offset_bottom = 1067.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_sviuc")
+theme_override_font_sizes/font_size = 22
+text = "Anger"
 
 [connection signal="pressed" from="Buttons/VBoxContainer/Hit" to="." method="_on_hit_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/Stand" to="." method="_on_stand_pressed"]
