@@ -7,7 +7,7 @@
 
 [node name="MainMenu" instance=ExtResource("1_d0671")]
 script = ExtResource("2_igqbr")
-game_scene_path = "uid://d11lim1u2e24i"
+game_scene_path = "uid://ckgnjj63t4gsj"
 options_packed_scene = ExtResource("3_itxjw")
 credits_packed_scene = ExtResource("4_tg1yk")
 

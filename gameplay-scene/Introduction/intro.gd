@@ -15,6 +15,6 @@ func _on_button_pressed() -> void:
 	$Button.disabled = true
 	await get_tree().create_timer(0.5).timeout
 	$Button.visible = false
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(3).timeout
 	$IntroMusic.stop()
 	get_tree().change_scene_to_file("res://gameplay-scene/game.tscn")

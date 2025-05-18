@@ -1,9 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://ckgnjj63t4gsj"]
+[gd_scene load_steps=15 format=3 uid="uid://b6ackyt6v37dp"]
 
-[ext_resource type="Script" uid="uid://dl4jnin5ka3r3" path="res://gameplay-scene/Introduction/intro.gd" id="1_jk87c"]
-[ext_resource type="AudioStream" uid="uid://dipp1hsk04koc" path="res://assets/sounds/04 Casino Select.mp3" id="2_usq7x"]
-[ext_resource type="Texture2D" uid="uid://csjs4kq00jvmw" path="res://assets/images/ending/image.png" id="3_afxn7"]
-[ext_resource type="FontFile" uid="uid://cpwm7d3lrhrkk" path="res://assets/PixelifySans-Regular.ttf" id="4_g0d3l"]
+[ext_resource type="Script" uid="uid://dl5hs2jjm3r0s" path="res://gameplay-scene/OutroLost/outroLost.gd" id="1_l0p4n"]
+[ext_resource type="AudioStream" uid="uid://y6xucw8v4mi5" path="res://assets/sounds/05 The Hideaway.mp3" id="2_l0p4n"]
+[ext_resource type="Texture2D" uid="uid://b3bnkc40vwcg4" path="res://assets/images/ending/image4.png" id="3_l0p4n"]
+[ext_resource type="FontFile" uid="uid://cpwm7d3lrhrkk" path="res://assets/PixelifySans-Regular.ttf" id="4_vp2p2"]
 
 [sub_resource type="Animation" id="Animation_0fnvg"]
 length = 0.001
@@ -22,7 +22,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("IntroMusic:attenuation")
+tracks/1/path = NodePath("LostMusic:attenuation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -42,7 +42,7 @@ tracks/0/path = NodePath("Image:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.757542, 1.53333, 2.25103, 3),
+"times": PackedFloat32Array(0, 0.533333, 1, 1.5, 2),
 "transitions": PackedFloat32Array(581732, 1e+06, 1e+06, 1e+06, 1e+06),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.247059), Color(1, 1, 1, 0.494118), Color(1, 1, 1, 0.741176), Color(1, 1, 1, 1)]
@@ -54,7 +54,7 @@ length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("IntroMusic:attenuation")
+tracks/0/path = NodePath("LostMusic:attenuation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -66,7 +66,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_afxn7"]
 resource_name = "leave"
-length = 3.0
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -74,7 +74,7 @@ tracks/0/path = NodePath("Image:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333, 0.766667, 1.53333, 2.23333, 3),
+"times": PackedFloat32Array(0.0333333, 0.5, 1, 1.5, 2),
 "transitions": PackedFloat32Array(1e+06, 1e+06, 1e+06, 1e+06, 581732),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.741176), Color(1, 1, 1, 0.494118), Color(1, 1, 1, 0.247059), Color(1, 1, 1, 0)]
@@ -82,7 +82,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_usq7x"]
 resource_name = "text_fade"
-length = 25.0
+length = 14.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -98,47 +98,11 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("P2:theme_override_colors/font_color")
+tracks/1/path = NodePath("P3:theme_override_colors/font_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.5, 1.96667, 2.46667, 7.5, 8, 8.49),
-"transitions": PackedFloat32Array(1e+06, 1e+06, 1e+06, 1e+06, 1e+06, 1e+06),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.498039), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.498039), Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("P3:theme_override_colors/font_color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(9, 9.46667, 9.96667, 14.9433, 15.4433, 15.9333),
-"transitions": PackedFloat32Array(1e+06, 1e+06, 1e+06, 1e+06, 1e+06, 1e+06),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.498039), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.498039), Color(1, 1, 1, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("P4:theme_override_colors/font_color")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(10.4667, 10.9333, 11.4333, 16.41, 16.91, 17.4),
-"transitions": PackedFloat32Array(1e+06, 1e+06, 1e+06, 1e+06, 1e+06, 1e+06),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.498039), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.498039), Color(1, 1, 1, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("P5:theme_override_colors/font_color")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(18, 18.4667, 18.9667, 23.9433, 24.4433, 24.9333),
+"times": PackedFloat32Array(7.53333, 8, 8.5, 13.4766, 13.9766, 14.4666),
 "transitions": PackedFloat32Array(1e+06, 1e+06, 1e+06, 1e+06, 1e+06, 1e+06),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.498039), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.498039), Color(1, 1, 1, 0)]
@@ -164,14 +128,14 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afxn7"]
 bg_color = Color(0, 0, 0, 0)
 
-[node name="Intro" type="Control"]
+[node name="Outro" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_jk87c")
+script = ExtResource("1_l0p4n")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -179,33 +143,19 @@ offset_right = 1917.0
 offset_bottom = 1076.0
 color = Color(0, 0, 0, 1)
 
-[node name="IntroMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_usq7x")
+[node name="LostMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_l0p4n")
 volume_db = -1.005
 
 [node name="Image" type="Sprite2D" parent="."]
 position = Vector2(960, 379)
 scale = Vector2(8.56452, 8.56452)
-texture = ExtResource("3_afxn7")
+texture = ExtResource("3_l0p4n")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_304ha")
 }
-
-[node name="P5" type="Label" parent="."]
-layout_mode = 0
-offset_left = 224.0
-offset_top = 658.0
-offset_right = 1689.0
-offset_bottom = 934.0
-theme_override_colors/font_color = Color(1, 1, 1, 0)
-theme_override_fonts/font = ExtResource("4_g0d3l")
-theme_override_font_sizes/font_size = 50
-text = "Tentez de garder votre sang froid, et votre main sûre !
-
-Sinon vous pourriez bien perdre le contrôle..."
-autowrap_mode = 3
 
 [node name="P3" type="Label" parent="."]
 layout_mode = 0
@@ -214,24 +164,10 @@ offset_top = 658.0
 offset_right = 1689.0
 offset_bottom = 934.0
 theme_override_colors/font_color = Color(1, 1, 1, 0)
-theme_override_fonts/font = ExtResource("4_g0d3l")
+theme_override_fonts/font = ExtResource("4_vp2p2")
 theme_override_font_sizes/font_size = 50
-text = "Vous partez à la recherche de cette pierre, qui pourrait apparemment se gagner au blackjack
+text = "Ceci dit, vous n'étiez franchement pas si loin que ça toute chose prise en compte, vous ne voudriez pas revenir demain ? Peut-être que la chance sera plus de votre côté...
 "
-horizontal_alignment = 3
-autowrap_mode = 3
-
-[node name="P4" type="Label" parent="."]
-layout_mode = 0
-offset_left = 224.0
-offset_top = 729.0
-offset_right = 1689.0
-offset_bottom = 1005.0
-theme_override_colors/font_color = Color(1, 1, 1, 0)
-theme_override_fonts/font = ExtResource("4_g0d3l")
-theme_override_font_sizes/font_size = 50
-text = "
-Mais attention, la politique du casino dicte que tout gagnant se voit offrir un verre de leur meilleur bourbon ! Et un verre comme ça, ça ne se refuse pas..."
 horizontal_alignment = 3
 autowrap_mode = 3
 
@@ -242,43 +178,46 @@ offset_top = 658.0
 offset_right = 1689.0
 offset_bottom = 934.0
 theme_override_colors/font_color = Color(1, 1, 1, 0)
-theme_override_fonts/font = ExtResource("4_g0d3l")
+theme_override_fonts/font = ExtResource("4_vp2p2")
 theme_override_font_sizes/font_size = 50
-text = "Vous avez entendu parler d'un casino avec un grand secret:
+text = "Malgré tous vos efforts de parieur professionnel, vous n'avez pas réussi à atteindre assez pour décrocher la pierre...
 "
 horizontal_alignment = 3
 autowrap_mode = 3
 
-[node name="P2" type="Label" parent="."]
-layout_mode = 0
-offset_left = 224.0
-offset_top = 683.0
-offset_right = 1689.0
-offset_bottom = 959.0
-theme_override_colors/font_color = Color(1, 1, 1, 0)
-theme_override_fonts/font = ExtResource("4_g0d3l")
-theme_override_font_sizes/font_size = 50
-text = "
-Il possède une pierre magique permettant de transformer tout ce qu'elle touche en or, et confèrerait une longévité incroyable.
-"
-horizontal_alignment = 3
-autowrap_mode = 3
-
-[node name="Button" type="Button" parent="."]
+[node name="Exit" type="Button" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 827.0
-offset_top = 694.0
-offset_right = 1094.0
-offset_bottom = 762.0
+offset_left = 704.0
+offset_top = 862.0
+offset_right = 1216.0
+offset_bottom = 930.0
 theme = SubResource("Theme_usq7x")
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("4_g0d3l")
+theme_override_fonts/font = ExtResource("4_vp2p2")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_g0d3l")
 theme_override_styles/hover = SubResource("StyleBoxFlat_usq7x")
 theme_override_styles/normal = SubResource("StyleBoxFlat_afxn7")
 disabled = true
-text = "Continue"
+text = "Back to menu"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="Retry" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 860.0
+offset_top = 717.0
+offset_right = 1060.0
+offset_bottom = 785.0
+theme = SubResource("Theme_usq7x")
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_vp2p2")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_g0d3l")
+theme_override_styles/hover = SubResource("StyleBoxFlat_usq7x")
+theme_override_styles/normal = SubResource("StyleBoxFlat_afxn7")
+disabled = true
+text = "Retry"
+
+[connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="Retry" to="." method="_on_Retry_pressed"]

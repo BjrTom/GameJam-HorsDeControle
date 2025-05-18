@@ -781,6 +781,7 @@ tint_progress = Color(0, 0.141187, 0.999999, 1)
 [node name="DrunkBar1" type="ColorRect" parent="DrunkControl"]
 light_mask = 512
 visibility_layer = 512
+layout_mode = 0
 offset_left = 46.0
 offset_top = 995.0
 offset_right = 49.0
@@ -791,6 +792,7 @@ color = Color(0.133333, 0.12549, 0.203922, 1)
 [node name="DrunkBar2" type="ColorRect" parent="DrunkControl"]
 light_mask = 512
 visibility_layer = 512
+layout_mode = 0
 offset_left = 95.0
 offset_top = 995.0
 offset_right = 98.0
@@ -801,6 +803,7 @@ color = Color(0.133333, 0.12549, 0.203922, 1)
 [node name="DrunkBar3" type="ColorRect" parent="DrunkControl"]
 light_mask = 512
 visibility_layer = 512
+layout_mode = 0
 offset_left = 145.0
 offset_top = 995.0
 offset_right = 148.0
@@ -811,6 +814,7 @@ color = Color(0.133333, 0.12549, 0.203922, 1)
 [node name="DrunkBar4" type="ColorRect" parent="DrunkControl"]
 light_mask = 512
 visibility_layer = 512
+layout_mode = 0
 offset_left = 195.0
 offset_top = 995.0
 offset_right = 198.0
@@ -821,6 +825,7 @@ color = Color(0.133333, 0.12549, 0.203922, 1)
 [node name="DrunkBar5" type="ColorRect" parent="DrunkControl"]
 light_mask = 512
 visibility_layer = 512
+layout_mode = 0
 offset_left = 245.0
 offset_top = 995.0
 offset_right = 248.0
@@ -831,6 +836,7 @@ color = Color(0.133333, 0.12549, 0.203922, 1)
 [node name="DrunkBar6" type="ColorRect" parent="DrunkControl"]
 light_mask = 512
 visibility_layer = 512
+layout_mode = 0
 offset_left = 295.0
 offset_top = 995.0
 offset_right = 298.0
@@ -841,6 +847,7 @@ color = Color(0.133333, 0.12549, 0.203922, 1)
 [node name="DrunkBar7" type="ColorRect" parent="DrunkControl"]
 light_mask = 512
 visibility_layer = 512
+layout_mode = 0
 offset_left = 345.0
 offset_top = 995.0
 offset_right = 348.0
@@ -880,6 +887,7 @@ tint_progress = Color(0.877346, 3.87453e-06, 1.2514e-06, 1)
 [node name="AngerBar1" type="ColorRect" parent="AngerControl"]
 light_mask = 512
 visibility_layer = 512
+layout_mode = 0
 offset_left = 62.0
 offset_top = 1041.0
 offset_right = 65.0
@@ -890,6 +898,7 @@ color = Color(0.133333, 0.12549, 0.203922, 1)
 [node name="AngerBar2" type="ColorRect" parent="AngerControl"]
 light_mask = 512
 visibility_layer = 512
+layout_mode = 0
 offset_left = 128.0
 offset_top = 1041.0
 offset_right = 131.0
@@ -900,6 +909,7 @@ color = Color(0.133333, 0.12549, 0.203922, 1)
 [node name="AngerBar3" type="ColorRect" parent="AngerControl"]
 light_mask = 512
 visibility_layer = 512
+layout_mode = 0
 offset_left = 195.0
 offset_top = 1041.0
 offset_right = 198.0
@@ -910,6 +920,7 @@ color = Color(0.133333, 0.12549, 0.203922, 1)
 [node name="AngerBar4" type="ColorRect" parent="AngerControl"]
 light_mask = 512
 visibility_layer = 512
+layout_mode = 0
 offset_left = 262.0
 offset_top = 1041.0
 offset_right = 265.0
@@ -920,6 +931,7 @@ color = Color(0.133333, 0.12549, 0.203922, 1)
 [node name="AngerBar5" type="ColorRect" parent="AngerControl"]
 light_mask = 512
 visibility_layer = 512
+layout_mode = 0
 offset_left = 329.0
 offset_top = 1041.0
 offset_right = 332.0

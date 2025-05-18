@@ -28,8 +28,8 @@ key = "Censor"
 [node name="DifficultyControl" parent="GameOption" instance=ExtResource("1_mnv8p")]
 layout_mode = 2
 alignment = 1
-option_values = ["Easy", "Normal", "Hard", "Endless"]
-option_titles = ["Easy", "Normal", "Hard", "Endless"]
+option_values = ["Easy", "Normal", "Hard", "Endless", "Debug"]
+option_titles = ["Easy", "Normal", "Hard", "Endless", "Debug"]
 option_name = "Difficulty"
 option_section = 4
 key = "Difficulty"

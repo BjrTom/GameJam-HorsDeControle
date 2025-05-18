@@ -1,9 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://ckgnjj63t4gsj"]
+[gd_scene load_steps=15 format=3 uid="uid://dijpeh7cpthyl"]
 
-[ext_resource type="Script" uid="uid://dl4jnin5ka3r3" path="res://gameplay-scene/Introduction/intro.gd" id="1_jk87c"]
-[ext_resource type="AudioStream" uid="uid://dipp1hsk04koc" path="res://assets/sounds/04 Casino Select.mp3" id="2_usq7x"]
-[ext_resource type="Texture2D" uid="uid://csjs4kq00jvmw" path="res://assets/images/ending/image.png" id="3_afxn7"]
-[ext_resource type="FontFile" uid="uid://cpwm7d3lrhrkk" path="res://assets/PixelifySans-Regular.ttf" id="4_g0d3l"]
+[ext_resource type="Script" uid="uid://bjl3xqeetsksh" path="res://gameplay-scene/OutroWon/outroWon.gd" id="1_vxynw"]
+[ext_resource type="AudioStream" uid="uid://cm6hg4iny4the" path="res://assets/sounds/Game Won.mp3" id="2_h3cjv"]
+[ext_resource type="Texture2D" uid="uid://d2xbmqpxwbgt8" path="res://assets/images/ending/image3.png" id="3_h3cjv"]
+[ext_resource type="FontFile" uid="uid://cpwm7d3lrhrkk" path="res://assets/PixelifySans-Regular.ttf" id="4_r7i0h"]
 
 [sub_resource type="Animation" id="Animation_0fnvg"]
 length = 0.001
@@ -22,7 +22,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("IntroMusic:attenuation")
+tracks/1/path = NodePath("WinMusic:attenuation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -54,7 +54,7 @@ length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("IntroMusic:attenuation")
+tracks/0/path = NodePath("WinMusic:attenuation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -90,7 +90,7 @@ tracks/0/path = NodePath("P1:theme_override_colors/font_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333, 0.5, 1, 5.97667, 6.47667, 6.96667),
+"times": PackedFloat32Array(0.0333333, 0.5, 1, 12.01, 12.51, 13),
 "transitions": PackedFloat32Array(1e+06, 1e+06, 1e+06, 1e+06, 1e+06, 1e+06),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.498039), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.498039), Color(1, 1, 1, 0)]
@@ -102,7 +102,7 @@ tracks/1/path = NodePath("P2:theme_override_colors/font_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.5, 1.96667, 2.46667, 7.5, 8, 8.49),
+"times": PackedFloat32Array(2, 2.46667, 2.96667, 12.01, 12.51, 13),
 "transitions": PackedFloat32Array(1e+06, 1e+06, 1e+06, 1e+06, 1e+06, 1e+06),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.498039), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.498039), Color(1, 1, 1, 0)]
@@ -114,31 +114,7 @@ tracks/2/path = NodePath("P3:theme_override_colors/font_color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(9, 9.46667, 9.96667, 14.9433, 15.4433, 15.9333),
-"transitions": PackedFloat32Array(1e+06, 1e+06, 1e+06, 1e+06, 1e+06, 1e+06),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.498039), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.498039), Color(1, 1, 1, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("P4:theme_override_colors/font_color")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(10.4667, 10.9333, 11.4333, 16.41, 16.91, 17.4),
-"transitions": PackedFloat32Array(1e+06, 1e+06, 1e+06, 1e+06, 1e+06, 1e+06),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.498039), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.498039), Color(1, 1, 1, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("P5:theme_override_colors/font_color")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(18, 18.4667, 18.9667, 23.9433, 24.4433, 24.9333),
+"times": PackedFloat32Array(4.03333, 4.5, 5, 12.01, 12.51, 13),
 "transitions": PackedFloat32Array(1e+06, 1e+06, 1e+06, 1e+06, 1e+06, 1e+06),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.498039), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.498039), Color(1, 1, 1, 0)]
@@ -164,14 +140,14 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afxn7"]
 bg_color = Color(0, 0, 0, 0)
 
-[node name="Intro" type="Control"]
+[node name="Outro2" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_jk87c")
+script = ExtResource("1_vxynw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -179,60 +155,31 @@ offset_right = 1917.0
 offset_bottom = 1076.0
 color = Color(0, 0, 0, 1)
 
-[node name="IntroMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_usq7x")
+[node name="WinMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_h3cjv")
 volume_db = -1.005
 
 [node name="Image" type="Sprite2D" parent="."]
 position = Vector2(960, 379)
 scale = Vector2(8.56452, 8.56452)
-texture = ExtResource("3_afxn7")
+texture = ExtResource("3_h3cjv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_304ha")
 }
 
-[node name="P5" type="Label" parent="."]
-layout_mode = 0
-offset_left = 224.0
-offset_top = 658.0
-offset_right = 1689.0
-offset_bottom = 934.0
-theme_override_colors/font_color = Color(1, 1, 1, 0)
-theme_override_fonts/font = ExtResource("4_g0d3l")
-theme_override_font_sizes/font_size = 50
-text = "Tentez de garder votre sang froid, et votre main sûre !
-
-Sinon vous pourriez bien perdre le contrôle..."
-autowrap_mode = 3
-
 [node name="P3" type="Label" parent="."]
 layout_mode = 0
 offset_left = 224.0
-offset_top = 658.0
+offset_top = 887.0
 offset_right = 1689.0
-offset_bottom = 934.0
+offset_bottom = 1163.0
 theme_override_colors/font_color = Color(1, 1, 1, 0)
-theme_override_fonts/font = ExtResource("4_g0d3l")
+theme_override_fonts/font = ExtResource("4_r7i0h")
 theme_override_font_sizes/font_size = 50
-text = "Vous partez à la recherche de cette pierre, qui pourrait apparemment se gagner au blackjack
-"
-horizontal_alignment = 3
-autowrap_mode = 3
-
-[node name="P4" type="Label" parent="."]
-layout_mode = 0
-offset_left = 224.0
-offset_top = 729.0
-offset_right = 1689.0
-offset_bottom = 1005.0
-theme_override_colors/font_color = Color(1, 1, 1, 0)
-theme_override_fonts/font = ExtResource("4_g0d3l")
-theme_override_font_sizes/font_size = 50
-text = "
-Mais attention, la politique du casino dicte que tout gagnant se voit offrir un verre de leur meilleur bourbon ! Et un verre comme ça, ça ne se refuse pas..."
-horizontal_alignment = 3
+text = "Votre infinie richesse et grande longévité fait désormais de vous la terreur de tous les casinos du monde !"
+horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="P1" type="Label" parent="."]
@@ -240,45 +187,42 @@ layout_mode = 0
 offset_left = 224.0
 offset_top = 658.0
 offset_right = 1689.0
-offset_bottom = 934.0
+offset_bottom = 718.0
 theme_override_colors/font_color = Color(1, 1, 1, 0)
-theme_override_fonts/font = ExtResource("4_g0d3l")
+theme_override_fonts/font = ExtResource("4_r7i0h")
 theme_override_font_sizes/font_size = 50
-text = "Vous avez entendu parler d'un casino avec un grand secret:
-"
-horizontal_alignment = 3
+text = "Félicitations !"
+horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="P2" type="Label" parent="."]
 layout_mode = 0
 offset_left = 224.0
-offset_top = 683.0
+offset_top = 744.0
 offset_right = 1689.0
-offset_bottom = 959.0
+offset_bottom = 854.0
 theme_override_colors/font_color = Color(1, 1, 1, 0)
-theme_override_fonts/font = ExtResource("4_g0d3l")
+theme_override_fonts/font = ExtResource("4_r7i0h")
 theme_override_font_sizes/font_size = 50
-text = "
-Il possède une pierre magique permettant de transformer tout ce qu'elle touche en or, et confèrerait une longévité incroyable.
-"
-horizontal_alignment = 3
+text = "Vous avez réussi à triompher du casino et avez pu acquérir la tant convoitée pierre philosophale !"
+horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Button" type="Button" parent="."]
+[node name="Exit" type="Button" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 827.0
-offset_top = 694.0
-offset_right = 1094.0
-offset_bottom = 762.0
+offset_left = 660.0
+offset_top = 715.0
+offset_right = 1260.0
+offset_bottom = 783.0
 theme = SubResource("Theme_usq7x")
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("4_g0d3l")
+theme_override_fonts/font = ExtResource("4_r7i0h")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_g0d3l")
 theme_override_styles/hover = SubResource("StyleBoxFlat_usq7x")
 theme_override_styles/normal = SubResource("StyleBoxFlat_afxn7")
 disabled = true
-text = "Continue"
+text = "Partir Triomphant !"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]

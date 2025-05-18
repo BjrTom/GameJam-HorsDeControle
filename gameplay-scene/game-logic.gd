@@ -5,7 +5,7 @@ extends Control
 #/* -------------------------------------------------------------------------- */
 
 var goal = 200
-var goalList = [200, 500, 1000, 99999999]
+var goalList = [200, 500, 1000, 99999999, 20]
 var card_names = []
 var card_values = []
 var card_images = {}
@@ -57,7 +57,7 @@ func _ready():
 	$SFX/RegularMusic.play()
 	goal = goalList[Global.diff]
 	dollars = Global.startCash
-	
+	print(goalList[Global.diff])
 	get_tree().root.content_scale_factor
 	checkBet()
 	display_chips()
@@ -66,15 +66,15 @@ func _ready():
 func _process(_delta):
 	if (!autoChangeAnimation):
 		return
-	if ($DrunkLevel.value >= 0 and $DrunkLevel.value < 2):
+	if ($DrunkControl/DrunkLevel.value >= 0 and $DrunkControl/DrunkLevel.value < 2):
 		handleAnimation("sober")
-	if ($DrunkLevel.value >= 2 and $DrunkLevel.value < 4):
+	if ($DrunkControl/DrunkLevel.value >= 2 and $DrunkControl/DrunkLevel.value < 4):
 		handleAnimation("tipsy")
-	if ($DrunkLevel.value >= 4 and $DrunkLevel.value < 6):
+	if ($DrunkControl/DrunkLevel.value >= 4 and $DrunkControl/DrunkLevel.value < 6):
 		handleAnimation("hiccup")
-	if ($DrunkLevel.value >= 6):
+	if ($DrunkControl/DrunkLevel.value >= 6):
 		handleAnimation("drunk")
-	#$DrunkLevel.value += 0.25
+	#$DrunkControl/DrunkLevel.value += 0.25
 
 #/* -------------------------------------------------------------------------- */
 #/*                              Buttons Function                              */
@@ -199,10 +199,13 @@ func endRound():
 	bet = 0
 	display_chips()
 	checkBet()
-	if $PatienceLevel.value == 6:
+	if $AngerControl/PatienceLevel.value == 6:
 		chooseAction()
-		$PatienceLevel.value = 0
+		$AngerControl/PatienceLevel.value = 0
 	$Goal.visible = true
+	if (dollars >= goal):
+		get_tree().change_scene_to_file("res://gameplay-scene/OutroWon/OutroWon.tscn")
+
 
 func newRound():
 	$Goal.visible = false
@@ -231,7 +234,7 @@ func newRound():
 		call(action)
 		doAction = false
 		await get_tree().create_timer(0.5).timeout
-		$DrunkLevel.value /= 2
+		$DrunkControl/DrunkLevel.value /= 2
 		$Sprite2D/AnimationPlayer2.play("blackout")
 		$SFX/PanicMusic.stop()
 		await get_tree().create_timer(1.6).timeout
@@ -244,7 +247,7 @@ func newRound():
 
 
 func chooseBet():
-	var value: int = $DrunkLevel.value - 1
+	var value: int = $DrunkControl/DrunkLevel.value - 1
 	var values = []
 	
 	for i in nb[value]:
@@ -354,16 +357,16 @@ func playerLose(blackjack=false):
 	if blackjack:
 		$Popup/DealerBlackJack.visible = true
 		$AnimationPlayer.play("BlackJackAnimationD")
-		$PatienceLevel.value += 1
-	$PatienceLevel.value += 1
+		$AngerControl/PatienceLevel.value += 1
+	$AngerControl/PatienceLevel.value += 1
 	$SFX/Lose.play()
 	autoChangeAnimation = false;
 	$Sprite2D/AnimationPlayer2.play("angry")
 	await get_tree().create_timer(1.6).timeout
 	autoChangeAnimation = true;
 	#$Sprite2D/AnimationPlayer2.play("sober") # Jouer la meilleure animation
-	if (dollars == 0):
-		get_tree().change_scene_to_file("res://Menu/scenes/menus/main_menu/main_menu.tscn")
+	if (dollars <= 0):
+		get_tree().change_scene_to_file("res://gameplay-scene/OutroLost/OutroLost.tscn")
 	endRound()
 
 func playerWin(blackjack=false):
@@ -374,8 +377,8 @@ func playerWin(blackjack=false):
 	if playerScore == 21:
 		$Popup/PlayerBlackJack.visible = true
 		$AnimationPlayer.play("BlackJackAnimationP")
-		$DrunkLevel.value += 1
-	$DrunkLevel.value += 1
+		$DrunkControl/DrunkLevel.value += 1
+	$DrunkControl/DrunkLevel.value += 1
 	endRound()
 
 func playerDraw():
@@ -404,11 +407,11 @@ func chooseAction():
 	$SFX/RegularMusic.stop()
 	$SFX/PanicMusic.play()
 	$Sprite2D/AnimationPlayer2.play("angry")
-	var curlevel: int = ceil($DrunkLevel.value / 2) - 1
+	var curlevel: int = ceil($DrunkControl/DrunkLevel.value / 2) - 1
 	doAction = true
 	action = actionTab[curlevel][1]
 	await call(actionTab[curlevel][0])
-	$PatienceLevel.value = 0
+	$AngerControl/PatienceLevel.value = 0
 
 func randomMove():
 	var rng = RandomNumberGenerator.new()
