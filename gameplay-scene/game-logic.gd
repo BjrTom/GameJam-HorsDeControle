@@ -48,7 +48,6 @@ func _ready():
 	$Buttons/VBoxContainer/Hit.disabled = true
 	$Buttons/VBoxContainer/Stand.disabled = true
 	
-	fillArray()
 	get_tree().root.content_scale_factor
 	checkBet()
 	display_chips()
