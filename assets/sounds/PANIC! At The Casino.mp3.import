@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://8xfb5hw1485s"
+path="res://.godot/imported/PANIC! At The Casino.mp3-18805c11f34aada7ed14a9c9d970309f.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/PANIC! At The Casino.mp3"
+dest_files=["res://.godot/imported/PANIC! At The Casino.mp3-18805c11f34aada7ed14a9c9d970309f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

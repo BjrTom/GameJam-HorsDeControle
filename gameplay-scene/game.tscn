@@ -1,19 +1,18 @@
-[gd_scene load_steps=30 format=3 uid="uid://d11lim1u2e24i"]
+[gd_scene load_steps=29 format=3 uid="uid://d11lim1u2e24i"]
 
 [ext_resource type="Script" uid="uid://djkeiiqn5hebi" path="res://gameplay-scene/game-logic.gd" id="1_n2enm"]
 [ext_resource type="FontFile" uid="uid://cpwm7d3lrhrkk" path="res://assets/PixelifySans-Regular.ttf" id="2_dl2ym"]
 [ext_resource type="FontFile" uid="uid://ddmd7pp0hamna" path="res://assets/PublicPixel.ttf" id="2_sviuc"]
 [ext_resource type="Texture2D" uid="uid://bqs4nqlic75wl" path="res://assets/images/health2.png" id="4_fqy1j"]
 [ext_resource type="Texture2D" uid="uid://dgkkv5vuo3qsu" path="res://assets/images/health1.png" id="5_lva1i"]
-[ext_resource type="Texture2D" uid="uid://cfprb7wikjy48" path="res://assets/images/player/BlackoutGuy.png" id="7_387hk"]
+[ext_resource type="Texture2D" uid="uid://b0qctgapomy8x" path="res://assets/images/player/Guy_full.png" id="6_mnx84"]
 [ext_resource type="AudioStream" uid="uid://ynf10b40e557" path="res://assets/sounds/button.ogg" id="8_m3mv0"]
 [ext_resource type="AudioStream" uid="uid://blgblgl1uw2ev" path="res://assets/sounds/chips1.ogg" id="9_bwecg"]
 [ext_resource type="AudioStream" uid="uid://cqonduscxpg0i" path="res://assets/sounds/card.ogg" id="10_lva1i"]
 [ext_resource type="AudioStream" uid="uid://c8jdga4ilhd4g" path="res://assets/sounds/holo1.ogg" id="11_vflar"]
+[ext_resource type="AudioStream" uid="uid://8xfb5hw1485s" path="res://assets/sounds/PANIC! At The Casino.mp3" id="12_k58ic"]
 [ext_resource type="AudioStream" uid="uid://dybxsjkwjgf2j" path="res://assets/sounds/negative.ogg" id="12_vflar"]
-[ext_resource type="AudioStream" uid="uid://c6pfwv03lb5jm" path="res://assets/sounds/voice1.ogg" id="13_21bi7"]
-[ext_resource type="AudioStream" uid="uid://8n2dn7wrboa5" path="res://assets/sounds/voice2.ogg" id="14_0om1j"]
-[ext_resource type="AudioStream" uid="uid://cpcfhyppfuevx" path="res://assets/sounds/voice3.ogg" id="15_fymoh"]
+[ext_resource type="AudioStream" uid="uid://yny51eb50gqv" path="res://assets/sounds/Vegas Stakes (SNES) - Golden Palace.mp3" id="13_mnx84"]
 
 [sub_resource type="Animation" id="Animation_387hk"]
 resource_name = "BlackJackAnimationD"
@@ -226,23 +225,6 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_k58ic"]
-resource_name = "blackout"
-length = 1.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [32, 33, 34, 35, 36, 37, 38, 39]
-}
-
 [sub_resource type="Animation" id="Animation_vflar"]
 resource_name = "drunk"
 length = 1.6
@@ -311,23 +293,50 @@ tracks/0/keys = {
 "values": [8, 9, 10, 11, 12, 13, 14, 15]
 }
 
+[sub_resource type="Animation" id="Animation_k58ic"]
+resource_name = "angry"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [32, 33, 34, 35, 36, 37, 38, 39]
+}
+
+[sub_resource type="Animation" id="Animation_21bi7"]
+resource_name = "blackout"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [41, 42, 43, 44, 45, 46, 47, 40]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mnx84"]
 _data = {
 &"RESET": SubResource("Animation_bwecg"),
-&"angry": SubResource("Animation_mnx84"),
-&"blackout": SubResource("Animation_k58ic"),
+&"angry": SubResource("Animation_k58ic"),
+&"blackout": SubResource("Animation_21bi7"),
 &"drunk": SubResource("Animation_vflar"),
 &"hiccup": SubResource("Animation_lva1i"),
 &"sober": SubResource("Animation_m3mv0"),
 &"tipsy": SubResource("Animation_fqy1j")
 }
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_21bi7"]
-random_pitch = 1.3
-streams_count = 3
-stream_0/stream = ExtResource("13_21bi7")
-stream_1/stream = ExtResource("14_0om1j")
-stream_2/stream = ExtResource("15_fymoh")
 
 [node name="Gameplay" type="Control" groups=["Bouttons"]]
 layout_mode = 3
@@ -525,10 +534,10 @@ anchors_preset = -1
 anchor_right = 0.083
 anchor_bottom = 0.151
 offset_left = 91.0
-offset_top = 100.0
+offset_top = 200.0
 offset_right = 221.68
-offset_bottom = 173.96
-theme_override_colors/font_color = Color(0.490196, 1, 0.454902, 1)
+offset_bottom = 273.96
+theme_override_colors/font_color = Color(0.490196, 1, 0.454902, 0)
 theme_override_fonts/font = ExtResource("2_dl2ym")
 theme_override_font_sizes/font_size = 80
 text = "hit!"
@@ -737,10 +746,10 @@ theme_override_constants/separation = -121
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(217, 858)
 scale = Vector2(8.00469, 8.00469)
-texture = ExtResource("7_387hk")
+texture = ExtResource("6_mnx84")
 flip_h = true
 hframes = 8
-vframes = 5
+vframes = 6
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Sprite2D"]
 root_node = NodePath("../..")
@@ -772,26 +781,14 @@ stream = ExtResource("12_vflar")
 volume_db = -5.0
 bus = &"Sfx"
 
-[node name="Voice" type="AudioStreamPlayer2D" parent="SFX"]
-stream = ExtResource("13_21bi7")
-volume_db = -5.0
-bus = &"Sfx"
-parameters/looping = true
+[node name="PanicMusic" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("12_k58ic")
 
-[node name="Voice2" type="AudioStreamPlayer2D" parent="SFX"]
-stream = ExtResource("14_0om1j")
+[node name="RegularMusic" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("13_mnx84")
 volume_db = -5.0
-bus = &"Sfx"
+bus = &"Music"
 parameters/looping = true
-
-[node name="Voice3" type="AudioStreamPlayer2D" parent="SFX"]
-stream = ExtResource("15_fymoh")
-volume_db = -5.0
-bus = &"Sfx"
-parameters/looping = true
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX"]
-stream = SubResource("AudioStreamRandomizer_21bi7")
 
 [connection signal="pressed" from="Buttons/VBoxContainer/Hit" to="." method="_on_hit_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/Stand" to="." method="_on_stand_pressed"]

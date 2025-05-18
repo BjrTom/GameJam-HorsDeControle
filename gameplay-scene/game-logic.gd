@@ -15,6 +15,7 @@ var bet = 0;
 var cardsShuffled = {}
 var ace_found
 var dollars = 10
+var autoChangeAnimation = true
 var doAction = false
 var action = ""
 var nb = [2, 3, 4, 2, 2, 3, 3, 5]
@@ -49,6 +50,7 @@ func _ready():
 	
 	$Buttons/VBoxContainer/Hit.disabled = true
 	$Buttons/VBoxContainer/Stand.disabled = true
+	$SFX/RegularMusic.play()
 	
 	get_tree().root.content_scale_factor
 	checkBet()
@@ -56,6 +58,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if (!autoChangeAnimation):
+		return
 	if ($DrunkLevel.value >= 0 and $DrunkLevel.value < 2):
 		handleAnimation("sober")
 	if ($DrunkLevel.value >= 2 and $DrunkLevel.value < 4):
@@ -78,9 +82,9 @@ func _on_hit_pressed():
 	$Popup/PlayerHitMarker.visible = true
 	$AnimationPlayer.play("HitAnimationP")
 	updateText()
-	if playerScore == 21:
-		_on_stand_pressed()  # Player auto-stands on 21
-	elif playerScore > 21:
+	#if playerScore == 21:
+		#_on_stand_pressed()  # Player auto-stands on 21
+	if playerScore > 21:
 		check_aces()  # Check to see if any 11-aces can convert to 1-aces
 		if playerScore > 21:  # Score still surpasses 21
 			$Popup/PlayerHitMarker.visible = false
@@ -100,10 +104,10 @@ func _on_stand_pressed():
 	$Buttons/VBoxContainer/Stand.disabled = true
 	$Buttons/VBoxContainer/OptimalMove.disabled = true
 	$WhoseTurn.text = "Dealer's\nTurn"
-	
+
 	await get_tree().create_timer(0.5).timeout
 	var dealer_hand_container = $Cards/Hands/DealerHand
-	
+
 	# Remove the first card from the container (the back of card texture)
 	var child_to_remove = dealer_hand_container.get_child(0)
 	child_to_remove.queue_free()  # Remove the node from the scene
@@ -147,6 +151,7 @@ func _on_stand_pressed():
 
 # Called when exit button is pressed
 func _on_exit_pressed():
+	$SFX/Bouton.play()
 	get_tree().change_scene_to_file("res://Menu/scenes/menus/main_menu/main_menu.tscn")
 
 # Called when dollars button is pressed
@@ -163,6 +168,7 @@ func _on_bet_dollars_pressed(new_bet: int) -> void:
 
 # Called when bet button is pressed
 func _on_bet_button_pressed() -> void:
+	$SFX/Bouton.play()
 	display_chips()
 	newRound()
 
@@ -218,13 +224,16 @@ func newRound():
 		doAction = false
 		await get_tree().create_timer(0.5).timeout
 		$DrunkLevel.value /= 2
+		$Sprite2D/AnimationPlayer2.play("blackout")
+		$SFX/PanicMusic.stop()
+		await get_tree().create_timer(1.6).timeout
+		autoChangeAnimation = true;
+		$SFX/RegularMusic.play()
 
 	else:
 		$Buttons/VBoxContainer/Hit.disabled = false
 		$Buttons/VBoxContainer/Stand.disabled = false
 
-	if playerScore == 21:
-		playerWin(true)
 
 func chooseBet():
 	var value: int = $DrunkLevel.value - 1
@@ -333,13 +342,18 @@ func generate_card(hand, back=false):
 	card_hand_container.add_child(card_texture_rect)
 
 func playerLose(blackjack=false):
+	$Buttons/VBoxContainer/Hit.disabled = true
+	$Buttons/VBoxContainer/Stand.disabled = true
 	if blackjack:
 		$Popup/DealerBlackJack.visible = true
 		$AnimationPlayer.play("BlackJackAnimationD")
 		$PatienceLevel.value += 1
 	$PatienceLevel.value += 1
-	#$Sprite2D/AnimationPlayer2.play("angry")
-	#await get_tree().create_timer(1.6).timeout
+	$SFX/Lose.play()
+	autoChangeAnimation = false;
+	$Sprite2D/AnimationPlayer2.play("angry")
+	await get_tree().create_timer(1.6).timeout
+	autoChangeAnimation = true;
 	#$Sprite2D/AnimationPlayer2.play("sober") # Jouer la meilleure animation
 	if (dollars == 0):
 		get_tree().change_scene_to_file("res://Menu/scenes/menus/main_menu/main_menu.tscn")
@@ -350,7 +364,7 @@ func playerWin(blackjack=false):
 	dollars += (bet * 2)
 	# Player has won: display text (already set if not blackjack),
 	# display buttons and ask to play again
-	if blackjack:
+	if playerScore == 21:
 		$Popup/PlayerBlackJack.visible = true
 		$AnimationPlayer.play("BlackJackAnimationP")
 		$DrunkLevel.value += 1
@@ -379,6 +393,10 @@ func chooseAction():
 	$Buttons/VBoxContainer/Hit.disabled = true
 	$Buttons/VBoxContainer/Stand.disabled = true
 	# choose action with drunk level
+	autoChangeAnimation = false
+	$SFX/RegularMusic.stop()
+	$SFX/PanicMusic.play()
+	$Sprite2D/AnimationPlayer2.play("angry")
 	var curlevel: int = ceil($DrunkLevel.value / 2) - 1
 	doAction = true
 	action = actionTab[curlevel][1]

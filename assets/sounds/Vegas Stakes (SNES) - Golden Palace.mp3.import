@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://yny51eb50gqv"
+path="res://.godot/imported/Vegas Stakes (SNES) - Golden Palace.mp3-116b9bf7776db4d206d8c798443a8308.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Vegas Stakes (SNES) - Golden Palace.mp3"
+dest_files=["res://.godot/imported/Vegas Stakes (SNES) - Golden Palace.mp3-116b9bf7776db4d206d8c798443a8308.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
