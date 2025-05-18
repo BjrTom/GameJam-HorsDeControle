@@ -53,6 +53,7 @@ func _ready():
 	$BetButton.disabled = true
 	$Buttons/VBoxContainer/Hit.disabled = true
 	$Buttons/VBoxContainer/Stand.disabled = true
+	$Buttons/VBoxContainer/Hit.grab_focus()
 	$SFX/RegularMusic.play()
 	goal = goalList[Global.diff]
 	dollars = Global.startCash

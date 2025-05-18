@@ -4,7 +4,8 @@ enum DIFFICULTY {
 	EASY,
 	NORMAL,
 	HARD,
-	ENDLESS
+	ENDLESS,
+	DEBUG
 }
 
 var censor: bool = false
