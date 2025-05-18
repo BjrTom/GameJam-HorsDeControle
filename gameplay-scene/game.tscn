@@ -445,23 +445,6 @@ theme_override_fonts/font = ExtResource("2_sviuc")
 theme_override_font_sizes/font_size = 42
 horizontal_alignment = 1
 
-[node name="Goal" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.083
-anchor_bottom = 0.151
-offset_left = 502.0
-offset_top = 943.0
-offset_right = 585.64
-offset_bottom = 866.92
-theme_override_colors/font_color = Color(0.490196, 1, 0.454902, 1)
-theme_override_fonts/font = ExtResource("2_sviuc")
-theme_override_font_sizes/font_size = 27
-text = "blablabla
-blablabla
-blabla"
-horizontal_alignment = 1
-
 [node name="NumberBar" type="ColorRect" parent="."]
 show_behind_parent = true
 light_mask = 512
@@ -497,6 +480,24 @@ offset_right = 1953.0
 offset_bottom = 1106.0
 mouse_filter = 2
 color = Color(0.168627, 0.168627, 0.168627, 1)
+
+[node name="Goal" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.083
+anchor_bottom = 0.151
+offset_left = 462.0
+offset_top = 892.0
+offset_right = 545.64
+offset_bottom = 845.92
+theme_override_colors/font_color = Color(0.490196, 1, 0.454902, 1)
+theme_override_fonts/font = ExtResource("2_sviuc")
+theme_override_font_sizes/font_size = 27
+text = "blablabla
+blablabla
+blablabla
+"
+horizontal_alignment = 1
 
 [node name="Popup" type="Control" parent="."]
 anchors_preset = 0
@@ -619,6 +620,17 @@ texture_over = ExtResource("5_lva1i")
 texture_progress = ExtResource("4_fqy1j")
 tint_progress = Color(0, 0.141187, 0.999999, 1)
 
+[node name="Drunk" type="Label" parent="."]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 1000.0
+offset_right = 251.0
+offset_bottom = 1022.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_sviuc")
+theme_override_font_sizes/font_size = 22
+text = "Drunk"
+
 [node name="PatienceLevel" type="TextureProgressBar" parent="."]
 layout_mode = 0
 offset_left = -3.0
@@ -631,6 +643,17 @@ texture_under = ExtResource("4_fqy1j")
 texture_over = ExtResource("5_lva1i")
 texture_progress = ExtResource("4_fqy1j")
 tint_progress = Color(0.877346, 3.87453e-06, 1.2514e-06, 1)
+
+[node name="Anger" type="Label" parent="."]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 1045.0
+offset_right = 250.0
+offset_bottom = 1067.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_sviuc")
+theme_override_font_sizes/font_size = 22
+text = "Anger"
 
 [node name="AllBet" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -784,170 +807,6 @@ stream = ExtResource("13_mnx84")
 volume_db = -5.0
 bus = &"Music"
 parameters/looping = true
-
-[node name="DrunkBar" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Drunk6" type="ColorRect" parent="DrunkBar"]
-light_mask = 512
-visibility_layer = 512
-layout_mode = 0
-offset_left = 295.0
-offset_top = 995.0
-offset_right = 298.0
-offset_bottom = 1027.0
-mouse_filter = 2
-color = Color(0.133333, 0.12549, 0.203922, 1)
-
-[node name="Drunk7" type="ColorRect" parent="DrunkBar"]
-light_mask = 512
-visibility_layer = 512
-layout_mode = 0
-offset_left = 346.0
-offset_top = 995.0
-offset_right = 349.0
-offset_bottom = 1027.0
-mouse_filter = 2
-color = Color(0.133333, 0.12549, 0.203922, 1)
-
-[node name="Drunk4" type="ColorRect" parent="DrunkBar"]
-light_mask = 512
-visibility_layer = 512
-layout_mode = 0
-offset_left = 196.0
-offset_top = 995.0
-offset_right = 199.0
-offset_bottom = 1027.0
-mouse_filter = 2
-color = Color(0.133333, 0.12549, 0.203922, 1)
-
-[node name="Drunk5" type="ColorRect" parent="DrunkBar"]
-light_mask = 512
-visibility_layer = 512
-layout_mode = 0
-offset_left = 245.0
-offset_top = 995.0
-offset_right = 248.0
-offset_bottom = 1027.0
-mouse_filter = 2
-color = Color(0.133333, 0.12549, 0.203922, 1)
-
-[node name="Drunk2" type="ColorRect" parent="DrunkBar"]
-light_mask = 512
-visibility_layer = 512
-layout_mode = 0
-offset_left = 95.0
-offset_top = 995.0
-offset_right = 98.0
-offset_bottom = 1027.0
-mouse_filter = 2
-color = Color(0.133333, 0.12549, 0.203922, 1)
-
-[node name="Drunk3" type="ColorRect" parent="DrunkBar"]
-light_mask = 512
-visibility_layer = 512
-layout_mode = 0
-offset_left = 146.0
-offset_top = 995.0
-offset_right = 149.0
-offset_bottom = 1027.0
-mouse_filter = 2
-color = Color(0.133333, 0.12549, 0.203922, 1)
-
-[node name="Drunk1" type="ColorRect" parent="DrunkBar"]
-light_mask = 512
-visibility_layer = 512
-layout_mode = 0
-offset_left = 46.0
-offset_top = 995.0
-offset_right = 49.0
-offset_bottom = 1027.0
-mouse_filter = 2
-color = Color(0.133333, 0.12549, 0.203922, 1)
-
-[node name="Drunk" type="Label" parent="DrunkBar"]
-layout_mode = 0
-offset_left = 143.0
-offset_top = 998.0
-offset_right = 253.0
-offset_bottom = 1020.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_sviuc")
-theme_override_font_sizes/font_size = 22
-text = "Drunk"
-
-[node name="AngerBar" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Anger1" type="ColorRect" parent="AngerBar"]
-light_mask = 512
-visibility_layer = 512
-layout_mode = 0
-offset_left = 62.0
-offset_top = 1041.0
-offset_right = 65.0
-offset_bottom = 1073.0
-mouse_filter = 2
-color = Color(0.133333, 0.12549, 0.203922, 1)
-
-[node name="Anger2" type="ColorRect" parent="AngerBar"]
-light_mask = 512
-visibility_layer = 512
-layout_mode = 0
-offset_left = 129.0
-offset_top = 1041.0
-offset_right = 132.0
-offset_bottom = 1073.0
-mouse_filter = 2
-color = Color(0.133333, 0.12549, 0.203922, 1)
-
-[node name="Anger3" type="ColorRect" parent="AngerBar"]
-light_mask = 512
-visibility_layer = 512
-layout_mode = 0
-offset_left = 196.0
-offset_top = 1041.0
-offset_right = 199.0
-offset_bottom = 1073.0
-mouse_filter = 2
-color = Color(0.133333, 0.12549, 0.203922, 1)
-
-[node name="Anger4" type="ColorRect" parent="AngerBar"]
-light_mask = 512
-visibility_layer = 512
-layout_mode = 0
-offset_left = 262.0
-offset_top = 1041.0
-offset_right = 265.0
-offset_bottom = 1073.0
-mouse_filter = 2
-color = Color(0.133333, 0.12549, 0.203922, 1)
-
-[node name="Anger5" type="ColorRect" parent="AngerBar"]
-light_mask = 512
-visibility_layer = 512
-layout_mode = 0
-offset_left = 329.0
-offset_top = 1041.0
-offset_right = 332.0
-offset_bottom = 1073.0
-mouse_filter = 2
-color = Color(0.133333, 0.12549, 0.203922, 1)
-
-[node name="Anger" type="Label" parent="AngerBar"]
-layout_mode = 0
-offset_left = 140.0
-offset_top = 1045.0
-offset_right = 250.0
-offset_bottom = 1067.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_sviuc")
-theme_override_font_sizes/font_size = 22
-text = "Anger"
 
 [connection signal="pressed" from="Buttons/VBoxContainer/Hit" to="." method="_on_hit_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/Stand" to="." method="_on_stand_pressed"]
