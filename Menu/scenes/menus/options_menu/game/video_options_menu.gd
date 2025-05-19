@@ -12,7 +12,7 @@ func _on_difficulty_control_setting_changed(value) -> void:
 		Global.diff = Global.DIFFICULTY.HARD
 	if value == "Endless":
 		Global.diff = Global.DIFFICULTY.ENDLESS
-	else:
+	if value == "Debug":
 		Global.diff = Global.DIFFICULTY.DEBUG
 
 func _on_starting_cash_control_setting_changed(value) -> void:
